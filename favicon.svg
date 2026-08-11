@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Point Vernon Guide">
+  <rect width="64" height="64" rx="12" fill="#073744"/>
+  <circle cx="53" cy="8" r="15" fill="#b6523b"/>
+  <path d="M0 43l14-5 14 6 14-7 22 7v20H0z" fill="#47757b"/>
+  <path d="M23 14h12c8 0 13 5 13 12s-5 12-13 12h-4v11h-8zm8 7v10h4c3 0 5-2 5-5s-2-5-5-5z" fill="#fff"/>
+</svg>
