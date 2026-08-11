@@ -10,7 +10,7 @@ The site covers beaches and foreshore conditions, Gatakers Bay, walking and cycl
 - primary public sources wherever possible
 - cautious safety and access wording
 - no paid placement, affiliate links or advertising
-- no visitor analytics at launch
+- Google Analytics 4 measurement with a plain-language privacy explanation
 - original AI-assisted editorial illustrations, clearly treated as interpretive rather than documentary images
 
 Public corrections can be suggested through the repository’s issue tracker. Please do not include sensitive personal information.

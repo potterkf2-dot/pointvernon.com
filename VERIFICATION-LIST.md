@@ -5,7 +5,7 @@ The public copy keeps unconfirmed details general or omits them. This register r
 ## Launch decisions completed
 
 - [x] Corrections and event suggestions use the public GitHub repository; no unmonitored email placeholder is published.
-- [x] Google Analytics is not enabled at launch; tracking scripts were removed and the Privacy page reflects the decision.
+- [x] Google Analytics 4 is enabled with measurement ID `G-003LRJYP3K`; the Privacy page describes the data collected and visitor choices.
 - [x] Labelled placeholders were replaced with original AI-assisted editorial illustrations, with captions and alternative text identifying their interpretive role.
 - [x] The GitHub owner is `potterkf2-dot` and the repository is `pointvernon.com`.
 - [x] GitHub’s official Pages and custom-domain documentation was checked on 11 August 2026.

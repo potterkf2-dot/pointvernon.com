@@ -4,7 +4,7 @@ The package is ready for a plain GitHub Pages deployment. The public copy is lau
 
 ## 1. Launch inputs completed
 
-The launch build contains no visible fact, contact, Analytics or labelled-image placeholders. Analytics is disabled, corrections use the public GitHub repository, and original editorial illustrations provide the visual layer. `VERIFICATION-LIST.md` now records optional future improvements rather than public-launch blockers.
+The launch build contains no visible fact, contact, Analytics or labelled-image placeholders. Google Analytics 4 is configured with a plain-language privacy explanation, corrections use the public GitHub repository, and original editorial illustrations provide the visual layer. `VERIFICATION-LIST.md` now records optional future improvements rather than public-launch blockers.
 
 ## 2. Create the GitHub Pages repository
 
