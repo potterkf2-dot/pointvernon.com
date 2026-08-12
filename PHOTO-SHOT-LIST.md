@@ -1,88 +1,146 @@
-# Point Vernon Guide photo shot list
+# Point Vernon photograph shot list
 
-The launch site uses a coherent set of original AI-assisted editorial illustrations. They are intentionally presented as illustrations rather than documentary images of exact facilities or viewpoints. This shot list supports a future upgrade to authentic local photography: replace each file in place, retaining its filename and pixel dimensions so layouts and social previews continue to work.
+This is the field plan for replacing the current artwork with real photographs of Point Vernon. It contains 74 unique subjects grouped into practical outings. Each source photograph has one filename and one page position; hero rows also produce a social crop from the same original.
 
-## Photography standard
+## Capture standard
 
-- Use original photographs or images with written permission for this website.
-- Shoot landscape images level, in clear natural light, with enough negative space for responsive crops.
-- Avoid identifiable children, private conversations, house numbers, number plates and cemetery visitors.
-- Do not stage unsafe behaviour on rock platforms, ramps or near unpatrolled water.
-- Photograph facilities as they are. Do not conceal access barriers, exposed conditions or worn equipment.
-- Recheck every final alt text against the actual replacement image; the text below is the intent, not automatic final copy.
-- Keep an original full-resolution master outside the website and export optimised JPEGs in sRGB.
+- Shoot full-resolution originals and keep them outside the website. Do not edit or overwrite the originals.
+- Use the filename in this list before running the conversion script. JPEG, HEIC, PNG and TIFF originals are accepted; the filename stem must match exactly.
+- Shoot heroes loose enough to preserve the centre in both a 16:9 crop and a 1200×630 social crop. Where a card crop is requested, also leave safe space for 4:3 or square.
+- Shoot wide, medium and detail variations while on location, but only submit the strongest frame under the listed filename.
+- Do not photograph identifiable strangers or children. Keep number plates and private house details out of frame.
+- Contributed photographs need written permission and a credit line before publication.
+- The conversion script creates AVIF, WebP and JPEG derivatives at 1600, 1000 and 640 pixels wide. No output is wider than 1600 pixels.
 
-## Home page
+## Gatakers Bay — low tide and golden hour
 
-| Filename | Size | Subject and composition | Page/location | Alt-text intent |
-|---|---:|---|---|---|
-| `point-vernon-headland-hero.jpg` | 1600 × 900 | Wide signature view combining rocky shoreline, bay and open sky; leave breathing room around the focal point. | Home hero; northern or eastern foreshore | Establish Point Vernon as a low rocky headland beside Hervey Bay. |
-| `gatakers-bay-foreshore.jpg` | 1400 × 900 | Calm bay curve with sand/rock margin and visible public foreshore; avoid making the water look artificially tropical. | Home feature; Gatakers Bay | Show Gatakers Bay’s sheltered shape and tidal shoreline. |
-| `point-vernon-rocky-foreshore.jpg` | 1200 × 800 | Mid-wide low-tide rock platform with shallow water and safe shoreline context. | Home guide card; Point Vernon foreshore | Show the rocky, tidal character of the headland. |
+| Filename | Page & position | Subject | Orientation & crop | Best tide | Best light | Notes |
+|---|---|---|---|---|---|---|
+| `gatakers-bay-rock-flats-low-tide.jpg` | `/gatakers-bay/` hero | Wide rock flats, narrow beach and pale bay | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Low, about one hour before bottom | Late-afternoon golden hour | Keep the ramp out of the main swimming view; leave sky and water around the centre crop. |
+| `gatakers-bay-waterline-high-tide.jpg` | `/beaches/` Gatakers Bay section | Water covering the flats from the same public shoreline | Landscape 3:2 | Within one hour of high | Early morning | Pair visually with the low-tide hero without repeating its angle. |
+| `gatakers-bay-boat-ramp-channel-low-tide.jpg` | `/boat-ramps/` Gatakers Bay comparison | Dual-lane ramp, shallow channel and rock ledges | Landscape 3:2 | Low | Flat mid-morning | No readable plates; show why depth matters. |
+| `gatakers-bay-boat-ramp-high-tide.jpg` | `/gatakers-bay/` boat-ramp section | Ramp with water up and safe separation from beach users | Landscape 3:2 | High | Mid-morning | Photograph from public land without obstructing ramp traffic. |
+| `gatakers-bay-fish-cleaning-tables.jpg` | `/boat-ramps/` facilities row | Fish-cleaning tables with the ramp behind | Landscape 4:3 | Any | Flat mid-morning | Facility clarity matters more than atmosphere. |
+| `gatakers-bay-offshore-reef-low-tide.jpg` | `/snorkelling/` hero | Shore approach towards the offshore reef | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Low | Clear early morning | Only photograph from a safe public position; avoid implying conditions are always suitable. |
+| `gatakers-bay-rock-pool-marine-life.jpg` | `/rock-pools/` species section | One shallow pool with visible marine life and surrounding rock | Landscape 4:3 | Low | Bright overcast or soft morning light | Do not move or handle animals. Keep enough surrounding rock for context. |
+| `gatakers-bay-winter-sunset-over-water.jpg` | `/sunsets/` hero | Winter sun setting over the bay | Hero: 16:9 1600×900 + 1200×630 social; square crop | Any | Sunset through civil twilight | Shoot around the June solstice; stay for the blue-and-orange twilight. |
+| `gatakers-bay-shore-fishing-clear-space.jpg` | `/fishing/` hero | Angler small in frame with safe casting space | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Rising or falling | Early morning | Obtain permission if the angler is identifiable; do not show unsafe rock access. |
+| `gatakers-bay-ramp-lighting-dusk.jpg` | `/boat-ramps/` lighting note | Night lighting at the ramp as dusk falls | Landscape 3:2 | Mid to high | Blue hour | Keep exposure truthful and the manoeuvring area legible. |
+| `gatakers-bay-esplanade-trailhead.jpg` | `/esplanade-trail/` northern start | Trail start, path and orientation signage | Landscape 3:2 | Any | Flat mid-morning | Sign text should be readable; no identifiable path users. |
+| `gatakers-bay-curve-golden-hour.jpg` | `/` Gatakers Bay feature | Sheltered curve of the bay and public foreshore | Landscape 16:10 | Mid to high | Late-afternoon golden hour | Different viewpoint from the Gatakers Bay hero; leave room for responsive crops. |
 
-## Guide heroes
+## ESA Park — facilities and adjacent rock pools
 
-Each hero is 1600 × 900 pixels, wide landscape.
+| Filename | Page & position | Subject | Orientation & crop | Best tide | Best light | Notes |
+|---|---|---|---|---|---|---|
+| `esa-park-playground-and-foreshore.jpg` | `/esa-park/` hero | Playground, shade and foreshore relationship | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Mid to high | Early morning | No children; show the road and water context honestly. |
+| `esa-park-turtle-friendly-lighting.jpg` | `/esa-park/` lighting section | Turtle-friendly light fitting and surrounding path | Portrait 4:5 with landscape-safe centre | Any | Late afternoon before lights switch on | Include enough context to identify the fixture without relying on night exposure. |
+| `esa-park-accessible-toilet-and-path.jpg` | `/accessibility/` ESA Park row | Disability toilet entrance and connecting path | Landscape 4:3 | Any | Flat mid-morning | Keep the full approach visible; avoid people and vehicles. |
+| `esa-park-rock-pools-low-tide.jpg` | `/rock-pools/` hero | Broad tidal pools beside ESA Park | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Low | Early morning | Show uneven rock and water depth truthfully. |
+| `esa-park-shoreline-high-tide.jpg` | `/swimming/` ESA Park section | Shoreline with water over the nearshore rock | Landscape 3:2 | High | Early morning | Photograph the same general area as the low-tide shot from a distinct angle. |
+| `esa-park-shared-path.jpg` | `/walks/` ESA Park section | Shared path passing the park and water | Landscape 3:2 | Any | Early morning | One distant, unidentifiable walker or cyclist may be used for scale. |
+| `esa-park-barbecue-picnic-shelter.jpg` | `/picnic-and-bbq-spots/` ESA Park row | Barbecue, shelter, table and nearby path | Landscape 4:3 | Any | Flat mid-morning | Show all facilities in one legible frame if possible. |
+| `esa-park-dog-boundary-sign.jpg` | `/dog-beach/` ESA Park boundary | Current dog-control sign and surrounding landmark | Portrait 4:5 | Any | Flat midday | Sign wording must be sharp and current. |
 
-| Filename | Subject and composition | Page/location | Alt-text intent |
-|---|---|---|---|
-| `beaches-hero.jpg` | Sand, shallow water and exposed rock in one legible wide view. | Beaches; eastern foreshore | Explain that Point Vernon is a mixed sand-and-rock shoreline. |
-| `gatakers-bay-hero.jpg` | Wide bay overview with boat-ramp activity separated from beach users. | Gatakers Bay | Show the bay, tidal flat and practical public access. |
-| `walks-hero.jpg` | Shared path curving beside open water with a clear forward route. | Walks; foreshore path | Show the everyday coastal walking and cycling setting. |
-| `fishing-hero.jpg` | Responsible shore angler with plenty of surrounding context; no catch glamour shot. | Fishing; legal public access | Show land-based fishing conditions and space around other users. |
-| `whales-hero.jpg` | Real distant whale sighting from shore if possible, with horizon and lookout context. | Whales; verified public viewpoint | Set honest expectations for a land-based sighting. |
-| `parks-playgrounds-hero.jpg` | Playground, shade, seating and relationship to the foreshore in one frame. | Parks; ESA Park after facility check | Help families judge the setting, shade and boundaries. |
-| `food-coffee-hero.jpg` | Simple local coffee/takeaway arrangement outdoors; no visible brand endorsement. | Food and coffee | Suggest a modest neighbourhood stop and foreshore picnic. |
-| `point-vernon-history-hero.jpg` | Low-tide heritage remains within the wider coastal landscape. | History; The Gables | Connect visible shoreline remains with the history page. |
-| `visiting-point-vernon-hero.jpg` | Calm arrival view with road, public access and bay; minimise private homes. | Visiting; Esplanade | Orient a first-time visitor to the residential foreshore setting. |
-| `whats-on-hero.jpg` | Small, authentic community gathering with permission where required. | What’s on; verified public event | Show the scale and atmosphere of a local event. |
-| `about-point-vernon-guide-hero.jpg` | Unposed everyday foreshore scene, preferably early or late light. | About; public foreshore | Express an independent, grounded local guide rather than tourism advertising. |
-| `privacy-hero.jpg` | Abstract but recognisable rock, sand and shallow-water texture. | Privacy; public shoreline | Provide a quiet natural texture without adding new factual content. |
+## Black Stump Park — facilities stop for Gatakers Bay
 
-## Supporting content images
+| Filename | Page & position | Subject | Orientation & crop | Best tide | Best light | Notes |
+|---|---|---|---|---|---|---|
+| `black-stump-park-playground-foreshore.jpg` | `/black-stump-park/` hero | Playground and park with the foreshore beyond | Hero: 16:9 1600×900 + 1200×630 social; square crop | Any | Early morning | No children; include shade and open edges. |
+| `black-stump-park-facilities.jpg` | `/parks-playgrounds/` Black Stump entry | Toilet, shower, water and shelter area | Landscape 4:3 | Any | Flat mid-morning | Prioritise readable layout over dramatic light. |
+| `black-stump-park-barbecue-shelter.jpg` | `/picnic-and-bbq-spots/` Black Stump row | Barbecue and picnic shelter | Landscape 4:3 | Any | Flat mid-morning | Keep access path and seating in frame. |
+| `black-stump-park-to-gatakers-ramp-path.jpg` | `/gatakers-bay/` facilities section | Path connection towards the boat ramp | Landscape 3:2 | Any | Early morning | Show the walking route, not a generic park view. |
+| `black-stump-park-shoreline.jpg` | `/beaches/` Black Stump section | Mixed sand-and-rock foreshore below the park | Landscape 3:2 | Falling | Morning | Include the park edge so the location is recognisable. |
+| `black-stump-park-dog-area-sign.jpg` | `/dog-beach/` northern boundary context | Current dog sign near Black Stump Park | Portrait 4:5 | Any | Flat midday | Make wording legible and include the nearest fixed landmark. |
+| `black-stump-park-accessible-route.jpg` | `/accessibility/` Black Stump row | Step-free route from parking to facilities | Landscape 3:2 | Any | Flat mid-morning | Show surface, kerbs, gradients and any pinch points. |
 
-Each supporting image is 1200 × 800 pixels, landscape.
+## The Gables and Aplin Street boat ramp — sunsets, heritage and wildlife
 
-| Filename | Subject and composition | Page/location | Alt-text intent |
-|---|---|---|---|
-| `point-vernon-tidal-rock-pools.jpg` | Close-to-mid view of rock pools with surrounding surface visible. | Beaches | Show the uneven low-tide rock and shallow pools. |
-| `gatakers-bay-boat-ramp.jpg` | Ramp, waterline, manoeuvring area and safety separation; no readable plates. | Gatakers Bay | Explain how the ramp meets the tidal shoreline. |
-| `point-vernon-shared-path.jpg` | Path width, surface, verge and sightline all visible. | Walks | Help readers judge the shared route and surroundings. |
-| `point-vernon-land-based-fishing.jpg` | Angler using legal gear from a stable area, keeping clear of swimmers and paths. | Fishing | Show a responsible land-based fishing setup. |
-| `point-vernon-whale-view.jpg` | Person scanning the bay from a verified public viewpoint; no implied close sighting. | Whales | Show the scale and patience of watching from shore. |
-| `esa-park-playground.jpg` | Equipment, shade, nearby road and beach relationship. | Parks | Show ESA Park’s layout and supervision context. |
-| `the-gables-picnic-area.jpg` | Shelter, table, water outlook and access route. | Parks | Help visitors understand The Gables picnic setting. |
-| `point-vernon-cafe-exterior.jpg` | Current signage and entrance, photographed from public space. | Food and coffee | Identify the current cafe and entrance without endorsement. |
-| `point-vernon-takeaway.jpg` | Simple takeaway meal packed for outdoors; neutral styling. | Food and coffee | Illustrate a practical picnic option. |
-| `dunns-enclosure-remains.jpg` | Surviving stonework at low tide with enough context to read the structure. | History; The Gables | Identify the visible remains without encouraging climbing. |
-| `polson-cemetery-memorial.jpg` | Respectful wide view from a public path, without identifiable mourners. | History; Polson Cemetery | Show the South Sea Islander memorial area respectfully. |
-| `point-vernon-arrival.jpg` | Public parking/access/path relationship; avoid private property detail. | Visiting | Help a first-time visitor understand arrival and access. |
-| `point-vernon-community-market.jpg` | Outdoor stalls and broad event context, with permissions handled. | What’s on; verified event | Illustrate a community market without promising a specific schedule. |
-| `point-vernon-quiet-foreshore.jpg` | Everyday, uncrowded shoreline scene with truthful colour. | About | Show the ordinary coastal character the guide documents. |
-| `point-vernon-shoreline-detail.jpg` | Natural close detail suitable for a neutral supporting panel. | Reserve/editorial use | Describe the specific rock, shell or water detail visible. |
-| `point-vernon-wayfinding.jpg` | Foreshore path or sign offering a clear visual direction; avoid confusing private signs. | 404 page | Suggest choosing another path through the guide. |
+| Filename | Page & position | Subject | Orientation & crop | Best tide | Best light | Notes |
+|---|---|---|---|---|---|---|
+| `the-gables-northern-point-wide-horizon.jpg` | `/whales-from-shore/` hero | Widest public north-west horizon from the northern point | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Mid to high | Clear morning | Show formed path and safe viewing position; a whale is not required. |
+| `the-gables-winter-sunset.jpg` | `/` hero | Point Vernon headland with winter sunset over water | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Any | Sunset and civil twilight | Signature home image; keep the centre crop free of small edge details. |
+| `the-gables-osprey-nest-pole.jpg` | `/birdwatching/` osprey section | Purpose-built nest pole at the northern point | Portrait 4:5 with landscape-safe centre | Any | Early morning | Use a long lens; do not approach or disturb nesting birds. |
+| `the-gables-picnic-shelter-water-view.jpg` | `/the-gables/` picnic section | Shelter, seating and water outlook | Landscape 4:3 | Mid to high | Late afternoon | Avoid implying unconfirmed facilities outside the frame. |
+| `aplin-street-boat-ramp-low-tide.jpg` | `/boat-ramps/` Aplin Street comparison | Shallow ramp and exposed rock at low tide | Landscape 3:2 | Low | Flat mid-morning | Show why it suits small vessels and is tide restricted. |
+| `aplin-street-boat-ramp-high-tide.jpg` | `/the-gables/` boat-ramp section | Ramp with water up | Landscape 3:2 | High | Mid-morning | Use a different angle from the low-tide comparison. |
+| `dunns-enclosure-spring-low-tide.jpg` | `/dunns-enclosure/` hero | Skeletal enclosure remains between natural rock lines | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Very low spring tide | Soft morning light | Do not climb, move stone or expose sensitive material; confirm safe public access. |
+| `gables-point-beach-long-view.jpg` | `/the-gables/` hero | Long sweep of Gables Point beach | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Mid to low | Early morning | Use a long view that communicates the beach’s scale. |
+| `the-gables-shorebird-signage.jpg` | `/birdwatching/` visitor-care section | Current dunes or shorebird sign | Portrait 4:5 | Any | Flat midday | Make wording readable and location identifiable. |
+| `the-gables-dog-boundary-sign.jpg` | `/dog-beach/` Aplin Street boundary | Current dog-control sign near Aplin Street | Portrait 4:5 | Any | Flat midday | Capture sign plus the access point used to define the boundary. |
+| `the-gables-esplanade-path-connection.jpg` | `/esplanade-trail/` The Gables stop | Shared path, seating and northern-point approach | Landscape 3:2 | Any | Early morning | Show path continuity and any road interaction. |
 
-## Social sharing images
+## Parraweena Park — bushland outing
 
-Export these as 1200 × 630 pixels. Use the strongest truthful crop from each page’s hero or an approved equivalent. Avoid text overlays: page title and description are supplied by the website metadata.
+| Filename | Page & position | Subject | Orientation & crop | Best tide | Best light | Notes |
+|---|---|---|---|---|---|---|
+| `parraweena-park-eucalypt-bushland.jpg` | `/parraweena-park/` hero | Remnant eucalypt forest and walking trail | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Not applicable | Soft early morning | Preserve natural colour; avoid a generic close-up that loses the place. |
+| `parraweena-park-stone-footbridge.jpg` | `/parraweena-park/` footbridge section | Stone footbridge and approach | Landscape 4:3 | Not applicable | Bright overcast | Show surface and clearance as well as stone detail. |
+| `parraweena-park-wishing-well-remains.jpg` | `/history-timeline/` former sanctuary entry | Remains of the wishing well | Landscape 4:3 | Not applicable | Soft morning | Do not move vegetation or objects to improve the view. |
+| `parraweena-park-walking-trail.jpg` | `/walks/` optional extension | Bushland trail surface and sightline | Landscape 3:2 | Not applicable | Early morning | Show actual path width, surface and shade. |
+| `parraweena-park-bench-seats.jpg` | `/parraweena-park/` facilities section | Two bench seats in bushland context | Landscape 4:3 | Not applicable | Flat mid-morning | Include enough context to locate the seats along the walk. |
+| `parraweena-park-spence-corser-entry.jpg` | `/map/` Parraweena marker | Corner entrance and identifying sign | Landscape 3:2 | Not applicable | Flat midday | Street and park names should be readable without showing house numbers. |
+| `parraweena-park-trail-detail.jpg` | `/birdwatching/` bushland section | Quiet trail edge and habitat layers | Landscape 4:3 | Not applicable | Early morning | No staged wildlife; use a habitat photograph if birds are absent. |
 
-| Filename | Source intent |
-|---|---|
-| `og-home.jpg` | Signature Point Vernon headland view. |
-| `og-default.jpg` | Flexible neutral shoreline crop for the 404 page. |
-| `og-beaches.jpg` | Mixed sand-and-rock shoreline. |
-| `og-gatakers-bay.jpg` | Gatakers Bay curve and tidal setting. |
-| `og-walks.jpg` | Foreshore shared path. |
-| `og-fishing.jpg` | Responsible fishing with coastal context. |
-| `og-whales.jpg` | Honest land-based bay outlook or verified distant sighting. |
-| `og-parks-playgrounds.jpg` | Park setting and foreshore relationship. |
-| `og-food-coffee.jpg` | Local coffee/takeaway picnic. |
-| `og-history.jpg` | Heritage remains in landscape context. |
-| `og-visiting.jpg` | Welcoming public arrival view. |
-| `og-whats-on.jpg` | Small community event with permissions. |
-| `og-about.jpg` | Quiet everyday foreshore. |
-| `og-privacy.jpg` | Natural shoreline texture. |
+## Webb Park — neighbourhood facilities
 
-## Final image check
+| Filename | Page & position | Subject | Orientation & crop | Best tide | Best light | Notes |
+|---|---|---|---|---|---|---|
+| `webb-park-playground-and-court.jpg` | `/webb-park/` hero | Playground and basketball area in one wide view | Hero: 16:9 1600×900 + 1200×630 social; square crop | Not applicable | Early morning | No children; include open boundaries and shade. |
+| `webb-park-playground.jpg` | `/parks-playgrounds/` Webb Park entry | Play equipment and supervision area | Landscape 4:3 | Not applicable | Early morning | Different frame from the hero, focused on layout. |
+| `webb-park-basketball-court.jpg` | `/webb-park/` court section | Basketball court surface and hoop | Landscape 4:3 | Not applicable | Flat morning | Avoid identifiable players. |
+| `webb-park-shelter-and-seating.jpg` | `/picnic-and-bbq-spots/` Webb Park row | Shelter and seating | Landscape 4:3 | Not applicable | Flat mid-morning | Show nearby play area without implying a barbecue. |
+| `webb-park-murphy-street-entry.jpg` | `/map/` Webb Park marker | Murphy Street entrance and park context | Landscape 3:2 | Not applicable | Flat midday | Avoid house numbers and readable plates. |
 
-After replacing files, review every page at narrow and wide widths. Confirm faces and private details are appropriate, focal points survive the crop, captions remain true, files are compressed, and each alt attribute describes the image actually published.
+## Polson Cemetery — respectful, consult before publication
+
+Do not publish this group until the Australian South Sea Islander community has been consulted about wording and image selection.
+
+| Filename | Page & position | Subject | Orientation & crop | Best tide | Best light | Notes |
+|---|---|---|---|---|---|---|
+| `polson-cemetery-corser-street-entry.jpg` | `/polson-cemetery/` arrival section | Public entrance and 89 Corser Street identification | Landscape 3:2 | Not applicable | Soft morning | No visitors, funerals, vehicles or readable personal details. |
+| `polson-cemetery-south-sea-islander-memorial.jpg` | `/polson-cemetery/` hero | Respectful wide view of the memorial area | Hero: 16:9 1600×900 + 1200×630 social; no card crop | Not applicable | Soft morning or bright overcast | Obtain cultural review before publishing; do not use a dramatic or intrusive angle. |
+| `polson-cemetery-path-and-headstones.jpg` | `/history/` Polson Cemetery section | Public path with cemetery context | Landscape 3:2 | Not applicable | Soft morning | Avoid readable inscriptions unless permission and purpose are clear. |
+| `polson-cemetery-quiet-grounds.jpg` | `/history-timeline/` cemetery entry | Wide grounds view without individual grave emphasis | Landscape 3:2 | Not applicable | Soft late afternoon | No mourners or maintenance staff. |
+| `polson-cemetery-memorial-detail.jpg` | `/point-vernon-facts/` heritage reference | Approved memorial detail | Landscape 4:3 | Not applicable | Bright overcast | Publish only after cultural review confirms the detail is appropriate. |
+
+## Charlton Esplanade path — early-morning outing
+
+| Filename | Page & position | Subject | Orientation & crop | Best tide | Best light | Notes |
+|---|---|---|---|---|---|---|
+| `esplanade-trail-point-vernon-shared-path.jpg` | `/esplanade-trail/` hero | Shared path curving beside the Point Vernon foreshore | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Mid to high | Early morning | One distant, unidentifiable user can provide scale. |
+| `charlton-esplanade-walkers-early-morning.jpg` | `/walks/` hero | Walkers small in frame on the coastal path | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Any | Early morning | Ask permission if recognisable; keep cyclists and walkers safely separated. |
+| `charlton-esplanade-step-free-path.jpg` | `/accessibility/` hero | Step-free path section with surface and gradient visible | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Any | Flat morning | Include kerbs, crossings or slopes that affect access. |
+| `charlton-esplanade-seating-water-view.jpg` | `/esplanade-trail/` seating section | Public seat facing the bay | Landscape 4:3 | Mid to high | Early morning | Empty seat; show access from the path. |
+| `charlton-esplanade-wayfinding-sign.jpg` | `/visiting/` orientation section | Current wayfinding sign and path junction | Portrait 4:5 | Any | Flat midday | Wording and arrows must be readable. |
+| `charlton-esplanade-cyclist-long-view.jpg` | `/walks/` cycling section | Cyclist small in frame on a clear path sightline | Landscape 3:2 | Any | Early morning | Permission required if identifiable; no staged speed or unsafe passing. |
+| `charlton-esplanade-high-tide-foreshore.jpg` | `/tides/` high-tide section | Water close to the path-side foreshore | Landscape 3:2 | High | Morning | Use a location that is safe and publicly accessible. |
+| `charlton-esplanade-low-tide-foreshore.jpg` | `/tides/` hero | Exposed flats and shoreline access at low tide | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Low | Morning | Make the tide contrast obvious without repeating another page’s frame. |
+| `charlton-esplanade-dog-on-leash.jpg` | `/dog-beach/` default-rule section | Leashed dog and owner small in frame on public path | Landscape 3:2 | Any | Early morning | Written permission; dog and handler must be under control and away from playgrounds. |
+| `point-vernon-foreshore-arrival.jpg` | `/visiting/` hero | Public arrival point, road, path and bay relationship | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Mid to high | Early morning | Minimise private homes, number plates and parked vehicles. |
+
+## Preston Street and Murphy Street — shops and services
+
+| Filename | Page & position | Subject | Orientation & crop | Best tide | Best light | Notes |
+|---|---|---|---|---|---|---|
+| `brew-and-view-149-charlton-esplanade.jpg` | `/food-coffee/` Brew & View listing | Current café exterior and entrance | Landscape 4:3 | Not applicable | Mid-morning before harsh sun | Photograph from public land; confirm current trading name first. |
+| `point-vernon-takeaway-preston-street.jpg` | `/food-coffee/` takeaway listing | Current shopfront at 15–17 Preston Street | Landscape 4:3 | Not applicable | Flat morning | No customers or readable plates; confirm trading status first. |
+| `preston-street-shops-wide-view.jpg` | `/shops-and-services/` hero | Whole neighbourhood shopping cluster | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Not applicable | Flat morning | Avoid giving one business visual preference. |
+| `point-vernon-butchery-shopfront.jpg` | `/shops-and-services/` butchery listing | Current butchery entrance and sign | Landscape 4:3 | Not applicable | Flat morning | Confirm name and permission if photographing close to the entrance. |
+| `point-vernon-grocer-shopfront.jpg` | `/shops-and-services/` grocer listing | Current Friendly Grocer or IGA Xpress sign | Landscape 4:3 | Not applicable | Flat morning | File stays unpublished until current trading name is confirmed. |
+| `murphy-street-services-precinct.jpg` | `/practical-info/` health-services section | Precinct context without patient detail | Landscape 3:2 | Not applicable | Flat mid-morning | No patients, clinical material or readable vehicle details. |
+
+## Corser Street five-ways — final short outing
+
+| Filename | Page & position | Subject | Orientation & crop | Best tide | Best light | Notes |
+|---|---|---|---|---|---|---|
+| `vernon-five-ways-intersection.jpg` | `/map/` five-ways marker | Road geometry and public wayfinding at the intersection | Landscape 3:2 | Not applicable | Quiet early morning | Shoot from a safe public footpath; do not obstruct traffic. |
+| `vernon-5-ways-52-corser-street.jpg` | `/food-coffee/` Vernon 5 Ways listing | Current takeaway and convenience-store shopfront | Landscape 4:3 | Not applicable | Flat morning | Confirm trading name and status; no customers or readable plates. |
+| `corser-street-neighbourhood-services.jpg` | `/living-in-point-vernon/` local-services section | Streetscape showing the small service cluster | Landscape 3:2 | Not applicable | Early morning | Prefer a general streetscape over a single private property. |
+
+## Coverage check
+
+- Total subjects: **74**.
+- Hero subjects: **20**, each requiring a 1600×900 crop and a 1200×630 social crop; card needs are stated per row.
+- Tide-dependent subjects: **24**, including separate high- and low-tide views where the physical place changes materially.
+- The filenames are unique and each subject is assigned to one page position only.

@@ -1,0 +1,76 @@
+<!-- Head: preload only the page hero. -->
+<link rel="preload"
+      as="image"
+      href="/images/gatakers-bay-rock-flats-low-tide-1600.avif"
+      imagesrcset="/images/gatakers-bay-rock-flats-low-tide-1600.avif 1600w,
+                   /images/gatakers-bay-rock-flats-low-tide-1000.avif 1000w,
+                   /images/gatakers-bay-rock-flats-low-tide-640.avif 640w"
+      imagesizes="(min-width: 900px) 800px, 100vw"
+      type="image/avif">
+
+<!-- Hero: eager, high priority and never lazy-loaded. -->
+<figure class="page-hero-figure">
+  <picture>
+    <source srcset="/images/gatakers-bay-rock-flats-low-tide-1600.avif 1600w,
+                    /images/gatakers-bay-rock-flats-low-tide-1000.avif 1000w,
+                    /images/gatakers-bay-rock-flats-low-tide-640.avif 640w"
+            sizes="(min-width: 900px) 800px, 100vw"
+            type="image/avif">
+    <source srcset="/images/gatakers-bay-rock-flats-low-tide-1600.webp 1600w,
+                    /images/gatakers-bay-rock-flats-low-tide-1000.webp 1000w,
+                    /images/gatakers-bay-rock-flats-low-tide-640.webp 640w"
+            sizes="(min-width: 900px) 800px, 100vw"
+            type="image/webp">
+    <img src="/images/gatakers-bay-rock-flats-low-tide-1000.jpg"
+         width="1600"
+         height="900"
+         loading="eager"
+         decoding="async"
+         fetchpriority="high"
+         alt="Wide rock flats exposed at low tide at Gatakers Bay, with the bay pale beyond">
+  </picture>
+  <figcaption>The rock flats at Gatakers Bay near low tide. <span class="photo-credit">Photo: Contributor Name</span></figcaption>
+</figure>
+
+<!-- Inline photograph: lazy-loaded and normally has no preload. -->
+<figure class="content-figure">
+  <picture>
+    <source srcset="/images/gatakers-bay-rock-pool-marine-life-1600.avif 1600w,
+                    /images/gatakers-bay-rock-pool-marine-life-1000.avif 1000w,
+                    /images/gatakers-bay-rock-pool-marine-life-640.avif 640w"
+            sizes="(min-width: 900px) 720px, 100vw"
+            type="image/avif">
+    <source srcset="/images/gatakers-bay-rock-pool-marine-life-1600.webp 1600w,
+                    /images/gatakers-bay-rock-pool-marine-life-1000.webp 1000w,
+                    /images/gatakers-bay-rock-pool-marine-life-640.webp 640w"
+            sizes="(min-width: 900px) 720px, 100vw"
+            type="image/webp">
+    <img src="/images/gatakers-bay-rock-pool-marine-life-1000.jpg"
+         width="1600"
+         height="1200"
+         loading="lazy"
+         decoding="async"
+         alt="Small marine animals visible in a shallow rock pool at Gatakers Bay">
+  </picture>
+  <p class="photo-credit">Photo: Contributor Name</p>
+</figure>
+
+<!-- Add this ImageObject only when the published photograph is contributed. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "contentUrl": "https://pointvernon.com/images/gatakers-bay-rock-flats-low-tide-1600.jpg",
+  "caption": "Rock flats exposed near low tide at Gatakers Bay",
+  "creditText": "Photo: Contributor Name",
+  "copyrightHolder": {
+    "@type": "Person",
+    "name": "Contributor Name"
+  }
+}
+</script>
+
+<!-- When no approved photograph exists, omit the figure and use this class. -->
+<div class="container page-hero-grid page-hero-grid-text-only">
+  <!-- Page heading and lede. -->
+</div>

@@ -4,9 +4,10 @@ The public copy keeps unconfirmed details general or omits them. This register r
 
 ## Launch decisions completed
 
-- [x] Corrections and event suggestions use the public GitHub repository; no unmonitored email placeholder is published.
+- [x] Corrections, photographs, event suggestions and complaints use `hello@pointvernon.com`.
+- [ ] Confirm `hello@pointvernon.com` is actively monitored before deployment.
 - [x] Google Analytics 4 is enabled with measurement ID `G-003LRJYP3K`; the Privacy page describes the data collected and visitor choices.
-- [x] Labelled placeholders were replaced with original AI-assisted editorial illustrations, with captions and alternative text identifying their interpretive role.
+- [x] Image descriptions and captions use plain visitor-facing language.
 - [x] The GitHub owner is `potterkf2-dot` and the repository is `pointvernon.com`.
 - [x] GitHub’s official Pages and custom-domain documentation was checked on 11 August 2026.
 
@@ -41,8 +42,13 @@ The public copy keeps unconfirmed details general or omits them. This register r
 
 ## Technical and publishing check
 
-- [x] Remove all `[VERIFY]`, `[CONTACT EMAIL]`, `G-XXXXXXXXXX` and labelled-image placeholders from public pages.
-- [ ] Check all internal links, canonical URLs, Open Graph images, titles, descriptions, one H1 per page, structured data, sitemap and `robots.txt` on the deployed domain.
+- [x] Remove all unfinished fact, contact, Analytics and image markers from public pages.
+- [x] Remove the former artwork from published pages and keep the interim site text-only.
+- [x] Build the 74-subject shot list, conversion manifest, responsive image template and Mac conversion script.
+- [x] Add `/photo-credits/`, the footer link and a private permission-register structure.
+- [ ] Before publishing a contributed photograph, record written permission privately and add the agreed credit beside the image and on `/photo-credits/`.
+- [ ] Before publishing a hero photograph, add its AVIF preload and `fetchpriority="high"`, then confirm the inline images remain lazy-loaded.
+- [ ] Check all internal links, canonical URLs, Open Graph metadata, titles, descriptions, one H1 per page, structured data, sitemap and `robots.txt` on the deployed domain; add social images only when approved photographs exist.
 - [ ] Confirm `pointvernon.com` and `www.pointvernon.com` both reach the intended canonical HTTPS address without a redirect loop.
 - [ ] Enable “Enforce HTTPS” in GitHub Pages after the certificate is issued.
 - [ ] Test keyboard navigation, visible focus, text zoom, colour contrast, image alt text and narrow-screen layout.

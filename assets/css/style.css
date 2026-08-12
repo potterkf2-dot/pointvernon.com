@@ -44,6 +44,10 @@ img {
   height: auto;
 }
 
+picture {
+  display: block;
+}
+
 a {
   color: var(--ocean);
   text-decoration-thickness: 0.09em;
@@ -237,9 +241,21 @@ h3 {
   color: var(--white);
 }
 
-.hero-copy > p:not(.eyebrow):not(.hero-lede) {
+.hero-copy > p:not(.eyebrow):not(.hero-lede):not(.page-updated) {
   max-width: 36rem;
   color: #d9e7e5;
+}
+
+.page-updated {
+  margin: -0.5rem 0 1.25rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.hero .page-updated,
+.page-hero .page-updated {
+  color: #bfd0cf;
 }
 
 .hero-lede {
@@ -349,6 +365,25 @@ figcaption {
   color: var(--muted);
   font-size: 0.82rem;
   line-height: 1.5;
+}
+
+.photo-credit {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+figcaption .photo-credit {
+  margin-left: 0.35rem;
+}
+
+.hero-figure .photo-credit,
+.page-hero-figure .photo-credit {
+  color: #bad0d1;
+}
+
+.content-figure > .photo-credit {
+  margin-top: 0.7rem;
 }
 
 .hero figcaption {
@@ -667,6 +702,48 @@ figcaption {
   margin: 0;
   color: #bcd0cf;
   font-size: 0.82rem;
+}
+
+.footer-disclaimer .footer-acknowledgement {
+  color: #eaf3f2;
+  font-size: 0.95rem;
+}
+
+.table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+}
+
+.table-wrap:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 4px;
+}
+
+.credits-table {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.credits-table th,
+.credits-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.credits-table th {
+  background: var(--sea-glass);
+  color: var(--ocean-deep);
+}
+
+.credits-table tbody tr:last-child td {
+  border-bottom: 0;
 }
 
 .footer-bottom {
@@ -1278,6 +1355,13 @@ tbody tr:last-child td {
   .not-found .page-hero-figure img {
     min-height: 0;
     aspect-ratio: 3 / 2;
+  }
+
+  .hero-grid.hero-grid-text-only,
+  .feature-grid.feature-grid-text-only,
+  .page-hero-grid.page-hero-grid-text-only,
+  .not-found-grid.not-found-grid-text-only {
+    grid-template-columns: minmax(0, var(--text));
   }
 }
 

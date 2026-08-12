@@ -1,10 +1,12 @@
 # PointVernon.com launch guide
 
-The package is ready for a plain GitHub Pages deployment. The public copy is launch-safe and the editorial illustrations can be replaced with authentic local photography later. Follow the publishing and domain sequence in this guide because GitHub recommends adding and verifying a custom domain before directing public DNS to it.
+The package is ready for a plain GitHub Pages deployment. Authentic local photography can be added as it becomes available. Follow the publishing and domain sequence in this guide because GitHub recommends adding and verifying a custom domain before directing public DNS to it.
+
+The interim site is intentionally text-only. The former artwork has been removed from the repository; do not restore it while waiting for approved photographs.
 
 ## 1. Launch inputs completed
 
-The launch build contains no visible fact, contact, Analytics or labelled-image placeholders. Google Analytics 4 is configured with a plain-language privacy explanation, corrections use the public GitHub repository, and original editorial illustrations provide the visual layer. `VERIFICATION-LIST.md` now records optional future improvements rather than public-launch blockers.
+The launch build contains no unfinished fact, contact, Analytics or image markers. Google Analytics 4 is configured with a plain-language privacy explanation, and corrections use hello@pointvernon.com. `VERIFICATION-LIST.md` records future improvements and checks.
 
 ## 2. Create the GitHub Pages repository
 
@@ -76,6 +78,7 @@ Official reference: [Securing a GitHub Pages site with HTTPS](https://docs.githu
 
 - Check the site on a phone and desktop using keyboard and touch.
 - Confirm all final photographs are licensed, compressed and correctly described.
+- Confirm each contributed photograph is credited beside the image and in `/photo-credits/`.
 - Recheck business, transport, park, fishing and event details against their sources.
 - Test the monitored email address.
 - Confirm the live privacy statement matches the tools actually enabled.
