@@ -22,14 +22,23 @@
   <meta property="og:title" content="Point Vernon: an independent local guide">
   <meta property="og:description" content="A practical guide to Gatakers Bay, Point Vernon’s beaches, foreshore walks, fishing, parks and whale season.">
   <meta property="og:url" content="https://pointvernon.com/">
+  <meta property="og:image" content="https://pointvernon.com/images/point-vernon-shoreline-aerial-1600.jpg">
+  <meta property="og:image:alt" content="Aerial view of the Point Vernon shoreline and clear bay water">
 
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://pointvernon.com/images/point-vernon-shoreline-aerial-1600.jpg">
   <meta name="twitter:title" content="Point Vernon: an independent local guide">
   <meta name="twitter:description" content="A practical guide to Gatakers Bay, Point Vernon’s beaches, foreshore walks, fishing, parks and whale season.">
 
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload"
+        as="image"
+        href="/images/point-vernon-shoreline-aerial-1600.avif"
+        imagesrcset="/images/point-vernon-shoreline-aerial-1600.avif 1600w, /images/point-vernon-shoreline-aerial-1000.avif 1000w, /images/point-vernon-shoreline-aerial-640.avif 640w"
+        imagesizes="(min-width: 1024px) 44vw, 100vw"
+        type="image/avif">
   <link rel="stylesheet" href="/assets/css/style.css">
 
   <script type="application/ld+json">
@@ -66,7 +75,7 @@
 
   <main id="main-content">
     <section class="hero">
-      <div class="container hero-grid hero-grid-text-only">
+      <div class="container hero-grid">
         <div class="hero-copy">
           <p class="eyebrow">Point Vernon · Hervey Bay · Queensland</p>
           <h1>Point Vernon, Hervey Bay’s coastal headland</h1>
@@ -86,6 +95,32 @@
           </ul>
         </div>
 
+        <figure class="hero-figure">
+          <picture>
+            <source srcset="/images/point-vernon-shoreline-aerial-1600.avif 1600w,
+                            /images/point-vernon-shoreline-aerial-1000.avif 1000w,
+                            /images/point-vernon-shoreline-aerial-640.avif 640w"
+                    sizes="(min-width: 1024px) 44vw, 100vw"
+                    type="image/avif">
+            <source srcset="/images/point-vernon-shoreline-aerial-1600.webp 1600w,
+                            /images/point-vernon-shoreline-aerial-1000.webp 1000w,
+                            /images/point-vernon-shoreline-aerial-640.webp 640w"
+                    sizes="(min-width: 1024px) 44vw, 100vw"
+                    type="image/webp">
+            <img src="/images/point-vernon-shoreline-aerial-1000.jpg"
+                 srcset="/images/point-vernon-shoreline-aerial-640.jpg 640w,
+                         /images/point-vernon-shoreline-aerial-1000.jpg 1000w,
+                         /images/point-vernon-shoreline-aerial-1600.jpg 1600w"
+                 sizes="(min-width: 1024px) 44vw, 100vw"
+                 width="1600"
+                 height="1000"
+                 loading="eager"
+                 decoding="async"
+                 fetchpriority="high"
+                 alt="Aerial view of the Point Vernon shoreline, clear blue water and coastal homes">
+          </picture>
+          <figcaption>Point Vernon’s rocky shoreline and clear bay water from above. <span class="photo-credit">Photo: Kate Potter</span></figcaption>
+        </figure>
       </div>
     </section>
 
