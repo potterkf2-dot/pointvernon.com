@@ -354,7 +354,7 @@ h3 {
 }
 
 .feature-image {
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .hero-figure img,
@@ -461,6 +461,10 @@ figcaption .photo-credit {
   box-shadow: var(--shadow);
 }
 
+.feature-image figcaption {
+  color: #4d666b;
+}
+
 .feature-copy > p:not(.eyebrow) {
   color: #344e54;
 }
@@ -510,6 +514,10 @@ figcaption .photo-credit {
 
 .guide-card-image img {
   aspect-ratio: 3 / 2;
+}
+
+.guide-card-image {
+  overflow: hidden;
 }
 
 .guide-card-body {
