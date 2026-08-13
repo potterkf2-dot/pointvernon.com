@@ -59,7 +59,7 @@ This is the field plan for replacing the current artwork with real photographs o
 | Filename | Page & position | Subject | Orientation & crop | Best tide | Best light | Notes |
 |---|---|---|---|---|---|---|
 | `the-gables-northern-point-wide-horizon.jpg` | `/whales-from-shore/` hero | Widest public north-west horizon from the northern point | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Mid to high | Clear morning | Show formed path and safe viewing position; a whale is not required. |
-| `the-gables-winter-sunset.jpg` | `/` hero | Point Vernon headland with winter sunset over water | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Any | Sunset and civil twilight | Signature home image; keep the centre crop free of small edge details. |
+| `the-gables-winter-sunset.jpg` | `/` hero | Point Vernon coastline with winter sunset over water | Hero: 16:9 1600×900 + 1200×630 social; 4:3 card | Any | Sunset and civil twilight | Signature home image; keep the centre crop free of small edge details. |
 | `the-gables-osprey-nest-pole.jpg` | `/birdwatching/` osprey section | Purpose-built nest pole at the northern point | Portrait 4:5 with landscape-safe centre | Any | Early morning | Use a long lens; do not approach or disturb nesting birds. |
 | `the-gables-picnic-shelter-water-view.jpg` | `/the-gables/` picnic section | Shelter, seating and water outlook | Landscape 4:3 | Mid to high | Late afternoon | Avoid implying unconfirmed facilities outside the frame. |
 | `aplin-street-boat-ramp-low-tide.jpg` | `/boat-ramps/` Aplin Street comparison | Shallow ramp and exposed rock at low tide | Landscape 3:2 | Low | Flat mid-morning | Show why it suits small vessels and is tide restricted. |
