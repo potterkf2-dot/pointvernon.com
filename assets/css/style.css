@@ -774,6 +774,26 @@ figcaption .photo-credit {
   }
 }
 
+@media (max-width: 39.99rem) {
+  .primary-nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.25rem;
+    overflow-x: visible;
+    padding-bottom: 0.9rem;
+    scrollbar-width: auto;
+  }
+
+  .primary-nav a {
+    justify-content: center;
+    min-width: 0;
+    padding: 0.45rem 0.3rem;
+    font-size: 0.8rem;
+    text-align: center;
+    white-space: normal;
+  }
+}
+
 @media (min-width: 40rem) {
   body {
     font-size: 1.125rem;
