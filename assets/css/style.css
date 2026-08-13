@@ -220,7 +220,14 @@ h3 {
 .hero-grid {
   position: relative;
   display: grid;
-  gap: 3rem;
+  grid-template-areas:
+    "media"
+    "copy";
+  gap: 2.5rem;
+}
+
+.hero-copy {
+  grid-area: copy;
 }
 
 .eyebrow {
@@ -341,7 +348,11 @@ h3 {
   font-size: 0.95rem;
 }
 
-.hero-figure,
+.hero-figure {
+  grid-area: media;
+  margin: 0;
+}
+
 .feature-image {
   margin-bottom: 0;
 }
@@ -851,18 +862,35 @@ figcaption .photo-credit {
 }
 
 @media (min-width: 64rem) {
+  .hero {
+    padding-block: clamp(4.5rem, 6vw, 6rem);
+  }
+
   .hero-grid {
-    grid-template-columns: minmax(0, 1.04fr) minmax(24rem, 0.96fr);
-    align-items: center;
+    width: min(100% - 2rem, 88rem);
+    grid-template-areas: "copy media";
+    grid-template-columns: minmax(0, 0.72fr) minmax(34rem, 1.28fr);
+    gap: clamp(3rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  .hero-copy {
+    max-width: 34rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(4.25rem, 5.7vw, 5.25rem);
   }
 
   .hero-figure {
-    transform: translateX(2rem);
+    margin-top: 1.25rem;
+    transform: none;
   }
 
   .hero-figure img {
-    min-height: 32rem;
-    aspect-ratio: 4 / 5;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    object-position: 50% 68%;
   }
 
   .value-grid {
