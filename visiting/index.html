@@ -1,14 +1,24 @@
 <!doctype html>
 <html lang="en-AU">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-003LRJYP3K"></script>
+  <!-- Privacy-limited analytics: consent defaults are set before the Google tag loads. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-003LRJYP3K');
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied'
+    });
+    gtag('set', 'ads_data_redaction', true);
   </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-003LRJYP3K"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-003LRJYP3K', {'allow_google_signals': false, 'allow_ad_personalization_signals': false});
+  </script>
+
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,15 +33,18 @@
   <meta property="og:title" content="Visiting Point Vernon">
   <meta property="og:description" content="A practical guide to reaching Point Vernon, getting around, checking conditions and planning a comfortable visit.">
   <meta property="og:url" content="https://pointvernon.com/visiting/">
+  <meta property="og:image" content="https://pointvernon.com/images/point-vernon-shoreline-aerial-1600.jpg">
+  <meta property="og:image:alt" content="Aerial view of the Point Vernon shoreline and clear bay water">
 
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://pointvernon.com/images/point-vernon-shoreline-aerial-1600.jpg">
   <meta name="twitter:title" content="Visiting Point Vernon">
   <meta name="twitter:description" content="A practical guide to reaching Point Vernon, getting around, checking conditions and planning a comfortable visit.">
 
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260816-audit">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://pointvernon.com/"},{"@type":"ListItem","position":2,"name":"Visiting Point Vernon","item":"https://pointvernon.com/visiting/"}]}]}</script>
 </head>
 <body>
@@ -47,11 +60,11 @@
 
       <nav class="primary-nav" aria-label="Main navigation">
         <a href="/beaches/">Beaches</a>
-        <a href="/gatakers-bay/">Gatakers Bay</a>
+        <a href="/things-to-do/">Things to do</a>
         <a href="/walks/">Walks</a>
-        <a href="/fishing/">Fishing</a>
         <a href="/parks-playgrounds/">Parks</a>
-        <a href="/visiting/">Visiting</a>
+        <a href="/map-access/">Map &amp; access</a>
+        <a href="/visiting/">Plan a visit</a>
       </nav>
     </div>
   </header>
@@ -68,7 +81,7 @@
           </nav>
           <p class="eyebrow">Plan your visit</p>
           <h1>Visiting Point Vernon</h1>
-          <p class="page-updated">Last updated: <time datetime="2026-08-14">14/08/2026</time></p>
+          <p class="page-updated">Last updated: <time datetime="2026-08-16">16/08/2026</time></p>
           <p class="hero-lede">Point Vernon is a low-key coastal suburb rather than a single attraction. A little planning around transport, tides and facilities makes its foreshore much easier to enjoy.</p>
           <ul class="page-facts"><li><strong>Region</strong><span>Hervey Bay, Fraser Coast, Queensland</span></li>
 <li><strong>Best preparation</strong><span>Check tide, weather and transport before leaving</span></li>
@@ -116,7 +129,7 @@
             <p class="eyebrow">Once you arrive</p>
             <h2>Parking, walking and cycling</h2>
             <p>Parking is dispersed across foreshore and neighbourhood access points rather than concentrated in one visitor car park. Park only where permitted, keep driveways and boat-ramp manoeuvring areas clear, and do not stop on fragile foreshore vegetation.</p>
-            <p>The shared-path network can connect multiple sections of the foreshore, but surfaces, crossings and continuity vary. Cyclists should slow around families, dogs and blind corners. See the <a href="/walks/">walking and cycling guide</a> for a route overview and the items still needing an on-ground accessibility check.</p>
+            <p>The shared-path network can connect multiple sections of the foreshore, but surfaces, crossings and continuity vary. Cyclists should slow around families, dogs and blind corners. Use the <a href="/map-access/">map and access guide</a> to choose an area, then see the <a href="/walks/">walking and cycling guide</a> for route ideas and the items still needing an on-ground accessibility check.</p>
           </section>
 
           <section id="conditions">
@@ -125,7 +138,7 @@
             <div class="info-grid">
               <div><h3>Tide</h3><p>Low water exposes broad rock and sand flats. Higher water can reduce the usable beach. Boat ramps and walking routes may work differently across the tide.</p></div>
               <div><h3>Wind and sun</h3><p>The bay can look calm while still being exposed to heat, glare and a fresh onshore breeze. Carry water, sun protection and a light layer.</p></div>
-              <div><h3>Facilities</h3><p>Facilities are concentrated at selected parks. Do not assume toilets, shade or drinking water are available at every shoreline access.</p></div>
+              <div><h3>Facilities</h3><p>Facilities are concentrated at selected parks. Do not assume toilets, shade or drinking water are available at every shoreline access. Start with the <a href="/accessibility/">verified accessibility notes</a> if a particular facility is essential.</p></div>
               <div><h3>Swimming</h3><p>Point Vernon beaches are unpatrolled. Check conditions, supervise children closely and use Beachsafe to find current patrol information elsewhere.</p></div>
             </div>
           </section>
@@ -133,8 +146,9 @@
           <section id="stay">
             <p class="eyebrow">Make a day of it</p>
             <h2>Accommodation and a simple itinerary</h2>
-            <p>Point Vernon is predominantly residential. For a broader range of visitor accommodation, compare official listings across Hervey Bay and the Fraser Coast. Confirm location, accessibility, cancellation terms and current reviews directly with the provider.</p>
-            <p><a class="button button-secondary" href="https://www.visitfrasercoast.com/">Browse the official Fraser Coast visitor website</a></p>
+            <p>Point Vernon is predominantly residential, but two holiday parks operate locally. Compare those with the wider Hervey Bay area, then confirm location, accessibility, cancellation terms and current details directly with the provider.</p>
+            <p><a class="button button-secondary" href="/accommodation/">Compare Point Vernon accommodation</a></p>
+            <p>For a broader regional search, browse the <a href="https://www.visitfrasercoast.com/">official Fraser Coast visitor website</a>.</p>
             <ol class="number-list">
               <li><strong>Morning:</strong> choose a foreshore walk while the day is cooler.</li>
               <li><strong>Middle of the day:</strong> pause at a park with confirmed shade and facilities.</li>
@@ -159,7 +173,7 @@
             <ul class="source-list">
               <li><a href="https://jp.translink.com.au/plan-your-journey/timetables/find-timetable/765">Translink route 765</a></li>
               <li><a href="https://translink.com.au/travel-with-us/on-demand/hervey-bay">Translink on demand: Hervey Bay</a></li>
-              <li><a href="http://www.bom.gov.au/australia/tides/">Bureau of Meteorology tide information</a></li>
+              <li><a href="https://www.bom.gov.au/australia/tides/">Bureau of Meteorology tide information</a></li>
               <li><a href="https://www.queenslandplaces.com.au/point-vernon">Queensland Places: Point Vernon</a></li>
               <li><a href="https://www.frasercoast.qld.gov.au/About-Council/About-Us/Our-Region">Fraser Coast Regional Council: Our Region</a></li>
               <li><a href="https://www.abs.gov.au/census/find-census-data/quickstats/2021/SAL32344">Australian Bureau of Statistics: Point Vernon QuickStats</a></li>
@@ -189,6 +203,18 @@
 <a class="related-card" href="/getting-around/">
               <span>Getting around</span>
               <strong>Use the bookable on-demand transport service.</strong>
+            </a>
+<a class="related-card" href="/map-access/">
+              <span>Map and access</span>
+              <strong>Choose a shoreline area and open current mapping.</strong>
+            </a>
+<a class="related-card" href="/accessibility/">
+              <span>Accessibility</span>
+              <strong>Start with verified facilities and honest access limits.</strong>
+            </a>
+<a class="related-card" href="/accommodation/">
+              <span>Accommodation</span>
+              <strong>Compare local holiday parks and wider Hervey Bay stays.</strong>
             </a>
 <a class="related-card" href="/property-checks/">
               <span>Property checks</span>

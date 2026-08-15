@@ -1,14 +1,24 @@
 <!doctype html>
 <html lang="en-AU">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-003LRJYP3K"></script>
+  <!-- Privacy-limited analytics: consent defaults are set before the Google tag loads. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-003LRJYP3K');
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied'
+    });
+    gtag('set', 'ads_data_redaction', true);
   </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-003LRJYP3K"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-003LRJYP3K', {'allow_google_signals': false, 'allow_ad_personalization_signals': false});
+  </script>
+
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +50,7 @@
         imagesrcset="/images/point-vernon-reef-sunset-1600.avif 1600w, /images/point-vernon-reef-sunset-1000.avif 1000w, /images/point-vernon-reef-sunset-640.avif 640w"
         imagesizes="(min-width: 1024px) 44vw, 100vw"
         type="image/avif">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260816-audit">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://pointvernon.com/"},{"@type":"ListItem","position":2,"name":"Beaches and foreshore","item":"https://pointvernon.com/beaches/"}]},{"@type":"Place","name":"Point Vernon foreshore","description":"The beaches and rocky foreshore around Point Vernon in Hervey Bay, Queensland.","url":"https://pointvernon.com/beaches/","address":{"@type":"PostalAddress","addressLocality":"Point Vernon","addressRegion":"QLD","postalCode":"4655","addressCountry":"AU"}}]}</script>
 </head>
 <body>
@@ -56,11 +66,11 @@
 
       <nav class="primary-nav" aria-label="Main navigation">
         <a href="/beaches/">Beaches</a>
-        <a href="/gatakers-bay/">Gatakers Bay</a>
+        <a href="/things-to-do/">Things to do</a>
         <a href="/walks/">Walks</a>
-        <a href="/fishing/">Fishing</a>
         <a href="/parks-playgrounds/">Parks</a>
-        <a href="/visiting/">Visiting</a>
+        <a href="/map-access/">Map &amp; access</a>
+        <a href="/visiting/">Plan a visit</a>
       </nav>
     </div>
   </header>
@@ -180,7 +190,7 @@
             <h2>Tides change the experience</h2>
             <p>A higher tide can leave only a narrow strip of beach. A lower tide exposes broad rock and sand flats, making the coast feel much larger. The safest route back may not look the same after the tide turns.</p>
             <p>Wet rock can be slippery and uneven. Wear secure footwear, avoid taking marine life from pools, and leave shells and animals where they are. Point Vernon sits beside protected Great Sandy Marine Park habitat, including rocky shore and fringing reef communities.</p>
-            <p><a class="button button-secondary" href="http://www.bom.gov.au/australia/tides/">Check Bureau of Meteorology tide information</a></p>
+            <p><a class="button button-secondary" href="https://www.bom.gov.au/australia/tides/">Check Bureau of Meteorology tide information</a></p>
           </section>
 
           <section id="dogs">
