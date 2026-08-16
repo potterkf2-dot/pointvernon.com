@@ -2,7 +2,7 @@
 
 An independent, practical guide to Point Vernon on the Fraser Coast in Queensland, Australia.
 
-The site covers beaches and foreshore conditions, things to do, maps and access, walking and cycling, fishing, whale watching, parks, food, accommodation, accessibility, local history, visiting information and reliable places to check current events.
+The site separates exploration, visitor planning, events, resident information and property research. It covers beaches and foreshore conditions, maps and access, walking and cycling, fishing, whale watching, parks, food, accommodation, accessibility, local history and reliable official sources.
 
 ## Publishing principles
 
@@ -10,7 +10,7 @@ The site covers beaches and foreshore conditions, things to do, maps and access,
 - primary public sources wherever possible
 - cautious safety and access wording
 - no paid placement, affiliate links or advertising
-- privacy-limited Google Analytics 4 measurement, with Analytics and advertising storage denied before the tag loads
+- opt-in Google Analytics 4 measurement that is off by default, with Analytics and advertising storage still denied when allowed
 - locally taken or permissioned photographs, with contributors credited
 
 Send corrections, photographs, event listings and complaints to [hello@pointvernon.com](mailto:hello@pointvernon.com). Please do not include sensitive personal information unless it is necessary.
@@ -19,7 +19,7 @@ Send corrections, photographs, event listings and complaints to [hello@pointvern
 
 The website is plain static HTML and CSS. Update the source files directly, preserve the root `CNAME` file, and keep `sitemap.xml` current when pages are added or removed.
 
-See `VERIFICATION-LIST.md`, `PHOTO-SHOT-LIST.md` and `LAUNCH-GUIDE.md` for the maintenance and publishing notes.
+See `CONTENT-MAINTENANCE.md`, `VERIFICATION-LIST.md`, `HOSTING-SECURITY.md`, `SEARCH-LAUNCH-CHECKLIST.md`, `PHOTO-SHOT-LIST.md` and `LAUNCH-GUIDE.md` for maintenance and publishing notes.
 
 ## Photograph workflow
 
