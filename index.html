@@ -1,30 +1,15 @@
 <!doctype html>
 <html lang="en-AU">
 <head>
-  <!-- Privacy-limited analytics: consent defaults are set before the Google tag loads. -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied',
-      'analytics_storage': 'denied'
-    });
-    gtag('set', 'ads_data_redaction', true);
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-003LRJYP3K"></script>
-  <script>
-    gtag('js', new Date());
-    gtag('config', 'G-003LRJYP3K', {'allow_google_signals': false, 'allow_ad_personalization_signals': false});
-  </script>
+
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Point Vernon Guide | Beaches, Foreshore, Walks &amp; Parks</title>
+  <title>Point Vernon, Hervey Bay Guide | Beaches &amp; Local Info</title>
   <meta name="description" content="Explore Point Vernon’s four Beachsafe-listed beach sections—Eli Creek, Gatakers Bay, Point Vernon beach and Gables Point—plus walks, parks and local history.">
   <link rel="canonical" href="https://pointvernon.com/">
   <meta name="theme-color" content="#0b4a5a">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <meta property="og:locale" content="en_AU">
   <meta property="og:type" content="website">
@@ -49,37 +34,61 @@
         imagesrcset="/images/point-vernon-shoreline-aerial-1600.avif 1600w, /images/point-vernon-shoreline-aerial-1000.avif 1000w, /images/point-vernon-shoreline-aerial-640.avif 640w"
         imagesizes="(min-width: 1024px) 58vw, 100vw"
         type="image/avif">
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260816-audit">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260816-complete">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Point Vernon Guide",
-    "url": "https://pointvernon.com/",
-    "description": "An independent local guide to Point Vernon in Hervey Bay, Queensland.",
-    "inLanguage": "en-AU"
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://pointvernon.com/#website",
+        "name": "Point Vernon Guide",
+        "url": "https://pointvernon.com/",
+        "description": "An independent local guide to Point Vernon in Hervey Bay, Queensland.",
+        "inLanguage": "en-AU",
+        "publisher": {"@id": "https://pointvernon.com/#organization"}
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://pointvernon.com/#organization",
+        "name": "Point Vernon Guide",
+        "url": "https://pointvernon.com/",
+        "email": "hello@pointvernon.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://pointvernon.com/apple-touch-icon.png",
+          "width": 180,
+          "height": 180
+        }
+      }
+    ]
   }
   </script>
+  <script defer src="/assets/js/privacy.js?v=20260816-complete"></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="site-brand" href="/" aria-label="Point Vernon Guide home">
+      <a class="site-brand" href="/">
         <span class="brand-name">Point Vernon</span>
         <span class="brand-note">Independent local guide</span>
       </a>
 
       <nav class="primary-nav" aria-label="Main navigation">
-        <a href="/beaches/">Beaches</a>
-        <a href="/things-to-do/">Things to do</a>
-        <a href="/walks/">Walks</a>
-        <a href="/parks-playgrounds/">Parks</a>
-        <a href="/map-access/">Map &amp; access</a>
+        <a href="/things-to-do/">Explore</a>
         <a href="/visiting/">Plan a visit</a>
+        <a href="/whats-on/">What’s on</a>
+        <a href="/local-life/">Local life</a>
+        <a href="/moving-buying/">Moving &amp; buying</a>
+        <a href="/about/">About</a>
       </nav>
+
+
+
+
     </div>
   </header>
 
@@ -419,7 +428,7 @@
       <div class="container more-grid">
         <div>
           <p class="eyebrow">More practical guides</p>
-          <h2 id="more-point-vernon">For the rest of your visit</h2>
+          <h2 id="more-point-vernon">Choose the guide for your task</h2>
         </div>
         <div class="more-links">
           <a href="/things-to-do/"><span>Things to do</span><span aria-hidden="true">→</span></a>
@@ -428,6 +437,8 @@
           <a href="/accommodation/"><span>Accommodation</span><span aria-hidden="true">→</span></a>
           <a href="/food-coffee/"><span>Food and coffee</span><span aria-hidden="true">→</span></a>
           <a href="/whats-on/"><span>What’s on nearby</span><span aria-hidden="true">→</span></a>
+          <a href="/local-life/"><span>Local life and services</span><span aria-hidden="true">→</span></a>
+          <a href="/moving-buying/"><span>Moving and buying</span><span aria-hidden="true">→</span></a>
           <a href="/about/"><span>About this guide</span><span aria-hidden="true">→</span></a>
         </div>
       </div>
@@ -447,30 +458,28 @@
         <p>A free, independent local guide to Point Vernon’s foreshore, parks and nearby places.</p>
       </div>
 
-      <nav class="footer-nav" aria-label="Guide sections">
-        <p class="footer-heading">Explore</p>
-        <a href="/things-to-do/">Things to do</a>
+      <nav class="footer-nav" aria-label="Explore and plan">
+        <p class="footer-heading">Explore and plan</p>
+        <a href="/things-to-do/">Explore Point Vernon</a>
         <a href="/beaches/">Beaches and foreshore</a>
-        <a href="/gatakers-bay/">Gatakers Bay</a>
-        <a href="/walks/">Walks and cycling</a>
-        <a href="/fishing/">Fishing</a>
-        <a href="/whales/">Whale watching</a>
-        <a href="/parks-playgrounds/">Parks and playgrounds</a>
+        <a href="/map-access/">Map and access</a>
+        <a href="/visiting/">Plan a visit</a>
+        <a href="/whats-on/">What’s on</a>
       </nav>
 
-      <nav class="footer-nav" aria-label="Site information">
-        <p class="footer-heading">Information</p>
-        <a href="/visiting/">Visiting Point Vernon</a>
-        <a href="/map-access/">Map and access</a>
+      <nav class="footer-nav" aria-label="Local and site information">
+        <p class="footer-heading">Local and site information</p>
+        <a href="/local-life/">Local life</a>
+        <a href="/moving-buying/">Moving and buying</a>
         <a href="/accessibility/">Accessibility</a>
-        <a href="/accommodation/">Accommodation</a>
-        <a href="/food-coffee/">Food and coffee</a>
-        <a href="/history/">History</a>
-        <a href="/whats-on/">What’s on</a>
         <a href="/about/">About this site</a>
         <a href="/photo-credits/">Photo credits</a>
         <a href="/privacy/">Privacy</a>
       </nav>
+
+
+
+
     </div>
 
     <div class="container footer-disclaimer">
@@ -480,8 +489,22 @@
 
     <div class="container footer-bottom">
       <p>&copy; 2026 Point Vernon Guide</p>
+      <button class="footer-settings" type="button" data-privacy-settings>Privacy settings</button>
       <a href="#main-content">Back to top</a>
     </div>
   </footer>
+  <div class="privacy-banner" data-privacy-banner hidden role="region" aria-labelledby="privacy-banner-title">
+    <div class="privacy-banner-inner">
+      <div>
+        <h2 id="privacy-banner-title">Help improve this guide?</h2>
+        <p>Anonymous Analytics is off unless you allow it. If allowed, advertising and Analytics storage remain disabled. <a href="/privacy/">Read the privacy details</a>.</p>
+      </div>
+      <div class="privacy-actions">
+        <button class="button button-primary" type="button" data-analytics-allow>Allow anonymous Analytics</button>
+        <button class="button button-secondary" type="button" data-analytics-decline>No thanks</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

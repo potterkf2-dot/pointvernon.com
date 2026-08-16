@@ -1,23 +1,7 @@
 <!doctype html>
 <html lang="en-AU">
 <head>
-  <!-- Privacy-limited analytics: consent defaults are set before the Google tag loads. -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied',
-      'analytics_storage': 'denied'
-    });
-    gtag('set', 'ads_data_redaction', true);
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-003LRJYP3K"></script>
-  <script>
-    gtag('js', new Date());
-    gtag('config', 'G-003LRJYP3K', {'allow_google_signals': false, 'allow_ad_personalization_signals': false});
-  </script>
+
 
 
   <meta charset="utf-8">
@@ -26,6 +10,7 @@
   <meta name="description" content="Find official contacts for emergencies, non-urgent police reports, hooning, outages, lost pets, injured animals, marine rescue and Council issues.">
   <link rel="canonical" href="https://pointvernon.com/local-help/">
   <meta name="theme-color" content="#0b4a5a">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <meta property="og:locale" content="en_AU">
   <meta property="og:type" content="article">
@@ -44,7 +29,7 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260816-audit">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260816-complete">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -61,33 +46,34 @@
         "isPartOf": {"@type": "WebSite", "name": "Point Vernon Guide", "url": "https://pointvernon.com/"}
       },
       {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://pointvernon.com/"},
-          {"@type": "ListItem", "position": 2, "name": "Local help", "item": "https://pointvernon.com/local-help/"}
-        ]
+        "@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://pointvernon.com/"},{"@type":"ListItem","position":2,"name":"Local life","item":"https://pointvernon.com/local-life/"},{"@type":"ListItem","position":3,"name":"Local help","item":"https://pointvernon.com/local-help/"}]
       }
     ]
   }
   </script>
+  <script defer src="/assets/js/privacy.js?v=20260816-complete"></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="site-brand" href="/" aria-label="Point Vernon Guide home">
+      <a class="site-brand" href="/">
         <span class="brand-name">Point Vernon</span>
         <span class="brand-note">Independent local guide</span>
       </a>
       <nav class="primary-nav" aria-label="Main navigation">
-        <a href="/beaches/">Beaches</a>
-        <a href="/things-to-do/">Things to do</a>
-        <a href="/walks/">Walks</a>
-        <a href="/parks-playgrounds/">Parks</a>
-        <a href="/map-access/">Map &amp; access</a>
+        <a href="/things-to-do/">Explore</a>
         <a href="/visiting/">Plan a visit</a>
+        <a href="/whats-on/">What’s on</a>
+        <a href="/local-life/">Local life</a>
+        <a href="/moving-buying/">Moving &amp; buying</a>
+        <a href="/about/">About</a>
       </nav>
+
+
+
+
     </div>
   </header>
 
@@ -95,7 +81,7 @@
     <section class="page-hero">
       <div class="container page-hero-grid page-hero-grid-text-only">
         <div class="page-hero-copy">
-          <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">Local help</li></ol></nav>
+          <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/local-life/">Local life</a></li><li aria-current="page">Local help</li></ol></nav>
           <p class="eyebrow">Use the responsible service</p>
           <h1>Point Vernon local help and reporting contacts</h1>
           <p class="page-updated">Last checked: <time datetime="2026-08-14">14/08/2026</time></p>
@@ -220,11 +206,46 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-about"><p class="footer-brand">Point Vernon</p><p>A free, independent local guide to Point Vernon’s foreshore, parks and nearby places.</p></div>
-      <nav class="footer-nav" aria-label="Guide sections"><p class="footer-heading">Explore</p><a href="/beaches/">Beaches and foreshore</a><a href="/gatakers-bay/">Gatakers Bay</a><a href="/walks/">Walks and cycling</a><a href="/fishing/">Fishing</a><a href="/parks-playgrounds/">Parks and playgrounds</a><a href="/artificial-reef/">Artificial reef</a></nav>
-      <nav class="footer-nav" aria-label="Site information"><p class="footer-heading">Information</p><a href="/visiting/">Visiting Point Vernon</a><a href="/parkrun/">Saturday parkrun</a><a href="/local-help/">Local help</a><a href="/history/">History</a><a href="/about/">About this site</a><a href="/privacy/">Privacy</a></nav>
+
+      <nav class="footer-nav" aria-label="Explore and plan">
+        <p class="footer-heading">Explore and plan</p>
+        <a href="/things-to-do/">Explore Point Vernon</a>
+        <a href="/beaches/">Beaches and foreshore</a>
+        <a href="/map-access/">Map and access</a>
+        <a href="/visiting/">Plan a visit</a>
+        <a href="/whats-on/">What’s on</a>
+      </nav>
+
+      <nav class="footer-nav" aria-label="Local and site information">
+        <p class="footer-heading">Local and site information</p>
+        <a href="/local-life/">Local life</a>
+        <a href="/moving-buying/">Moving and buying</a>
+        <a href="/accessibility/">Accessibility</a>
+        <a href="/about/">About this site</a>
+        <a href="/photo-credits/">Photo credits</a>
+        <a href="/privacy/">Privacy</a>
+      </nav>
+
+
+
+
     </div>
     <div class="container footer-disclaimer"><p class="footer-acknowledgement">Point Vernon is on Butchulla Country. We pay our respects to Butchulla Elders past and present.</p><p>This independent directory is not an emergency service. Official agencies’ current advice takes priority.</p></div>
-    <div class="container footer-bottom"><p>&copy; 2026 Point Vernon Guide</p><a href="#main-content">Back to top</a></div>
+    <div class="container footer-bottom"><p>&copy; 2026 Point Vernon Guide</p><button class="footer-settings" type="button" data-privacy-settings>Privacy settings</button>
+      <a href="#main-content">Back to top</a></div>
   </footer>
+  <div class="privacy-banner" data-privacy-banner hidden role="region" aria-labelledby="privacy-banner-title">
+    <div class="privacy-banner-inner">
+      <div>
+        <h2 id="privacy-banner-title">Help improve this guide?</h2>
+        <p>Anonymous Analytics is off unless you allow it. If allowed, advertising and Analytics storage remain disabled. <a href="/privacy/">Read the privacy details</a>.</p>
+      </div>
+      <div class="privacy-actions">
+        <button class="button button-primary" type="button" data-analytics-allow>Allow anonymous Analytics</button>
+        <button class="button button-secondary" type="button" data-analytics-decline>No thanks</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
