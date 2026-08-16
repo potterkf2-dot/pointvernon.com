@@ -6,7 +6,7 @@ The public copy keeps unconfirmed details general or omits them. This register r
 
 - [x] Corrections, photographs, event suggestions and complaints use `hello@pointvernon.com`.
 - [ ] Confirm `hello@pointvernon.com` is actively monitored before deployment.
-- [x] Google Analytics 4 is enabled with measurement ID `G-003LRJYP3K`; consent defaults deny Analytics and advertising storage before the tag loads, advertising signals are disabled, and the Privacy page describes the resulting cookieless measurement.
+- [x] Google Analytics 4 uses measurement ID `G-003LRJYP3K`, but its script is off by default and loads only after a visitor opts in. Analytics, advertising and personalisation storage remain denied, and the choice can be reopened from every footer.
 - [x] Image descriptions and captions use plain visitor-facing language.
 - [x] The GitHub owner is `potterkf2-dot` and the repository is `pointvernon.com`.
 - [x] GitHub’s official Pages and custom-domain documentation was checked on 11 August 2026.
@@ -26,7 +26,7 @@ The public copy keeps unconfirmed details general or omits them. This register r
 - [ ] Boat ramps: recheck Council’s current tide-restriction table and any temporary closure notice.
 - [ ] Businesses: current names, street addresses, trading status, direct official website/social page, hours, accessibility, ordering method and dietary information for every food listing.
 - [ ] Travel: exact current road distance and reasonable off-peak time from central Pialba, Maryborough and Brisbane; retain the sourced description of approximately 35 km from Maryborough only if still accurate.
-- [ ] Transport: route 765 stops and timetable, Point Vernon on-demand roam-zone coverage, operating rules and booking method.
+- [x] Transport: route 765 is identified as school-only; Point Vernon on-demand coverage, operating hours and booking requirement were checked against Translink on 16 August 2026.
 - [ ] Events: confirm any recurring Point Vernon event or nearby parkrun directly with its organiser before adding a day, time or venue. Do not hard-code volatile schedules.
 - [ ] Whale season: recheck Queensland Government season wording during each seasonal content review.
 - [ ] Park, beach and marine rules: recheck Council, Beachsafe, fisheries and Great Sandy Marine Park pages for changed restrictions.

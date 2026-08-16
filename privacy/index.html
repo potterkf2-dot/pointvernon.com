@@ -1,37 +1,22 @@
 <!doctype html>
 <html lang="en-AU">
 <head>
-  <!-- Privacy-limited analytics: consent defaults are set before the Google tag loads. -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied',
-      'analytics_storage': 'denied'
-    });
-    gtag('set', 'ads_data_redaction', true);
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-003LRJYP3K"></script>
-  <script>
-    gtag('js', new Date());
-    gtag('config', 'G-003LRJYP3K', {'allow_google_signals': false, 'allow_ad_personalization_signals': false});
-  </script>
+
 
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Privacy | Point Vernon Guide</title>
-  <meta name="description" content="Read how Point Vernon Guide uses privacy-limited Google Analytics with browser storage denied, plus external links and correction emails.">
+  <meta name="description" content="Read how Point Vernon Guide keeps Analytics off by default, stores your privacy choice and handles external links and correction emails.">
   <link rel="canonical" href="https://pointvernon.com/privacy/">
   <meta name="theme-color" content="#0b4a5a">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <meta property="og:locale" content="en_AU">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Point Vernon Guide">
   <meta property="og:title" content="Point Vernon Guide privacy information">
-  <meta property="og:description" content="A plain-language explanation of privacy-limited analytics, browser storage, external links and email questions.">
+  <meta property="og:description" content="A plain-language explanation of opt-in Analytics, browser storage, external links and email questions.">
   <meta property="og:url" content="https://pointvernon.com/privacy/">
   <meta property="og:image" content="https://pointvernon.com/images/point-vernon-shoreline-aerial-1600.jpg">
   <meta property="og:image:alt" content="Aerial view of the Point Vernon shoreline and clear bay water">
@@ -39,13 +24,14 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://pointvernon.com/images/point-vernon-shoreline-aerial-1600.jpg">
   <meta name="twitter:title" content="Point Vernon Guide privacy information">
-  <meta name="twitter:description" content="A plain-language explanation of privacy-limited analytics, browser storage, external links and email questions.">
+  <meta name="twitter:description" content="A plain-language explanation of opt-in Analytics, browser storage, external links and email questions.">
 
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260816-audit">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://pointvernon.com/"},{"@type":"ListItem","position":2,"name":"Privacy","item":"https://pointvernon.com/privacy/"}]}]}</script>
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260816-complete">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://pointvernon.com/"},{"@type":"ListItem","position":2,"name":"About","item":"https://pointvernon.com/about/"},{"@type":"ListItem","position":3,"name":"Privacy","item":"https://pointvernon.com/privacy/"}]}]}</script>
+  <script defer src="/assets/js/privacy.js?v=20260816-complete"></script>
 </head>
 <body>
 
@@ -53,19 +39,23 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="site-brand" href="/" aria-label="Point Vernon Guide home">
+      <a class="site-brand" href="/">
         <span class="brand-name">Point Vernon</span>
         <span class="brand-note">Independent local guide</span>
       </a>
 
       <nav class="primary-nav" aria-label="Main navigation">
-        <a href="/beaches/">Beaches</a>
-        <a href="/things-to-do/">Things to do</a>
-        <a href="/walks/">Walks</a>
-        <a href="/parks-playgrounds/">Parks</a>
-        <a href="/map-access/">Map &amp; access</a>
+        <a href="/things-to-do/">Explore</a>
         <a href="/visiting/">Plan a visit</a>
+        <a href="/whats-on/">What’s on</a>
+        <a href="/local-life/">Local life</a>
+        <a href="/moving-buying/">Moving &amp; buying</a>
+        <a href="/about/">About</a>
       </nav>
+
+
+
+
     </div>
   </header>
 
@@ -73,19 +63,14 @@
     <section class="page-hero">
       <div class="container page-hero-grid page-hero-grid-text-only">
         <div class="page-hero-copy">
-          <nav class="breadcrumbs" aria-label="Breadcrumb">
-            <ol>
-              <li><a href="/">Home</a></li>
-              <li aria-current="page">Privacy</li>
-            </ol>
-          </nav>
+          <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li aria-current="page">Privacy</li></ol></nav>
           <p class="eyebrow">Plain-language policy</p>
           <h1>Privacy</h1>
           <p class="page-updated">Last updated: <time datetime="2026-08-16">16/08/2026</time></p>
           <p class="hero-lede">This site is designed to collect very little information. It has no account system, advertising profile, comments or contact form.</p>
           <ul class="page-facts"><li><strong>Accounts</strong><span>None</span></li>
 <li><strong>Advertising</strong><span>None</span></li>
-<li><strong>Analytics</strong><span>Privacy-limited GA4; storage denied</span></li></ul>
+<li><strong>Analytics</strong><span>Off by default; optional and storage-denied</span></li></ul>
         </div>
 
       </div>
@@ -109,22 +94,22 @@
           <section id="overview">
             <p class="eyebrow">At a glance</p>
             <h2>What this site collects</h2>
-            <p>Point Vernon Guide does not ask visitors to create an account, post comments, submit a web form or make a payment. It uses Google Analytics 4 in a privacy-limited mode to understand broad trends in how the public guide is found and used. Analytics, advertising and personalisation storage are denied before the Google tag loads.</p>
+            <p>Point Vernon Guide does not ask visitors to create an account, post comments, submit a web form or make a payment. Google Analytics 4 is off by default and its script is not requested unless a visitor chooses “Allow anonymous Analytics”.</p>
             <p>The web host may still process standard technical information needed to deliver and protect the site under its own terms and privacy practices.</p>
           </section>
 
           <section id="analytics">
             <p class="eyebrow">Anonymous usage trends</p>
             <h2>Analytics</h2>
-            <p>With Analytics storage denied, the Google tag can send limited, cookieless measurements rather than reading or writing Analytics cookies. These measurements may include basic events and page information. The guide uses resulting aggregate trends to improve pages and navigation; it disables Google advertising signals and does not use Analytics to sell advertising or create user accounts.</p>
+            <p>If a visitor allows Analytics, advertising, personalisation and Analytics storage remain denied. The Google tag can then send limited, cookieless measurements rather than reading or writing Analytics cookies. These measurements may include basic events and page information. The guide uses aggregate trends to improve pages and navigation; it disables Google advertising signals and does not use Analytics to sell advertising or create user accounts.</p>
             <p>Google processes Analytics data under its own terms and privacy policy. Google Analytics 4 does not log or store individual IP addresses, but it may use an IP address temporarily to derive approximate location before discarding it.</p>
           </section>
 
           <section id="cookies">
             <p class="eyebrow">Browser storage</p>
             <h2>Browser storage and your choices</h2>
-            <p>This site sets Analytics and advertising storage to denied and does not provide a control that changes that setting. The Google tag should therefore use cookieless measurement rather than first-party Analytics identifiers such as <code>_ga</code>. External websites reached through this guide may set their own cookies or use browser storage under their own policies.</p>
-            <p>You can also block the Google Analytics script with browser settings or content-blocking software. That choice should not prevent the static Point Vernon Guide pages from loading.</p>
+            <p>The site stores the choice “allow” or “decline” in the browser’s local storage under <code>point-vernon-analytics-choice</code>. This prevents the question being repeated on every page. Choosing “No thanks” means the Google Analytics script is not loaded on later page views.</p>
+            <p>Use the “Privacy settings” button in the footer to change the choice. If browser storage is blocked or cleared, Analytics remains off until permission is given again. External websites reached through this guide may set their own cookies or use browser storage under their own policies.</p>
           </section>
 
           <section id="links">
@@ -182,26 +167,28 @@
         <p>A free, independent local guide to Point Vernon’s foreshore, parks and nearby places.</p>
       </div>
 
-      <nav class="footer-nav" aria-label="Guide sections">
-        <p class="footer-heading">Explore</p>
+      <nav class="footer-nav" aria-label="Explore and plan">
+        <p class="footer-heading">Explore and plan</p>
+        <a href="/things-to-do/">Explore Point Vernon</a>
         <a href="/beaches/">Beaches and foreshore</a>
-        <a href="/gatakers-bay/">Gatakers Bay</a>
-        <a href="/walks/">Walks and cycling</a>
-        <a href="/fishing/">Fishing</a>
-        <a href="/whales/">Whale watching</a>
-        <a href="/parks-playgrounds/">Parks and playgrounds</a>
+        <a href="/map-access/">Map and access</a>
+        <a href="/visiting/">Plan a visit</a>
+        <a href="/whats-on/">What’s on</a>
       </nav>
 
-      <nav class="footer-nav" aria-label="Site information">
-        <p class="footer-heading">Information</p>
-        <a href="/visiting/">Visiting Point Vernon</a>
-        <a href="/food-coffee/">Food and coffee</a>
-        <a href="/history/">History</a>
-        <a href="/whats-on/">What’s on</a>
+      <nav class="footer-nav" aria-label="Local and site information">
+        <p class="footer-heading">Local and site information</p>
+        <a href="/local-life/">Local life</a>
+        <a href="/moving-buying/">Moving and buying</a>
+        <a href="/accessibility/">Accessibility</a>
         <a href="/about/">About this site</a>
         <a href="/photo-credits/">Photo credits</a>
         <a href="/privacy/">Privacy</a>
       </nav>
+
+
+
+
     </div>
 
     <div class="container footer-disclaimer">
@@ -211,9 +198,23 @@
 
     <div class="container footer-bottom">
       <p>&copy; 2026 Point Vernon Guide</p>
+      <button class="footer-settings" type="button" data-privacy-settings>Privacy settings</button>
       <a href="#main-content">Back to top</a>
     </div>
   </footer>
+  <div class="privacy-banner" data-privacy-banner hidden role="region" aria-labelledby="privacy-banner-title">
+    <div class="privacy-banner-inner">
+      <div>
+        <h2 id="privacy-banner-title">Help improve this guide?</h2>
+        <p>Anonymous Analytics is off unless you allow it. If allowed, advertising and Analytics storage remain disabled. <a href="/privacy/">Read the privacy details</a>.</p>
+      </div>
+      <div class="privacy-actions">
+        <button class="button button-primary" type="button" data-analytics-allow>Allow anonymous Analytics</button>
+        <button class="button button-secondary" type="button" data-analytics-decline>No thanks</button>
+      </div>
+    </div>
+  </div>
+
 
 </body>
 </html>
