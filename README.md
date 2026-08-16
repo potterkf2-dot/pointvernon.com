@@ -2,7 +2,7 @@
 
 An independent, practical guide to Point Vernon on the Fraser Coast in Queensland, Australia.
 
-The site covers beaches and foreshore conditions, Gatakers Bay, walking and cycling, fishing, whale watching, parks, food, local history, visiting information and reliable places to check current events.
+The site covers beaches and foreshore conditions, things to do, maps and access, walking and cycling, fishing, whale watching, parks, food, accommodation, accessibility, local history, visiting information and reliable places to check current events.
 
 ## Publishing principles
 
@@ -10,7 +10,7 @@ The site covers beaches and foreshore conditions, Gatakers Bay, walking and cycl
 - primary public sources wherever possible
 - cautious safety and access wording
 - no paid placement, affiliate links or advertising
-- Google Analytics 4 measurement with a plain-language privacy explanation
+- privacy-limited Google Analytics 4 measurement, with Analytics and advertising storage denied before the tag loads
 - locally taken or permissioned photographs, with contributors credited
 
 Send corrections, photographs, event listings and complaints to [hello@pointvernon.com](mailto:hello@pointvernon.com). Please do not include sensitive personal information unless it is necessary.
@@ -23,7 +23,7 @@ See `VERIFICATION-LIST.md`, `PHOTO-SHOT-LIST.md` and `LAUNCH-GUIDE.md` for the m
 
 ## Photograph workflow
 
-The interim site is deliberately text-only until approved local photographs are available.
+The site uses approved local photographs where they are available and keeps a documented workflow for adding more.
 
 - `PHOTO-SHOT-LIST.md` groups 74 unique subjects into practical outings.
 - `photo-manifest.tsv` defines the crop and derivative set for each subject.

@@ -1,18 +1,28 @@
 <!doctype html>
 <html lang="en-AU">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-003LRJYP3K"></script>
+  <!-- Privacy-limited analytics: consent defaults are set before the Google tag loads. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-003LRJYP3K');
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied'
+    });
+    gtag('set', 'ads_data_redaction', true);
   </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-003LRJYP3K"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-003LRJYP3K', {'allow_google_signals': false, 'allow_ad_personalization_signals': false});
+  </script>
+
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Parraweena Park, Point Vernon | History & Nature</title>
+  <title>Parraweena Park, Point Vernon | History &amp; Nature</title>
   <meta name="description" content="Discover Parraweena Park Bushland Reserve in Point Vernon, including its former bird sanctuary, Cook family land donation and surviving features.">
   <link rel="canonical" href="https://pointvernon.com/parraweena-park/">
   <meta name="theme-color" content="#0b4a5a">
@@ -23,15 +33,18 @@
   <meta property="og:title" content="Parraweena Park, Point Vernon">
   <meta property="og:description" content="The verified story of a Point Vernon bushland reserve and the former Parraweena Bird Sanctuary.">
   <meta property="og:url" content="https://pointvernon.com/parraweena-park/">
+  <meta property="og:image" content="https://pointvernon.com/images/point-vernon-shoreline-aerial-1600.jpg">
+  <meta property="og:image:alt" content="Aerial view of the Point Vernon shoreline and clear bay water">
 
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://pointvernon.com/images/point-vernon-shoreline-aerial-1600.jpg">
   <meta name="twitter:title" content="Parraweena Park, Point Vernon">
   <meta name="twitter:description" content="Bushland, wildlife and the surviving traces of the former Parraweena Bird Sanctuary.">
 
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260816-audit">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -70,11 +83,11 @@
       </a>
       <nav class="primary-nav" aria-label="Main navigation">
         <a href="/beaches/">Beaches</a>
-        <a href="/gatakers-bay/">Gatakers Bay</a>
+        <a href="/things-to-do/">Things to do</a>
         <a href="/walks/">Walks</a>
-        <a href="/fishing/">Fishing</a>
         <a href="/parks-playgrounds/">Parks</a>
-        <a href="/visiting/">Visiting</a>
+        <a href="/map-access/">Map &amp; access</a>
+        <a href="/visiting/">Plan a visit</a>
       </nav>
     </div>
   </header>

@@ -6,7 +6,7 @@ The public copy keeps unconfirmed details general or omits them. This register r
 
 - [x] Corrections, photographs, event suggestions and complaints use `hello@pointvernon.com`.
 - [ ] Confirm `hello@pointvernon.com` is actively monitored before deployment.
-- [x] Google Analytics 4 is enabled with measurement ID `G-003LRJYP3K`; the Privacy page describes the data collected and visitor choices.
+- [x] Google Analytics 4 is enabled with measurement ID `G-003LRJYP3K`; consent defaults deny Analytics and advertising storage before the tag loads, advertising signals are disabled, and the Privacy page describes the resulting cookieless measurement.
 - [x] Image descriptions and captions use plain visitor-facing language.
 - [x] The GitHub owner is `potterkf2-dot` and the repository is `pointvernon.com`.
 - [x] GitHub’s official Pages and custom-domain documentation was checked on 11 August 2026.
@@ -48,7 +48,7 @@ The public copy keeps unconfirmed details general or omits them. This register r
 - [x] Add `/photo-credits/`, the footer link and a private permission-register structure.
 - [ ] Before publishing a contributed photograph, record written permission privately and add the agreed credit beside the image and on `/photo-credits/`.
 - [ ] Before publishing a hero photograph, add its AVIF preload and `fetchpriority="high"`, then confirm the inline images remain lazy-loaded.
-- [ ] Check all internal links, canonical URLs, Open Graph metadata, titles, descriptions, one H1 per page, structured data, sitemap and `robots.txt` on the deployed domain; add social images only when approved photographs exist.
+- [ ] Check all internal links, canonical URLs, Open Graph metadata, titles, descriptions, one H1 per page, structured data, sitemap and `robots.txt` on the deployed domain after publishing. The source build now provides an approved default social image where a page-specific image is unavailable.
 - [ ] Confirm `pointvernon.com` and `www.pointvernon.com` both reach the intended canonical HTTPS address without a redirect loop.
 - [ ] Enable “Enforce HTTPS” in GitHub Pages after the certificate is issued.
 - [ ] Test keyboard navigation, visible focus, text zoom, colour contrast, image alt text and narrow-screen layout.

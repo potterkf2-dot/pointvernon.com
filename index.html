@@ -1,14 +1,24 @@
 <!doctype html>
 <html lang="en-AU">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-003LRJYP3K"></script>
+  <!-- Privacy-limited analytics: consent defaults are set before the Google tag loads. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-003LRJYP3K');
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied'
+    });
+    gtag('set', 'ads_data_redaction', true);
   </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-003LRJYP3K"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-003LRJYP3K', {'allow_google_signals': false, 'allow_ad_personalization_signals': false});
+  </script>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Point Vernon Guide | Beaches, Foreshore, Walks &amp; Parks</title>
@@ -39,7 +49,7 @@
         imagesrcset="/images/point-vernon-shoreline-aerial-1600.avif 1600w, /images/point-vernon-shoreline-aerial-1000.avif 1000w, /images/point-vernon-shoreline-aerial-640.avif 640w"
         imagesizes="(min-width: 1024px) 58vw, 100vw"
         type="image/avif">
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260813-gallery">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260816-audit">
 
   <script type="application/ld+json">
   {
@@ -64,11 +74,11 @@
 
       <nav class="primary-nav" aria-label="Main navigation">
         <a href="/beaches/">Beaches</a>
-        <a href="/gatakers-bay/">Gatakers Bay</a>
+        <a href="/things-to-do/">Things to do</a>
         <a href="/walks/">Walks</a>
-        <a href="/fishing/">Fishing</a>
         <a href="/parks-playgrounds/">Parks</a>
-        <a href="/visiting/">Visiting</a>
+        <a href="/map-access/">Map &amp; access</a>
+        <a href="/visiting/">Plan a visit</a>
       </nav>
     </div>
   </header>
@@ -79,7 +89,7 @@
         <div class="hero-copy">
           <p class="eyebrow">Point Vernon · Hervey Bay · Queensland</p>
           <h1>Point Vernon, a coastal suburb of Hervey Bay</h1>
-          <p class="page-updated">Last updated: <time datetime="2026-08-14">14/08/2026</time></p>
+          <p class="page-updated">Last updated: <time datetime="2026-08-16">16/08/2026</time></p>
           <p class="hero-lede">Four separately catalogued beach sections wrap around the suburb: Eli Creek, Gatakers Bay, Point Vernon beach and Gables Point.</p>
           <p>Each part of the coast faces a different direction and has its own mix of sand, tidal rock flats, creek-edge habitat and foreshore reserve. This independent guide helps you choose where to start and what to check before you go.</p>
 
@@ -412,6 +422,10 @@
           <h2 id="more-point-vernon">For the rest of your visit</h2>
         </div>
         <div class="more-links">
+          <a href="/things-to-do/"><span>Things to do</span><span aria-hidden="true">→</span></a>
+          <a href="/map-access/"><span>Map and access</span><span aria-hidden="true">→</span></a>
+          <a href="/accessibility/"><span>Accessibility</span><span aria-hidden="true">→</span></a>
+          <a href="/accommodation/"><span>Accommodation</span><span aria-hidden="true">→</span></a>
           <a href="/food-coffee/"><span>Food and coffee</span><span aria-hidden="true">→</span></a>
           <a href="/whats-on/"><span>What’s on nearby</span><span aria-hidden="true">→</span></a>
           <a href="/about/"><span>About this guide</span><span aria-hidden="true">→</span></a>
@@ -435,6 +449,7 @@
 
       <nav class="footer-nav" aria-label="Guide sections">
         <p class="footer-heading">Explore</p>
+        <a href="/things-to-do/">Things to do</a>
         <a href="/beaches/">Beaches and foreshore</a>
         <a href="/gatakers-bay/">Gatakers Bay</a>
         <a href="/walks/">Walks and cycling</a>
@@ -446,6 +461,9 @@
       <nav class="footer-nav" aria-label="Site information">
         <p class="footer-heading">Information</p>
         <a href="/visiting/">Visiting Point Vernon</a>
+        <a href="/map-access/">Map and access</a>
+        <a href="/accessibility/">Accessibility</a>
+        <a href="/accommodation/">Accommodation</a>
         <a href="/food-coffee/">Food and coffee</a>
         <a href="/history/">History</a>
         <a href="/whats-on/">What’s on</a>
