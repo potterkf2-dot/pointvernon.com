@@ -20,23 +20,29 @@ Do not add HSTS `includeSubDomains` or `preload` until every subdomain is confir
 ## Enforced Content Security Policy
 
 ```text
-default-src 'self'; base-uri 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; script-src-attr 'none'; style-src 'self'; upgrade-insecure-requests
+default-src 'self'; base-uri 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com; font-src 'self'; form-action 'self' https://buttondown.com; frame-ancestors 'none'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; script-src-attr 'none'; style-src 'self'; upgrade-insecure-requests
 ```
 
 `'unsafe-inline'` is presently required for the page-specific JSON-LD blocks. It does not permit inline event-handler attributes because `script-src-attr 'none'` is set. A later build can generate and deploy per-page JSON-LD hashes; only then remove `'unsafe-inline'`.
 
-If an external newsletter form is added, extend `form-action` only for the selected provider's exact HTTPS endpoint. Do not use a wildcard.
+The newsletter forms post directly to Buttondown's HTTPS subscription endpoint. CSP source expressions allow an origin rather than an endpoint path, so `form-action` admits only `https://buttondown.com` in addition to the site itself. The pages do not embed Buttondown scripts or frames.
 
 ## Cache rule
 
 Cloudflare caches the two explicitly versioned assets below at the edge and in visitors' browsers for one year:
 
-- `/assets/css/style.css?v=20260822-audit`
-- `/assets/js/privacy.js?v=20260822-audit`
+- `/assets/css/style.css?v=20260822-newsletter`
+- `/assets/js/privacy.js?v=20260822-newsletter`
 
 The rule matches both the exact path and exact version query. HTML retains its short origin-controlled cache lifetime. Every future CSS or JavaScript change must update the version string on every page before deployment; the source validator checks that the references remain consistent.
 
 Images retain the shorter origin cache lifetime because their public URLs are not currently versioned.
+
+## Newsletter delivery
+
+Buttondown is configured as the email processor for the `pointvernon` newsletter. Subscriptions use double opt-in, subscriber cleanup and a welcome email. Optional open, click, transactional, UTM and archive-web tracking are disabled.
+
+The managed sending domain `mail.pointvernon.com` is reserved in Buttondown. Activating it requires delegating that subdomain with two `NS` records; those DNS records must not be created until the durable delegation has been explicitly approved. Until then, the site subscription flow can operate using Buttondown's shared sender.
 
 ## Verification
 
