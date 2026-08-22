@@ -308,8 +308,8 @@ h3 {
   position: relative;
   display: grid;
   grid-template-areas:
-    "media"
-    "copy";
+    "copy"
+    "media";
   gap: 2.5rem;
 }
 
@@ -435,6 +435,22 @@ h3 {
   font-size: 0.95rem;
 }
 
+.safety-note {
+  max-width: 36rem;
+  margin-top: 2rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.06);
+  color: #e7f0ef;
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+.safety-note strong {
+  color: #f2b09e;
+}
+
 .hero-figure {
   grid-area: media;
   margin: 0;
@@ -532,6 +548,54 @@ figcaption .photo-credit {
   font-weight: 730;
 }
 
+.pathway-grid,
+.beach-record-grid,
+.history-link-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.pathway-card {
+  padding: clamp(1.4rem, 4vw, 2rem);
+  border: 1px solid var(--sand-deep);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.pathway-card h3 a,
+.beach-record-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.pathway-card h3 a::after,
+.beach-record-card h3 a::after {
+  margin-left: 0.25rem;
+  color: var(--coral-dark);
+  content: "→";
+}
+
+.pathway-card > p:not(.card-kicker),
+.beach-record-card p {
+  color: var(--muted);
+}
+
+.pathway-links {
+  display: grid;
+  gap: 0.35rem;
+  margin: 1.25rem 0 0;
+  padding: 1.1rem 0 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.pathway-links a {
+  display: inline-block;
+  padding-block: 0.18rem;
+  font-size: 0.94rem;
+  font-weight: 680;
+}
+
 .feature-section {
   background: var(--sea-glass);
 }
@@ -554,6 +618,25 @@ figcaption .photo-credit {
 
 .feature-copy > p:not(.eyebrow) {
   color: #344e54;
+}
+
+.beach-record-grid {
+  margin-top: 2.75rem;
+}
+
+.beach-record-card {
+  padding: 1.4rem;
+  border: 1px solid rgba(11, 74, 90, 0.17);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.beach-record-card p:last-child {
+  margin-bottom: 0;
+}
+
+.section-action {
+  margin-top: 2rem;
 }
 
 .note-panel {
@@ -629,6 +712,123 @@ figcaption .photo-credit {
 .guide-card p:last-child {
   margin-bottom: 0;
   color: var(--muted);
+}
+
+.priority-guide-grid .guide-card {
+  min-height: 100%;
+}
+
+.current-section {
+  background: var(--ocean);
+  color: #e6f0ef;
+}
+
+.current-grid,
+.trust-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.current-section .eyebrow {
+  color: #f2b09e;
+}
+
+.current-section h2,
+.current-section .section-lede {
+  color: var(--white);
+}
+
+.current-links {
+  display: grid;
+}
+
+.current-links a {
+  display: grid;
+  gap: 0.15rem;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.current-links a:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.current-links span {
+  color: #f2b09e;
+  font-size: 0.72rem;
+  font-weight: 760;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.current-links strong::after {
+  margin-left: 0.35rem;
+  content: "→";
+}
+
+.history-link-grid a {
+  display: grid;
+  gap: 0.45rem;
+  padding: 1.35rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--ocean-deep);
+  text-decoration: none;
+}
+
+.history-link-grid span {
+  color: var(--coral-dark);
+  font-size: 0.74rem;
+  font-weight: 780;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.history-link-grid strong {
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.history-link-grid strong::after {
+  margin-left: 0.35rem;
+  color: var(--coral-dark);
+  content: "→";
+}
+
+.trust-section {
+  background: var(--sea-glass);
+}
+
+.trust-grid {
+  align-items: start;
+}
+
+.trust-grid > div > p:not(.eyebrow) {
+  max-width: 42rem;
+  color: #344e54;
+}
+
+.updates-card {
+  padding: clamp(1.4rem, 4vw, 2rem);
+  border-left: 4px solid var(--coral);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.updates-card p:not(.card-kicker) {
+  color: var(--muted);
+}
+
+.updates-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1.5rem;
 }
 
 .visit-section {
@@ -924,7 +1124,8 @@ figcaption .photo-credit {
   }
 
   .value-grid,
-  .guide-grid {
+  .guide-grid,
+  .beach-record-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -974,7 +1175,8 @@ figcaption .photo-credit {
   }
 
   .hero h1 {
-    font-size: clamp(4.25rem, 5.7vw, 5.25rem);
+    max-width: 13ch;
+    font-size: clamp(3.4rem, 4.4vw, 4rem);
   }
 
   .hero-figure {
@@ -990,6 +1192,11 @@ figcaption .photo-credit {
 
   .value-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .pathway-grid,
+  .history-link-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .feature-grid {
@@ -1022,6 +1229,12 @@ figcaption .photo-credit {
 
   .visit-grid {
     grid-template-columns: 0.95fr 1.05fr;
+    align-items: center;
+  }
+
+  .current-grid,
+  .trust-grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
     align-items: center;
   }
 

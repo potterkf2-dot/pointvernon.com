@@ -19,7 +19,17 @@ Send corrections, photographs, event listings and complaints to [hello@pointvern
 
 The website is plain static HTML and CSS. Update the source files directly, preserve the root `CNAME` file, and keep `sitemap.xml` current when pages are added or removed.
 
-See `CONTENT-MAINTENANCE.md`, `VERIFICATION-LIST.md`, `HOSTING-SECURITY.md`, `SEARCH-LAUNCH-CHECKLIST.md`, `PHOTO-SHOT-LIST.md` and `LAUNCH-GUIDE.md` for maintenance and publishing notes.
+See `CONTENT-MAINTENANCE.md`, `PORTFOLIO-CONTENT-BOUNDARIES.md`, `VERIFICATION-LIST.md`, `HOSTING-SECURITY.md`, `SEARCH-LAUNCH-CHECKLIST.md`, `PHOTO-SHOT-LIST.md` and `LAUNCH-GUIDE.md` for maintenance and publishing notes.
+
+Before publishing, run:
+
+```sh
+perl scripts/apply-audit-sitewide.pl
+perl scripts/sync-sitemap-lastmod.pl
+perl scripts/sync-sitemap-lastmod.pl --check
+```
+
+The first command keeps the shared update-feed and policy links consistent. The sitemap command reads each page’s visible modification date, updates only that URL’s `<lastmod>` value and fails when a public page is missing from the sitemap.
 
 ## Photograph workflow
 

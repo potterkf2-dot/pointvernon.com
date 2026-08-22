@@ -7,6 +7,7 @@ The public copy keeps unconfirmed details general or omits them. This register r
 - [x] Corrections, photographs, event suggestions and complaints use `hello@pointvernon.com`.
 - [ ] Confirm `hello@pointvernon.com` is actively monitored before deployment.
 - [x] Google Analytics 4 uses measurement ID `G-003LRJYP3K`, but its script is off by default and loads only after a visitor opts in. Analytics, advertising and personalisation storage remain denied, and the choice can be reopened from every footer.
+- [x] Consent-gated custom events cover homepage pathways, priority guides, official-source links, maps, service contacts and event suggestions without sending phone numbers, email addresses, message contents or entered values.
 - [x] Image descriptions and captions use plain visitor-facing language.
 - [x] The GitHub owner is `potterkf2-dot` and the repository is `pointvernon.com`.
 - [x] GitHub’s official Pages and custom-domain documentation was checked on 11 August 2026.
@@ -49,6 +50,10 @@ The public copy keeps unconfirmed details general or omits them. This register r
 - [ ] Before publishing a contributed photograph, record written permission privately and add the agreed credit beside the image and on `/photo-credits/`.
 - [ ] Before publishing a hero photograph, add its AVIF preload and `fetchpriority="high"`, then confirm the inline images remain lazy-loaded.
 - [ ] Check all internal links, canonical URLs, Open Graph metadata, titles, descriptions, one H1 per page, structured data, sitemap and `robots.txt` on the deployed domain after publishing. The source build now provides an approved default social image where a page-specific image is unavailable.
+- [x] Source validation covers 35 public pages, unique metadata, self-canonicals, one H1, JSON-LD, internal links and resources, Atom XML and `security.txt`.
+- [x] Sitemap dates are generated from each page’s own visible modification date and checked for missing or stale entries.
+- [x] `/updates/` and `updates.xml` provide a public change record and no-email subscription option.
+- [x] `/editorial-policy/` documents corrections, listings, conflicts and future advertising, sponsorship and affiliate standards.
 - [ ] Confirm `pointvernon.com` and `www.pointvernon.com` both reach the intended canonical HTTPS address without a redirect loop.
 - [ ] Enable “Enforce HTTPS” in GitHub Pages after the certificate is issued.
 - [ ] Test keyboard navigation, visible focus, text zoom, colour contrast, image alt text and narrow-screen layout.
