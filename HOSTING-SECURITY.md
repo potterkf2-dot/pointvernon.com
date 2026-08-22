@@ -1,30 +1,45 @@
-# Hosting, security and caching actions
+# Hosting, security and caching
 
-The site is currently served by GitHub Pages. Static HTML cannot set response headers such as Content-Security-Policy, Strict-Transport-Security, X-Content-Type-Options or Permissions-Policy, and it cannot change GitHub Pages’ cache policy.
+The site is served by GitHub Pages behind Cloudflare. Cloudflare supplies the response headers and the cache rule that GitHub Pages cannot configure.
 
-## Required hosting action
+## Live configuration
 
-Place a configurable CDN or reverse proxy in front of the site, or move to a host that permits response headers. Apply and test:
+The following configuration was promoted from report-only to enforced and verified on 22 August 2026:
 
-- `Strict-Transport-Security: max-age=31536000; includeSubDomains`
+- `Strict-Transport-Security: max-age=31536000`
 - `X-Content-Type-Options: nosniff`
+- `X-Frame-Options: DENY`
 - `Referrer-Policy: strict-origin-when-cross-origin`
-- a Content Security Policy that permits only the site’s own assets and the optional Google Analytics endpoints;
-- a minimal `Permissions-Policy` denying unused browser capabilities; and
-- long-lived immutable caching for versioned CSS, JavaScript and image assets while keeping HTML revalidation short.
+- `Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()`
+- the Content Security Policy below.
 
-Do not enable HSTS `preload` until every subdomain is confirmed HTTPS-only. Test the policy in report-only mode before enforcing it, and verify that opt-in Analytics, images, structured data and the 404 page still work.
+The Cloudflare response-header rule applies to all responses. The site HTML also declares the same referrer policy as a safe fallback.
 
-The HTML already declares the same referrer policy as a safe fallback. That does not replace an HTTP response header.
+Do not add HSTS `includeSubDomains` or `preload` until every subdomain is confirmed HTTPS-only.
 
-## Enforced CSP target
-
-The current public response uses a report-only policy, which does not block anything. After reviewing the CDN’s CSP reports, promote a tested policy to the enforced `Content-Security-Policy` header. A practical baseline for the current static site is:
+## Enforced Content Security Policy
 
 ```text
-default-src 'self'; base-uri 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com; font-src 'self'; form-action 'none'; frame-ancestors 'none'; img-src 'self' data: https://www.google-analytics.com; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; script-src-attr 'none'; style-src 'self'; upgrade-insecure-requests
+default-src 'self'; base-uri 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; script-src-attr 'none'; style-src 'self'; upgrade-insecure-requests
 ```
 
-`'unsafe-inline'` is presently required for the page-specific JSON-LD blocks. It does not permit inline event-handler attributes because `script-src-attr 'none'` is set. A later build can generate and deploy per-page JSON-LD hashes; only then remove `'unsafe-inline'`. Keep the report-only header for a short comparison period, then remove it once the enforced header is stable.
+`'unsafe-inline'` is presently required for the page-specific JSON-LD blocks. It does not permit inline event-handler attributes because `script-src-attr 'none'` is set. A later build can generate and deploy per-page JSON-LD hashes; only then remove `'unsafe-inline'`.
+
+If an external newsletter form is added, extend `form-action` only for the selected provider's exact HTTPS endpoint. Do not use a wildcard.
+
+## Cache rule
+
+Cloudflare caches the two explicitly versioned assets below at the edge and in visitors' browsers for one year:
+
+- `/assets/css/style.css?v=20260822-audit`
+- `/assets/js/privacy.js?v=20260822-audit`
+
+The rule matches both the exact path and exact version query. HTML retains its short origin-controlled cache lifetime. Every future CSS or JavaScript change must update the version string on every page before deployment; the source validator checks that the references remain consistent.
+
+Images retain the shorter origin cache lifetime because their public URLs are not currently versioned.
+
+## Verification
+
+After the live rules were deployed, repeated public checks returned the enforced `Content-Security-Policy` header, `CF-Cache-Status: HIT`, and `Cache-Control: max-age=31536000` for both versioned assets. The opt-in Analytics script, structured data, images and custom 404 continued to load without browser errors.
 
 The repository also publishes `/.well-known/security.txt`. Revisit its `Expires` value before 22 August 2027 and keep the contact address monitored.
