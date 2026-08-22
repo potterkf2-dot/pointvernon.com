@@ -36,7 +36,7 @@
         imagesrcset="/images/point-vernon-shoreline-aerial-1600.avif 1600w, /images/point-vernon-shoreline-aerial-1000.avif 1000w, /images/point-vernon-shoreline-aerial-640.avif 640w"
         imagesizes="(min-width: 1024px) 58vw, 100vw"
         type="image/avif">
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260822-audit">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260822-newsletter">
 
   <script type="application/ld+json">
   {
@@ -67,7 +67,7 @@
     ]
   }
   </script>
-  <script defer src="/assets/js/privacy.js?v=20260822-audit"></script>
+  <script defer src="/assets/js/privacy.js?v=20260822-newsletter"></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -240,7 +240,20 @@
     <section class="section trust-section" aria-labelledby="how-checked">
       <div class="container trust-grid">
         <div><p class="eyebrow">Independent and source checked</p><h2 id="how-checked">How this guide is checked</h2><p>Point Vernon Guide uses official sources where possible, dates information that can change, credits photographs and keeps uncertain details out of factual copy. There are no paid placements or affiliate links.</p><p>Found something that has changed? <a href="/editorial-policy/">Read the editorial and corrections standards</a> or <a href="mailto:hello@pointvernon.com" data-analytics-event="contact_click" data-contact-type="email" data-service-name="editorial-corrections">send a correction</a>.</p></div>
-        <aside class="updates-card" aria-labelledby="updates-card-title"><p class="card-kicker">A reason to return</p><h3 id="updates-card-title">Verified Point Vernon updates</h3><p>See dated changes to access, facilities, rules, transport, services and local events. Subscribe in any feed reader without sharing your email address.</p><div class="updates-actions"><a class="button button-primary" href="/updates/">See the latest changes</a><a class="text-link" href="/updates.xml">Subscribe to the update feed</a></div></aside>
+        <aside class="updates-card" aria-labelledby="updates-card-title">
+          <p class="card-kicker">A reason to return</p>
+          <h3 id="updates-card-title">Verified Point Vernon updates</h3>
+          <p>Get occasional, practical email updates when access, facilities, rules, services or local events materially change.</p>
+          <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/pointvernon" method="post" data-newsletter-form data-placement="homepage">
+            <label for="home-newsletter-email">Email address</label>
+            <div class="newsletter-form-row">
+              <input id="home-newsletter-email" name="email" type="email" autocomplete="email" inputmode="email" aria-describedby="home-newsletter-note" required>
+              <button class="button button-primary" type="submit">Get email updates</button>
+            </div>
+            <p id="home-newsletter-note" class="newsletter-note">You will need to confirm by email. Unsubscribe at any time. Email delivery is handled by Buttondown; see the <a href="/privacy/#newsletter">privacy details</a>.</p>
+          </form>
+          <div class="updates-actions"><a class="text-link" href="/updates/">See the latest changes</a><a class="text-link" href="/updates.xml">Prefer an email-free Atom feed?</a></div>
+        </aside>
       </div>
     </section>
 

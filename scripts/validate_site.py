@@ -12,7 +12,7 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE_ORIGIN = "https://pointvernon.com"
-EXPECTED_ASSET_VERSION = "20260822-audit"
+EXPECTED_ASSET_VERSION = "20260822-newsletter"
 
 
 class PageAudit(HTMLParser):

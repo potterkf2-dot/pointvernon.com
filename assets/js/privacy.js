@@ -211,6 +211,15 @@
     button.addEventListener("click", function () { showBanner(true); });
   });
 
+  document.querySelectorAll("[data-newsletter-form]").forEach(function (form) {
+    form.addEventListener("submit", function () {
+      sendAnalyticsEvent("newsletter_signup_submit", {
+        provider: "buttondown",
+        placement: cleanValue(form.dataset.placement, "unknown")
+      });
+    });
+  });
+
   const savedChoice = readChoice();
   if (savedChoice === "allow") {
     loadAnalytics();
