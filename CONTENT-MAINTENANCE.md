@@ -28,3 +28,11 @@ For every volatile-content edit, record:
 - next routine review date.
 
 Do not publish a changed event date, facility, access claim, business detail, safety rule or transport statement without a current source.
+
+## Public update record
+
+Add a short item to `/updates/` and `updates.xml` when a verified change could affect a practical decision or materially correct the public record. Link to the complete guide rather than duplicating all context in the update item. Do not record routine punctuation, layout or cache-version changes.
+
+## Sitemap dates
+
+After a substantive page edit, update its visible `<time datetime="YYYY-MM-DD">` value and its structured-data `dateModified` value where present. Then run `perl scripts/sync-sitemap-lastmod.pl` and `perl scripts/sync-sitemap-lastmod.pl --check`. Do not give every sitemap URL the deployment date.

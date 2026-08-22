@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Point Vernon verified updates</title>
+  <subtitle>Checked changes to Point Vernon access, facilities, rules, services, transport and local events.</subtitle>
+  <link href="https://pointvernon.com/updates.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://pointvernon.com/updates/" rel="alternate" type="text/html"/>
+  <id>https://pointvernon.com/updates/</id>
+  <updated>2026-08-22T08:40:55+10:00</updated>
+  <author><name>Point Vernon Guide</name><email>hello@pointvernon.com</email></author>
+  <rights>Copyright 2026 Point Vernon Guide</rights>
+
+  <entry>
+    <title>Private-property caravan stays clarified</title>
+    <link href="https://pointvernon.com/local-help/#council"/>
+    <id>https://pointvernon.com/updates/#2026-08-22-private-caravans</id>
+    <updated>2026-08-22T08:40:55+10:00</updated>
+    <summary>The local-help guide now separates private-property caravan questions from illegal camping on public land, explains Council’s limited family-or-friends pathway and directs other arrangements to Council and tenancy guidance.</summary>
+  </entry>
+  <entry>
+    <title>Household battery disposal guidance added</title>
+    <link href="https://pointvernon.com/local-help/#council"/>
+    <id>https://pointvernon.com/updates/#2026-08-21-batteries</id>
+    <updated>2026-08-21T08:36:46+10:00</updated>
+    <summary>The local-help guide now points to current Council battery-disposal information and distinguishes routine disposal from an immediate battery fire risk.</summary>
+  </entry>
+  <entry>
+    <title>Recurring family literacy listing added</title>
+    <link href="https://pointvernon.com/whats-on/"/>
+    <id>https://pointvernon.com/updates/#2026-08-20-family-literacy</id>
+    <updated>2026-08-20T08:36:41+10:00</updated>
+    <summary>The what’s-on guide now includes a source-led recurring literacy activity with a reminder to verify current dates, suitability and booking requirements.</summary>
+  </entry>
+  <entry>
+    <title>Barking-dog reporting pathway added</title>
+    <link href="https://pointvernon.com/local-help/#animals"/>
+    <id>https://pointvernon.com/updates/#2026-08-19-barking-dogs</id>
+    <updated>2026-08-19T08:57:46+10:00</updated>
+    <summary>The local-help guide now explains the non-urgent Council pathway for recurring barking concerns while preserving emergency and animal-welfare routes.</summary>
+  </entry>
+  <entry>
+    <title>Community Hub service notice added</title>
+    <link href="https://pointvernon.com/local-help/"/>
+    <id>https://pointvernon.com/updates/#2026-08-18-community-hub</id>
+    <updated>2026-08-18T09:17:28+10:00</updated>
+    <summary>The local-help guide now records the temporary Hervey Bay Library and Council customer-service move, with current dates and a direct Council source.</summary>
+  </entry>
+  <entry>
+    <title>Noticeboard claims routed to verifiable sources</title>
+    <link href="https://pointvernon.com/updates/#august-17"/>
+    <id>https://pointvernon.com/updates/#2026-08-17-noticeboard-review</id>
+    <updated>2026-08-17T09:39:11+10:00</updated>
+    <summary>Food, local-life and moving guides were revised so time-sensitive community-noticeboard claims are supported, qualified or excluded.</summary>
+  </entry>
+</feed>
