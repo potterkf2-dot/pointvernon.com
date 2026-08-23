@@ -5,10 +5,17 @@
   <link href="https://pointvernon.com/updates.xml" rel="self" type="application/atom+xml"/>
   <link href="https://pointvernon.com/updates/" rel="alternate" type="text/html"/>
   <id>https://pointvernon.com/updates/</id>
-  <updated>2026-08-22T08:40:55+10:00</updated>
+  <updated>2026-08-24T08:39:14+10:00</updated>
   <author><name>Point Vernon Guide</name><email>hello@pointvernon.com</email></author>
   <rights>Copyright 2026 Point Vernon Guide</rights>
 
+  <entry>
+    <title>Hervey Bay Brick Show listing added</title>
+    <link href="https://pointvernon.com/whats-on/#current-event"/>
+    <id>https://pointvernon.com/updates/#2026-08-24-brick-show</id>
+    <updated>2026-08-24T08:39:14+10:00</updated>
+    <summary>The what’s-on guide now includes the organiser-verified Hervey Bay Brick Show dates and venue, with an explicit expiry date and a link for current entry details.</summary>
+  </entry>
   <entry>
     <title>Private-property caravan stays clarified</title>
     <link href="https://pointvernon.com/local-help/#council"/>
