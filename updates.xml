@@ -5,10 +5,17 @@
   <link href="https://pointvernon.com/updates.xml" rel="self" type="application/atom+xml"/>
   <link href="https://pointvernon.com/updates/" rel="alternate" type="text/html"/>
   <id>https://pointvernon.com/updates/</id>
-  <updated>2026-08-24T08:39:14+10:00</updated>
+  <updated>2026-08-25T08:32:19+10:00</updated>
   <author><name>Point Vernon Guide</name><email>hello@pointvernon.com</email></author>
   <rights>Copyright 2026 Point Vernon Guide</rights>
 
+  <entry>
+    <title>Water-service consultation notice added</title>
+    <link href="https://pointvernon.com/local-life/#consultation"/>
+    <id>https://pointvernon.com/updates/#2026-08-25-water-consultation</id>
+    <updated>2026-08-25T08:32:19+10:00</updated>
+    <summary>The local-life hub now links to Council’s draft water and wastewater service-standard consultation, with its closing date and an explicit post-consultation removal note.</summary>
+  </entry>
   <entry>
     <title>Hervey Bay Brick Show listing added</title>
     <link href="https://pointvernon.com/whats-on/#current-event"/>
