@@ -5,9 +5,17 @@
   <link href="https://pointvernon.com/updates.xml" rel="self" type="application/atom+xml"/>
   <link href="https://pointvernon.com/updates/" rel="alternate" type="text/html"/>
   <id>https://pointvernon.com/updates/</id>
-  <updated>2026-08-25T08:32:19+10:00</updated>
+  <updated>2026-08-29T08:31:04+10:00</updated>
   <author><name>Point Vernon Guide</name><email>hello@pointvernon.com</email></author>
   <rights>Copyright 2026 Point Vernon Guide</rights>
+
+  <entry>
+    <title>Whale Festival weekend listing added</title>
+    <link href="https://pointvernon.com/whats-on/#current-event"/>
+    <id>https://pointvernon.com/updates/#2026-08-29-whale-festival</id>
+    <updated>2026-08-29T08:31:04+10:00</updated>
+    <summary>The what’s-on guide now links to the official Hervey Bay Whale Festival program for 29–30 August, with location and weather-check reminders.</summary>
+  </entry>
 
   <entry>
     <title>Water-service consultation notice added</title>
