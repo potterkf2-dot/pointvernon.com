@@ -31,8 +31,8 @@ If an external newsletter form is added, extend `form-action` only for the selec
 
 Cloudflare caches the two explicitly versioned assets below at the edge and in visitors' browsers for one year:
 
-- `/assets/css/style.css?v=20260822-audit`
-- `/assets/js/privacy.js?v=20260822-audit`
+- `/assets/css/style.css?v=20260830-photos`
+- `/assets/js/privacy.js?v=20260830-photos`
 
 The rule matches both the exact path and exact version query. HTML retains its short origin-controlled cache lifetime. Every future CSS or JavaScript change must update the version string on every page before deployment; the source validator checks that the references remain consistent.
 
