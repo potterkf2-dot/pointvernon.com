@@ -24,7 +24,7 @@ for my $file (@files) {
 
   my $original = $html;
 
-  $html =~ s/\?v=20260816-complete/?v=20260830-photos/g;
+  $html =~ s/\?v=20260816-complete/?v=20260830-photo-ratio-v2/g;
 
   if ($html !~ m{rel="alternate"\s+type="application/atom\+xml"}) {
     $html =~ s{(<link rel="canonical" href="[^"]+">)}{$1\n  <link rel="alternate" type="application/atom+xml" title="Point Vernon verified updates" href="/updates.xml">} or die "Canonical link not found in $file\n";
