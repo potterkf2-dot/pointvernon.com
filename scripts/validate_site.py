@@ -16,9 +16,14 @@ EXPECTED_STYLE_VERSION = "20260830-photo-ratio-v2"
 EXPECTED_PRIVACY_VERSION = "20260831-ga4-consent-v1"
 EXPECTED_CONSENT_STORAGE_KEY = "point-vernon-analytics-choice-v2"
 LEGACY_CONSENT_STORAGE_KEY = "point-vernon-analytics-choice"
+EXPECTED_MEASUREMENT_ID = "G-003LRJYP3K"
 EXPECTED_BANNER_COPY = (
     "Google Analytics is off unless you allow it. If allowed, it may set first-party "
     "Analytics cookies to measure visits and selected actions. Advertising features remain disabled."
+)
+EXPECTED_ENHANCED_MEASUREMENT_COPY = (
+    "Enhanced Measurement may also record scrolls, outbound-link clicks, file downloads, "
+    "on-site search results, embedded-video interactions, and form starts or submissions"
 )
 
 
@@ -157,6 +162,24 @@ def validate_privacy_surface(text, label, errors):
     if "Allow anonymous Analytics" in text or "Analytics storage remain disabled" in text:
         errors.append(f"{label}: stale cookieless Analytics wording remains")
 
+    for attribute in (
+        "data-privacy-banner",
+        "data-analytics-allow",
+        "data-analytics-decline",
+        "data-privacy-settings",
+    ):
+        if text.count(attribute) != 1:
+            errors.append(f"{label}: expected one {attribute} consent control")
+
+    if re.search(
+        r'<script\b[^>]*\bsrc=["\'](?:https:)?//(?:www\.)?googletagmanager\.com/',
+        text,
+        re.IGNORECASE,
+    ):
+        errors.append(f"{label}: direct Google tag would load before consent")
+    if re.search(r"<script\b[^>]*>[^<]*(?:dataLayer|\bgtag\s*\()", text, re.IGNORECASE):
+        errors.append(f"{label}: inline Google tag initialisation would run before consent")
+
 
 def validate_analytics_script(errors):
     script_path = ROOT / "assets" / "js" / "privacy.js"
@@ -166,6 +189,8 @@ def validate_analytics_script(errors):
         errors.append("privacy.js: current consent storage key is missing or stale")
     if f'const legacyStorageKey = "{LEGACY_CONSENT_STORAGE_KEY}";' not in script:
         errors.append("privacy.js: legacy consent storage key is missing")
+    if script.count(f'const measurementId = "{EXPECTED_MEASUREMENT_ID}";') != 1:
+        errors.append("privacy.js: expected GA4 measurement ID is missing or duplicated")
     if 'if (legacyChoice === "decline")' not in script:
         errors.append("privacy.js: legacy declines are not preserved")
     if 'window.localStorage.setItem(storageKey, "decline");' not in script:
@@ -193,16 +218,39 @@ def validate_analytics_script(errors):
             errors.append("privacy.js: consent update must use the requested Analytics state")
 
     enable_position = script.find('window["ga-disable-" + measurementId] = false;')
+    default_position = script.find('window.gtag("consent", "default", {')
     grant_position = script.find('queueAnalyticsConsent("granted");')
     guard_position = script.find("if (analyticsScript) return;")
+    js_position = script.find('window.gtag("js", new Date());')
     config_position = script.find('window.gtag("config", measurementId, {')
+    source_position = script.find('script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(measurementId);')
+    append_position = script.find("document.head.appendChild(script);")
     page_view_position = script.find('window.gtag("event", "page_view"')
-    if min(enable_position, grant_position, guard_position, config_position) < 0:
-        errors.append("privacy.js: enable, grant, duplicate-tag guard or config step is missing")
-    elif not (enable_position < grant_position < guard_position < config_position):
-        errors.append("privacy.js: re-enable and consent grant must precede the tag guard and config")
+    ordered_positions = (
+        enable_position,
+        default_position,
+        grant_position,
+        guard_position,
+        js_position,
+        config_position,
+        source_position,
+        append_position,
+    )
+    if min(ordered_positions) < 0:
+        errors.append("privacy.js: required consent, GA4 configuration or tag-injection step is missing")
+    elif list(ordered_positions) != sorted(ordered_positions):
+        errors.append("privacy.js: consent grant and GA4 configuration must be queued before tag injection")
     if page_view_position >= 0 and grant_position > page_view_position:
         errors.append("privacy.js: Analytics consent must be granted before page_view")
+
+    if script.count('document.createElement("script")') != 1:
+        errors.append("privacy.js: expected exactly one dynamic Analytics script element")
+    if script.count("script.dataset.pointVernonAnalytics = \"true\";") != 1:
+        errors.append("privacy.js: Analytics script marker is missing or duplicated")
+    if script.count("document.head.appendChild(script);") != 1:
+        errors.append("privacy.js: Analytics tag must be appended exactly once")
+    if script.count("https://www.googletagmanager.com/gtag/js?id=") != 1:
+        errors.append("privacy.js: Google tag source is missing or duplicated")
 
     config_match = re.search(
         r'window\.gtag\("config",\s*measurementId,\s*\{(?P<body>.*?)\}\);',
@@ -317,6 +365,10 @@ def main():
     validate_privacy_surface(not_found_text, "/404.html", errors)
     validate_analytics_script(errors)
     validate_privacy_version_references(errors)
+
+    privacy_text = parsed_pages.get("/privacy/", (None, ""))[1]
+    if EXPECTED_ENHANCED_MEASUREMENT_COPY not in privacy_text:
+        errors.append("/privacy/: Enhanced Measurement disclosure is missing or stale")
 
     for value, count in Counter(titles.values()).items():
         if value and count > 1:
