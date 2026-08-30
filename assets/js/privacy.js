@@ -1,7 +1,8 @@
 (function () {
   "use strict";
 
-  const storageKey = "point-vernon-analytics-choice";
+  const storageKey = "point-vernon-analytics-choice-v2";
+  const legacyStorageKey = "point-vernon-analytics-choice";
   const measurementId = "G-003LRJYP3K";
   const banner = document.querySelector("[data-privacy-banner]");
 
@@ -13,7 +14,17 @@
 
   function readChoice() {
     try {
-      return window.localStorage.getItem(storageKey);
+      const currentChoice = window.localStorage.getItem(storageKey);
+      if (currentChoice === "allow" || currentChoice === "decline") return currentChoice;
+
+      // Preserve an earlier refusal, but never treat the former cookieless
+      // "allow" choice as permission to set first-party Analytics cookies.
+      const legacyChoice = window.localStorage.getItem(legacyStorageKey);
+      if (legacyChoice === "decline") {
+        window.localStorage.setItem(storageKey, "decline");
+        return "decline";
+      }
+      return null;
     } catch (error) {
       return null;
     }
@@ -28,8 +39,17 @@
     }
   }
 
+  function queueAnalyticsConsent(analyticsStorage) {
+    window.gtag("consent", "update", {
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      analytics_storage: analyticsStorage
+    });
+  }
+
   function loadAnalytics() {
-    if (document.querySelector("script[data-point-vernon-analytics]")) return;
+    const analyticsScript = document.querySelector("script[data-point-vernon-analytics]");
 
     window["ga-disable-" + measurementId] = false;
     window.dataLayer = window.dataLayer || [];
@@ -37,17 +57,28 @@
       window.dataLayer.push(arguments);
     };
 
-    window.gtag("consent", "default", {
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-      analytics_storage: "denied"
-    });
+    if (!analyticsScript) {
+      window.gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied"
+      });
+    }
+    // loadAnalytics is reached only after a current or previously saved v2
+    // opt-in. Queue the grant before config emits its automatic page view.
+    queueAnalyticsConsent("granted");
+
+    // Re-allowing on the same page must restore consent and ga-disable, but it
+    // must not load or configure the same Google tag twice.
+    if (analyticsScript) return;
+
     window.gtag("set", "ads_data_redaction", true);
     window.gtag("js", new Date());
     window.gtag("config", measurementId, {
       allow_google_signals: false,
       allow_ad_personalization_signals: false,
+      send_page_view: true,
       transport_type: "beacon"
     });
 
@@ -56,6 +87,13 @@
     script.dataset.pointVernonAnalytics = "true";
     script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(measurementId);
     document.head.appendChild(script);
+  }
+
+  function disableAnalytics() {
+    window["ga-disable-" + measurementId] = true;
+    if (typeof window.gtag === "function") {
+      queueAnalyticsConsent("denied");
+    }
   }
 
   function showBanner(moveFocus) {
@@ -72,7 +110,7 @@
     if (choice === "allow") {
       loadAnalytics();
     } else {
-      window["ga-disable-" + measurementId] = true;
+      disableAnalytics();
     }
     hideBanner();
   }
@@ -214,7 +252,9 @@
   const savedChoice = readChoice();
   if (savedChoice === "allow") {
     loadAnalytics();
-  } else if (savedChoice !== "decline") {
+  } else if (savedChoice === "decline") {
+    disableAnalytics();
+  } else {
     showBanner(false);
   }
 }());

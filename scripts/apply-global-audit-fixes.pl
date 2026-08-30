@@ -38,10 +38,10 @@ my $privacy_banner = <<'HTML';
     <div class="privacy-banner-inner">
       <div>
         <h2 id="privacy-banner-title">Help improve this guide?</h2>
-        <p>Anonymous Analytics is off unless you allow it. If allowed, advertising and Analytics storage remain disabled. <a href="/privacy/">Read the privacy details</a>.</p>
+        <p>Google Analytics is off unless you allow it. If allowed, it may set first-party Analytics cookies to measure visits and selected actions. Advertising features remain disabled. <a href="/privacy/">Read the privacy details</a>.</p>
       </div>
       <div class="privacy-actions">
-        <button class="button button-primary" type="button" data-analytics-allow>Allow anonymous Analytics</button>
+        <button class="button button-primary" type="button" data-analytics-allow>Allow Analytics</button>
         <button class="button button-secondary" type="button" data-analytics-decline>No thanks</button>
       </div>
     </div>
@@ -81,8 +81,9 @@ for my $path (@ARGV) {
 
   $html =~ s{/assets/css/style\.css(?:\?v=[^"\s>]*)?}{/assets/css/style.css?v=20260816-complete}g;
   if ($html !~ m{/assets/js/privacy\.js}) {
-    $html =~ s{(\s*</head>)}{\n  <script defer src="/assets/js/privacy.js?v=20260816-complete"></script>$1}s;
+    $html =~ s{(\s*</head>)}{\n  <script defer src="/assets/js/privacy.js?v=20260831-ga4-consent-v1"></script>$1}s;
   }
+  $html =~ s{/assets/js/privacy\.js(?:\?v=[^"\s>]*)?}{/assets/js/privacy.js?v=20260831-ga4-consent-v1}g;
 
   $html =~ s{<a\s+class="site-brand"\s+href="/"\s+aria-label="Point Vernon Guide home">}{<a class="site-brand" href="/">}g;
   $html =~ s{<nav\s+class="primary-nav"\s+aria-label="Main navigation">.*?</nav>}{$primary_nav}gs;

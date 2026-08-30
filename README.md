@@ -10,7 +10,7 @@ The site separates exploration, visitor planning, events, resident information a
 - primary public sources wherever possible
 - cautious safety and access wording
 - no paid placement, affiliate links or advertising
-- opt-in Google Analytics 4 measurement that is off by default, with Analytics and advertising storage still denied when allowed
+- opt-in Google Analytics 4 measurement that is off by default; first-party Analytics storage is granted only after a visitor allows it, while advertising storage, signals and personalisation remain disabled
 - locally taken or permissioned photographs, with contributors credited
 
 Send corrections, photographs, event listings and complaints to [hello@pointvernon.com](mailto:hello@pointvernon.com). Please do not include sensitive personal information unless it is necessary.

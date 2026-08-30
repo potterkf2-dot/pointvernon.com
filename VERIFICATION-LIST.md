@@ -6,7 +6,8 @@ The public copy keeps unconfirmed details general or omits them. This register r
 
 - [x] Corrections, photographs, event suggestions and complaints use `hello@pointvernon.com`.
 - [ ] Confirm `hello@pointvernon.com` is actively monitored before deployment.
-- [x] Google Analytics 4 uses measurement ID `G-003LRJYP3K`, but its script is off by default and loads only after a visitor opts in. Analytics, advertising and personalisation storage remain denied, and the choice can be reopened from every footer.
+- [x] Google Analytics 4 uses measurement ID `G-003LRJYP3K`, but its script is off by default and loads only after a visitor opts in. Analytics storage is granted before tag configuration only for the current consent version; advertising storage, ad user data and ad personalisation remain denied, Google Signals stay disabled, and the choice can be reopened from every footer.
+- [x] Consent uses `point-vernon-analytics-choice-v2`: an earlier “No thanks” is retained, while an earlier cookieless “allow” is ignored so visitors must explicitly agree before first-party Analytics cookies can be set.
 - [x] Consent-gated custom events cover homepage pathways, priority guides, official-source links, maps, service contacts and event suggestions without sending phone numbers, email addresses, message contents or entered values.
 - [x] Image descriptions and captions use plain visitor-facing language.
 - [x] The GitHub owner is `potterkf2-dot` and the repository is `pointvernon.com`.
