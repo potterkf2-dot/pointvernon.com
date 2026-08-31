@@ -5,9 +5,17 @@
   <link href="https://pointvernon.com/updates.xml" rel="self" type="application/atom+xml"/>
   <link href="https://pointvernon.com/updates/" rel="alternate" type="text/html"/>
   <id>https://pointvernon.com/updates/</id>
-  <updated>2026-08-31T00:50:18+10:00</updated>
+  <updated>2026-09-01T00:51:18+10:00</updated>
   <author><name>Point Vernon Guide</name><email>hello@pointvernon.com</email></author>
   <rights>Copyright 2026 Point Vernon Guide</rights>
+
+  <entry>
+    <title>Library family-program link and monthly checks refreshed</title>
+    <link href="https://pointvernon.com/local-help/#council"/>
+    <id>https://pointvernon.com/updates/#2026-09-01-monthly-review</id>
+    <updated>2026-09-01T00:51:18+10:00</updated>
+    <summary>The local-help guide now points to the official current library program calendar, Point Vernon transport details were rechecked, and three obsolete Council download links were removed.</summary>
+  </entry>
 
   <entry>
     <title>Community Hub details updated and expired events archived</title>
