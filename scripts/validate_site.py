@@ -12,7 +12,7 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE_ORIGIN = "https://pointvernon.com"
-EXPECTED_STYLE_VERSION = "20260830-photo-ratio-v2"
+EXPECTED_STYLE_VERSION = "20260905-design-v1"
 EXPECTED_PRIVACY_VERSION = "20260831-ga4-consent-v1"
 EXPECTED_CONSENT_STORAGE_KEY = "point-vernon-analytics-choice-v2"
 LEGACY_CONSENT_STORAGE_KEY = "point-vernon-analytics-choice"
@@ -34,9 +34,12 @@ class PageAudit(HTMLParser):
         self.descriptions = []
         self.feed_links = []
         self.h1_count = 0
+        self.headings = []
         self.hrefs = []
         self.ids = []
         self.json_ld = []
+        self.images = []
+        self.robots = []
         self.lang = None
         self.resources = []
         self.title_parts = []
@@ -51,18 +54,24 @@ class PageAudit(HTMLParser):
             self._in_title = True
         if tag == "h1":
             self.h1_count += 1
+        if tag in {"h1", "h2", "h3", "h4", "h5", "h6"}:
+            self.headings.append(int(tag[1]))
         if values.get("id"):
             self.ids.append(values["id"])
         if tag == "a" and values.get("href"):
             self.hrefs.append(values["href"])
         if tag == "meta" and values.get("name") == "description":
             self.descriptions.append(values.get("content", ""))
+        if tag == "meta" and values.get("name", "").lower() in {"robots", "googlebot", "bingbot"}:
+            self.robots.extend(re.split(r"[,\s]+", values.get("content", "").lower()))
         if tag == "link" and values.get("rel") == "canonical":
             self.canonical.append(values.get("href", ""))
         if tag == "link" and values.get("type") == "application/atom+xml":
             self.feed_links.append(values.get("href", ""))
-        if tag == "link" and values.get("rel") == "stylesheet" and values.get("href"):
+        if tag == "link" and values.get("rel") in {"stylesheet", "preload", "icon", "apple-touch-icon"} and values.get("href"):
             self.resources.append(values["href"])
+        if tag == "link" and values.get("imagesrcset"):
+            self.resources.extend(item.strip().split()[0] for item in values["imagesrcset"].split(","))
         if tag == "script":
             if values.get("src"):
                 self.resources.append(values["src"])
@@ -74,6 +83,8 @@ class PageAudit(HTMLParser):
                 self.resources.append(values["src"])
             if values.get("srcset"):
                 self.resources.extend(item.strip().split()[0] for item in values["srcset"].split(","))
+        if tag == "img":
+            self.images.append(values)
 
     def handle_endtag(self, tag):
         if tag == "title":
@@ -115,6 +126,46 @@ def parse_page(file_path):
     text = file_path.read_text(encoding="utf-8")
     parser.feed(text)
     return parser, text
+
+
+def is_site_url(parts):
+    """Include absolute first-party URLs in checks, as well as root-relative URLs."""
+    if parts.scheme and parts.scheme not in {"http", "https"}:
+        return False
+    return not parts.netloc or parts.netloc == urlsplit(SITE_ORIGIN).netloc
+
+
+def validate_breadcrumbs(schema, route, errors):
+    if not isinstance(schema, dict):
+        errors.append(f"{route}: JSON-LD must be an object")
+        return
+    nodes = schema.get("@graph", [schema])
+    if not isinstance(nodes, list):
+        errors.append(f"{route}: JSON-LD @graph must be an array")
+        return
+    for node in nodes:
+        if not isinstance(node, dict):
+            errors.append(f"{route}: JSON-LD graph entry must be an object")
+            continue
+        if node.get("@type") != "BreadcrumbList":
+            continue
+        items = node.get("itemListElement", [])
+        if not isinstance(items, list) or len(items) < 2:
+            errors.append(f"{route}: breadcrumb needs at least two items")
+            continue
+        for position, item in enumerate(items, start=1):
+            if not isinstance(item, dict):
+                errors.append(f"{route}: breadcrumb item {position} must be an object")
+                continue
+            if item.get("@type") != "ListItem" or item.get("position") != position or not item.get("name"):
+                errors.append(f"{route}: invalid breadcrumb name, type or position at item {position}")
+            destination = item.get("item", "")
+            if not isinstance(destination, str) or not destination.startswith(SITE_ORIGIN + "/"):
+                errors.append(f"{route}: breadcrumb item {position} must use a canonical site URL")
+            elif not file_for_site_path(urlsplit(destination).path).is_file():
+                errors.append(f"{route}: broken breadcrumb URL {destination}")
+        if not isinstance(items[-1], dict) or items[-1].get("item") != SITE_ORIGIN + route:
+            errors.append(f"{route}: final breadcrumb does not match this page")
 
 
 def expected_page_date(text):
@@ -334,6 +385,11 @@ def main():
             errors.append(f"{route}: meta description is {len(parser.descriptions[0])} characters")
         if parser.h1_count != 1:
             errors.append(f"{route}: expected one H1, found {parser.h1_count}")
+        for previous, current in zip(parser.headings, parser.headings[1:]):
+            if current > previous + 1:
+                errors.append(f"{route}: heading level skips from H{previous} to H{current}")
+        if {"noindex", "none"}.intersection(parser.robots):
+            errors.append(f"{route}: public sitemap page must not declare noindex")
         if len(parser.canonical) != 1 or parser.canonical[0] != SITE_ORIGIN + route:
             errors.append(f"{route}: canonical does not match route ({parser.canonical})")
         if len(parser.feed_links) != 1 or urlsplit(parser.feed_links[0]).path != "/updates.xml":
@@ -343,18 +399,28 @@ def main():
             errors.append(f"{route}: duplicate IDs {duplicate_ids}")
         validate_asset_versions(parser, route, errors)
         validate_privacy_surface(text, route, errors)
-        if re.search(r"\b(TODO|TBC|owner confirmation required|placeholder)\b", text, re.IGNORECASE):
+        public_copy = re.sub(r"<[^>]+>", " ", text)
+        if re.search(r"\b(TODO|TBC|owner confirmation required|placeholder)\b", public_copy, re.IGNORECASE):
             errors.append(f"{route}: unfinished public marker found")
 
         for raw_json in parser.json_ld:
             try:
-                json.loads(raw_json)
+                validate_breadcrumbs(json.loads(raw_json), route, errors)
             except json.JSONDecodeError as error:
                 errors.append(f"{route}: invalid JSON-LD ({error})")
 
+        for image in parser.images:
+            label = image.get("src", "unnamed image")
+            if "alt" not in image:
+                errors.append(f"{route}: image is missing an alt attribute ({label})")
+            for dimension in ("width", "height"):
+                value = image.get(dimension) or ""
+                if not value.isdigit() or int(value) <= 0:
+                    errors.append(f"{route}: image needs a positive {dimension} ({label})")
+
         for resource in parser.resources:
             parts = urlsplit(resource)
-            if parts.scheme or resource.startswith("//") or not parts.path.startswith("/"):
+            if not is_site_url(parts) or not parts.path.startswith("/"):
                 continue
             target = file_for_site_path(parts.path)
             if not target.is_file():
@@ -363,6 +429,8 @@ def main():
     not_found_parser, not_found_text = parse_page(ROOT / "404.html")
     validate_asset_versions(not_found_parser, "/404.html", errors)
     validate_privacy_surface(not_found_text, "/404.html", errors)
+    if not {"noindex", "none"}.intersection(not_found_parser.robots):
+        errors.append("/404.html: error page must declare noindex")
     validate_analytics_script(errors)
     validate_privacy_version_references(errors)
 
@@ -382,9 +450,9 @@ def main():
     for route, (parser, _) in parsed_pages.items():
         for href in parser.hrefs:
             parts = urlsplit(href)
-            if parts.scheme in {"http", "https", "mailto", "tel"} or href.startswith("//"):
+            if not is_site_url(parts):
                 continue
-            target_route = route if not parts.path else parts.path
+            target_route = parts.path or ("/" if parts.netloc else route)
             if not target_route.startswith("/"):
                 errors.append(f"{route}: unsupported relative link {href}")
                 continue
@@ -395,7 +463,7 @@ def main():
             if parts.fragment and target_file.name == "index.html":
                 target_canonical_route = route_for(target_file)
                 target_parser = parsed_pages.get(target_canonical_route, (parse_page(target_file)[0], ""))[0]
-                if parts.fragment not in target_parser.ids:
+                if unquote(parts.fragment) not in target_parser.ids:
                     errors.append(f"{route}: missing fragment target {href}")
 
     namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
@@ -404,6 +472,11 @@ def main():
     for node in sitemap_root.findall("sm:url", namespace):
         loc = node.findtext("sm:loc", namespaces=namespace)
         lastmod = node.findtext("sm:lastmod", namespaces=namespace)
+        if not loc or not loc.startswith(SITE_ORIGIN + "/"):
+            errors.append(f"Sitemap contains a missing or non-canonical URL: {loc}")
+            continue
+        if loc.removeprefix(SITE_ORIGIN) in sitemap_dates:
+            errors.append(f"Sitemap contains duplicate URL: {loc}")
         sitemap_dates[loc.removeprefix(SITE_ORIGIN)] = lastmod
 
     if set(sitemap_dates) != set(parsed_pages):
@@ -434,7 +507,8 @@ def main():
 
     print(
         f"Validated {len(parsed_pages)} pages: unique metadata, self-canonicals, one H1, "
-        "valid JSON-LD, complete internal links/resources, matching sitemap dates, Atom XML and security.txt."
+        "valid JSON-LD and breadcrumbs, internal links/resources, image dimensions and alt attributes, "
+        "heading order, indexability, matching sitemap dates, Atom XML and security.txt."
     )
     return 0
 

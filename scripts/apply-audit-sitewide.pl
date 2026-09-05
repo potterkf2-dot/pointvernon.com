@@ -24,7 +24,7 @@ for my $file (@files) {
 
   my $original = $html;
 
-  $html =~ s/\?v=20260816-complete/?v=20260830-photo-ratio-v2/g;
+  $html =~ s/\?v=20260816-complete/?v=20260905-design-v1/g;
   $html =~ s{(/assets/js/privacy\.js)(?:\?v=[^"\s>]*)?}{$1?v=20260831-ga4-consent-v1}g;
 
   if ($html !~ m{rel="alternate"\s+type="application/atom\+xml"}) {

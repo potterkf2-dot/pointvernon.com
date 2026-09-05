@@ -1,0 +1,246 @@
+/* Styles scoped to the static guide directory. */
+.guide-finder [hidden] {
+  display: none !important;
+}
+
+.guide-finder-hero {
+  padding-bottom: clamp(2.25rem, 5vw, 3.5rem);
+}
+
+.guide-finder-hero .breadcrumbs {
+  margin-bottom: 2rem;
+}
+
+.guide-finder-hero h1 {
+  max-width: 18ch;
+  font-size: clamp(2.5rem, 7vw, 4rem);
+}
+
+.guide-finder-hero .hero-lede {
+  max-width: 45rem;
+  margin-bottom: 1.1rem;
+}
+
+.guide-finder-hero .page-updated {
+  margin: 0;
+  color: #bed4d4;
+  font-size: 0.85rem;
+}
+
+.guide-directory {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.guide-directory-heading h2 {
+  margin-bottom: 0.75rem;
+  font-size: clamp(1.7rem, 5vw, 2.35rem);
+}
+
+.guide-directory-heading p {
+  max-width: 46rem;
+  color: var(--muted);
+}
+
+.guide-filters {
+  display: grid;
+  gap: 1rem;
+  align-items: end;
+  margin-block: 1.75rem 1.1rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--sea-glass);
+}
+
+.guide-filters label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--ocean-deep);
+  font-size: 0.9rem;
+  font-weight: 720;
+}
+
+.guide-filters input,
+.guide-filters select {
+  width: 100%;
+  min-width: 0;
+  min-height: 3.2rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #6d868a;
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1rem;
+}
+
+.guide-filters input::placeholder {
+  color: #52656a;
+  opacity: 1;
+}
+
+.guide-filters input:focus-visible,
+.guide-filters select:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 3px;
+}
+
+.guide-clear {
+  min-height: 3.2rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--ocean);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--ocean-deep);
+  font: inherit;
+  font-size: 0.94rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.guide-clear:hover:not(:disabled) {
+  background: var(--white);
+}
+
+.guide-clear:disabled {
+  border-color: #b0c2bf;
+  color: #586d70;
+  cursor: default;
+}
+
+.guide-search-hint {
+  margin: 0;
+  color: #40595f;
+  font-size: 0.84rem;
+}
+
+.guide-results-count {
+  min-height: 1.65em;
+  margin: 0 0 1.8rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.guide-topic-group + .guide-topic-group {
+  margin-top: 2.5rem;
+}
+
+.guide-topic-heading {
+  margin-bottom: 1rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+}
+
+.guide-result-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.guide-result-card {
+  min-width: 0;
+  padding: 1.2rem 1.25rem;
+  border: 1px solid var(--sand-deep);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.guide-result-card:focus-within {
+  border-color: var(--ocean);
+}
+
+.guide-result-card h4 {
+  margin: 0 0 0.65rem;
+  color: var(--ocean-deep);
+  font-size: 1.12rem;
+  font-weight: 720;
+  line-height: 1.35;
+}
+
+.guide-result-card h4 a {
+  display: inline-block;
+  padding-block: 0.25rem;
+  color: inherit;
+  text-decoration-color: #b4c8c5;
+  text-underline-offset: 0.2em;
+}
+
+.guide-result-card h4 a:hover {
+  color: var(--coral-dark);
+  text-decoration-color: currentColor;
+}
+
+.guide-result-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.guide-site-intro {
+  margin-top: -0.3rem;
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+
+.guide-no-results,
+.guide-no-script {
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--white);
+}
+
+.guide-no-results {
+  max-width: 46rem;
+}
+
+.guide-no-results h3 {
+  font-size: 1.5rem;
+}
+
+.guide-no-results .button {
+  margin-block: 0 1rem;
+  cursor: pointer;
+}
+
+.guide-no-results p:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 42rem) {
+  .guide-filters {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  }
+
+  .guide-clear {
+    justify-self: start;
+  }
+
+  .guide-search-hint {
+    align-self: center;
+  }
+
+  .guide-result-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .guide-filters {
+    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr) auto;
+  }
+
+  .guide-search-hint {
+    grid-column: 1 / -1;
+  }
+
+  .guide-result-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

@@ -27,9 +27,12 @@ Before publishing, run:
 perl scripts/apply-audit-sitewide.pl
 perl scripts/sync-sitemap-lastmod.pl
 perl scripts/sync-sitemap-lastmod.pl --check
+python3 scripts/validate_site.py
 ```
 
 The first command keeps the shared update-feed and policy links consistent. The sitemap command reads each page’s visible modification date, updates only that URL’s `<lastmod>` value and fails when a public page is missing from the sitemap.
+
+The source validator checks page metadata, heading order, image dimensions and alternative-text attributes, internal links (including absolute site URLs), breadcrumb destinations, consent controls and indexability. It also verifies the sitemap and shared asset versions. Run it after all edits and before publishing.
 
 ## Photograph workflow
 
