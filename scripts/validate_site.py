@@ -13,7 +13,7 @@ from urllib.parse import unquote, urlsplit
 ROOT = Path(__file__).resolve().parent.parent
 SITE_ORIGIN = "https://pointvernon.com"
 EXPECTED_STYLE_VERSION = "20260905-design-v1"
-EXPECTED_PRIVACY_VERSION = "20260831-ga4-consent-v1"
+EXPECTED_PRIVACY_VERSION = "20260908-ga4-repair-v1"
 EXPECTED_CONSENT_STORAGE_KEY = "point-vernon-analytics-choice-v2"
 LEGACY_CONSENT_STORAGE_KEY = "point-vernon-analytics-choice"
 EXPECTED_MEASUREMENT_ID = "G-003LRJYP3K"
@@ -342,8 +342,8 @@ def validate_analytics_script(errors):
         errors.append("privacy.js: saved current-version allow does not load Analytics")
     if not re.search(r'else if \(savedChoice === "decline"\) \{\s*disableAnalytics\(\);', script):
         errors.append("privacy.js: saved decline does not keep Analytics disabled")
-    if len(re.findall(r"\bloadAnalytics\(\);", script)) != 2:
-        errors.append("privacy.js: Analytics must load only from fresh or saved current-version allow")
+    if len(re.findall(r"\bloadAnalytics\(\);", script)) != 3:
+        errors.append("privacy.js: Analytics must load only from fresh, saved or synchronised current-version allow")
 
 
 def validate_privacy_version_references(errors):

@@ -81,9 +81,9 @@ for my $path (@ARGV) {
 
   $html =~ s{/assets/css/style\.css(?:\?v=[^"\s>]*)?}{/assets/css/style.css?v=20260816-complete}g;
   if ($html !~ m{/assets/js/privacy\.js}) {
-    $html =~ s{(\s*</head>)}{\n  <script defer src="/assets/js/privacy.js?v=20260831-ga4-consent-v1"></script>$1}s;
+    $html =~ s{(\s*</head>)}{\n  <script defer src="/assets/js/privacy.js?v=20260908-ga4-repair-v1"></script>$1}s;
   }
-  $html =~ s{/assets/js/privacy\.js(?:\?v=[^"\s>]*)?}{/assets/js/privacy.js?v=20260831-ga4-consent-v1}g;
+  $html =~ s{/assets/js/privacy\.js(?:\?v=[^"\s>]*)?}{/assets/js/privacy.js?v=20260908-ga4-repair-v1}g;
 
   $html =~ s{<a\s+class="site-brand"\s+href="/"\s+aria-label="Point Vernon Guide home">}{<a class="site-brand" href="/">}g;
   $html =~ s{<nav\s+class="primary-nav"\s+aria-label="Main navigation">.*?</nav>}{$primary_nav}gs;

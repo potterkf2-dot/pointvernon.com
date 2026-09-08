@@ -11,6 +11,7 @@
   const allowButton = banner.querySelector("[data-analytics-allow]");
   const declineButton = banner.querySelector("[data-analytics-decline]");
   const settingsButtons = document.querySelectorAll("[data-privacy-settings]");
+  let consentChoice = readChoice();
 
   function readChoice() {
     try {
@@ -78,6 +79,7 @@
     window.gtag("config", measurementId, {
       allow_google_signals: false,
       allow_ad_personalization_signals: false,
+      content_group: contentGroupForPath(pagePath()),
       send_page_view: true,
       transport_type: "beacon"
     });
@@ -106,6 +108,7 @@
   }
 
   function choose(choice) {
+    consentChoice = choice;
     storeChoice(choice);
     if (choice === "allow") {
       loadAnalytics();
@@ -130,6 +133,7 @@
   function contentGroupForPath(path) {
     const value = String(path || "/");
     if (value === "/") return "home";
+    if (value === "/things-to-do/") return "explore";
     if (/^\/(beaches|eli-creek-beach|gatakers-bay|point-vernon-beach|gables-point-beach|walks|fishing|artificial-reef|tides|whales)\//.test(value)) return "coast";
     if (/^\/(visiting|map-access|accessibility|accommodation|getting-around)\//.test(value)) return "visit";
     if (/^\/(moving-buying|property-checks)\//.test(value)) return "moving";
@@ -139,7 +143,7 @@
   }
 
   function sendAnalyticsEvent(eventName, parameters) {
-    if (readChoice() !== "allow" || typeof window.gtag !== "function") return;
+    if (consentChoice !== "allow" || typeof window.gtag !== "function") return;
 
     window.gtag("event", eventName, Object.assign({
       page_path: pagePath(),
@@ -149,7 +153,7 @@
 
   function officialSourceType(hostname) {
     if (hostname.endsWith(".gov.au")) return "government";
-    if (hostname === "beachsafe.org.au" || hostname.endsWith(".beachsafe.org.au")) return "water_safety";
+    if (/^(www\.)?beachsafe\.(org|com)\.au$/.test(hostname)) return "water_safety";
     if (hostname === "parkrun.com.au" || hostname.endsWith(".parkrun.com.au")) return "event_organiser";
     if (hostname === "translink.com.au" || hostname.endsWith(".translink.com.au")) return "transport";
     return null;
@@ -249,7 +253,22 @@
     button.addEventListener("click", function () { showBanner(true); });
   });
 
-  const savedChoice = readChoice();
+  // Apply a choice made in another tab to both automatic and custom events.
+  // Removal of the preference fails closed and asks for a fresh decision.
+  window.addEventListener("storage", function (event) {
+    if (event.key !== storageKey && event.key !== null) return;
+    consentChoice = readChoice();
+    if (consentChoice === "allow") {
+      loadAnalytics();
+      hideBanner();
+    } else {
+      disableAnalytics();
+      if (consentChoice === "decline") hideBanner();
+      else showBanner(false);
+    }
+  });
+
+  const savedChoice = consentChoice;
   if (savedChoice === "allow") {
     loadAnalytics();
   } else if (savedChoice === "decline") {

@@ -29,12 +29,12 @@ If an external newsletter form is added, extend `form-action` only for the selec
 
 ## Cache rule
 
-Cloudflare caches the two explicitly versioned assets below at the edge and in visitors' browsers for one year:
+The current source references these explicitly versioned assets:
 
-- `/assets/css/style.css?v=20260830-photo-ratio-v2`
-- `/assets/js/privacy.js?v=20260831-ga4-consent-v1`
+- `/assets/css/style.css?v=20260905-design-v1`
+- `/assets/js/privacy.js?v=20260908-ga4-repair-v1`
 
-The rule matches both the exact path and exact version query. HTML retains its short origin-controlled cache lifetime. The GA4 consent repair changes the JavaScript version only; before publishing this source, replace the former privacy-script cache target with the version above. Every future CSS or JavaScript change must update the relevant version string on every page before deployment; the source validator checks that the references remain consistent.
+The existing edge rule matches the exact path and version query. Each JavaScript repair receives a new URL on every HTML page, so older cached scripts cannot mask the repair. The 8 September 2026 Analytics repair uses the version above; until that URL is added to any long-cache rule, it uses the normal origin cache lifetime. Recheck live response headers after changing cache rules. Every future CSS or JavaScript change must update the relevant version on every page; the source validator checks that references remain consistent.
 
 Images retain the shorter origin cache lifetime because their public URLs are not currently versioned.
 
