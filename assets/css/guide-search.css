@@ -244,3 +244,13 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+.guide-quick-searches { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem .6rem; margin: 0 0 1rem; }
+.guide-quick-searches span { color: var(--muted); font-size: .84rem; margin-right: .25rem; }
+.guide-quick-searches button { min-height: 2.75rem; padding: .4rem .8rem; border: 1px solid var(--line); border-radius: 2rem; background: #fff; color: var(--ocean-deep); font: inherit; font-size: .86rem; cursor: pointer; }
+.guide-quick-searches button:hover { background: var(--sea-glass); border-color: var(--ocean); }
+.guide-result-card { border-color: var(--line); transition: border-color 150ms ease; }
+.guide-result-card:hover, .guide-result-card:focus-within { border-color: var(--ocean); }
+.guide-result-card h4 a { min-height: 2.75rem; }
+.guide-topic-heading { font-family: Georgia, serif; font-size: 1.65rem; font-weight: 400; }
+@media (prefers-reduced-motion: reduce) { .guide-result-card { transition: none; } }

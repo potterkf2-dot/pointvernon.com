@@ -79,7 +79,7 @@ for my $path (@ARGV) {
     $html =~ s{(<meta\s+name="theme-color"[^>]*>)}{$1\n  <meta name="referrer" content="strict-origin-when-cross-origin">}s;
   }
 
-  $html =~ s{/assets/css/style\.css(?:\?v=[^"\s>]*)?}{/assets/css/style.css?v=20260816-complete}g;
+  $html =~ s{/assets/css/style\.css(?:\?v=[^"\s>]*)?}{/assets/css/style.css?v=20260908-design-v2}g;
   if ($html !~ m{/assets/js/privacy\.js}) {
     $html =~ s{(\s*</head>)}{\n  <script defer src="/assets/js/privacy.js?v=20260908-ga4-repair-v1"></script>$1}s;
   }

@@ -5,9 +5,17 @@
   <link href="https://pointvernon.com/updates.xml" rel="self" type="application/atom+xml"/>
   <link href="https://pointvernon.com/updates/" rel="alternate" type="text/html"/>
   <id>https://pointvernon.com/updates/</id>
-  <updated>2026-09-08T20:00:00+10:00</updated>
+  <updated>2026-09-08T20:53:25+10:00</updated>
   <author><name>Point Vernon Guide</name><email>hello@pointvernon.com</email></author>
   <rights>Copyright 2026 Point Vernon Guide</rights>
+
+  <entry>
+    <title>Current rules and planning links clarified</title>
+    <link href="https://pointvernon.com/updates/#september-8-review"/>
+    <id>https://pointvernon.com/updates/#september-8-review</id>
+    <updated>2026-09-08T20:53:25+10:00</updated>
+    <summary>Dog-rule rollout timing, mapped fishing-zone restrictions, e-mobility rules and property-disclosure exclusions clarified. Working accessibility and transport booking links added.</summary>
+  </entry>
 
   <entry>
     <title>A mapped 5 km foreshore walking option</title>

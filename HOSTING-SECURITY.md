@@ -31,7 +31,7 @@ If an external newsletter form is added, extend `form-action` only for the selec
 
 The current source references these explicitly versioned assets:
 
-- `/assets/css/style.css?v=20260905-design-v1`
+- `/assets/css/style.css?v=20260908-design-v2`
 - `/assets/js/privacy.js?v=20260908-ga4-repair-v1`
 
 The existing edge rule matches the exact path and version query. Each JavaScript repair receives a new URL on every HTML page, so older cached scripts cannot mask the repair. The 8 September 2026 Analytics repair uses the version above; until that URL is added to any long-cache rule, it uses the normal origin cache lifetime. Recheck live response headers after changing cache rules. Every future CSS or JavaScript change must update the relevant version on every page; the source validator checks that references remain consistent.

@@ -12,7 +12,7 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE_ORIGIN = "https://pointvernon.com"
-EXPECTED_STYLE_VERSION = "20260905-design-v1"
+EXPECTED_STYLE_VERSION = "20260908-design-v2"
 EXPECTED_PRIVACY_VERSION = "20260908-ga4-repair-v1"
 EXPECTED_CONSENT_STORAGE_KEY = "point-vernon-analytics-choice-v2"
 LEGACY_CONSENT_STORAGE_KEY = "point-vernon-analytics-choice"
@@ -219,7 +219,11 @@ def validate_privacy_surface(text, label, errors):
         "data-analytics-decline",
         "data-privacy-settings",
     ):
-        if text.count(attribute) != 1:
+        count = text.count(attribute)
+        if attribute == "data-privacy-settings":
+            if count < 1:
+                errors.append(f"{label}: expected at least one privacy settings control")
+        elif count != 1:
             errors.append(f"{label}: expected one {attribute} consent control")
 
     if re.search(

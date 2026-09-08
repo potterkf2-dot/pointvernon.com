@@ -11,7 +11,7 @@
 
   if (!filters || !search || !topic || !status || !emptyState) return;
 
-  const aliases = { dogs: "dog", beaches: "beach", walks: "walk", parks: "park", buses: "bus", cafes: "coffee", cafe: "coffee" };
+  const aliases = { dogs: "dog", beaches: "beach", walks: "walk", walking: "walk", parks: "park", buses: "bus", cafes: "coffee", cafe: "coffee", bbqs: "barbecue", bbq: "barbecue", barbeque: "barbecue", toilets: "toilet", wheelchairs: "wheelchair", caravans: "caravan", bikes: "bike", cycling: "bike", bicycle: "bike", kids: "children" };
 
   function normalise(value) {
     return String(value)
@@ -27,7 +27,7 @@
     return {
       element: element,
       category: element.dataset.guideCategory,
-      text: normalise(element.dataset.guideTitle + " " + element.textContent + " " + (link ? link.getAttribute("href") : ""))
+      text: normalise(element.dataset.guideTitle + " " + element.textContent + " " + (element.dataset.guideKeywords || "") + " " + (link ? link.getAttribute("href") : "")).split(" ").map(function (term) { return aliases[term] || term; }).join(" ")
     };
   });
 
@@ -87,6 +87,18 @@
       search.focus();
     });
   });
+
+  document.querySelectorAll('[data-guide-query]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      window.clearTimeout(pending);
+      search.value = button.dataset.guideQuery;
+      topic.value = 'all';
+      filterGuides();
+      search.focus();
+    });
+  });
+  const quickSearches = document.querySelector('[data-guide-quick-searches]');
+  if (quickSearches) quickSearches.hidden = false;
 
   // Progressive enhancement: all links remain visible if this script is unavailable.
   // Search stays in this page. It sends no requests, stores no query and changes no URL.
