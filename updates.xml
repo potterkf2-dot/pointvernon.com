@@ -5,9 +5,17 @@
   <link href="https://pointvernon.com/updates.xml" rel="self" type="application/atom+xml"/>
   <link href="https://pointvernon.com/updates/" rel="alternate" type="text/html"/>
   <id>https://pointvernon.com/updates/</id>
-  <updated>2026-09-01T00:51:18+10:00</updated>
+  <updated>2026-09-08T20:00:00+10:00</updated>
   <author><name>Point Vernon Guide</name><email>hello@pointvernon.com</email></author>
   <rights>Copyright 2026 Point Vernon Guide</rights>
+
+  <entry>
+    <title>A mapped 5 km foreshore walking option</title>
+    <link href="https://pointvernon.com/walks/#five-km"/>
+    <id>https://pointvernon.com/updates/#september-8</id>
+    <updated>2026-09-08T20:00:00+10:00</updated>
+    <summary>The walks guide now includes the organiser-documented 5 km foreshore route, starting-point details, an official course map and linked planning guides.</summary>
+  </entry>
 
   <entry>
     <title>Library family-program link and monthly checks refreshed</title>
