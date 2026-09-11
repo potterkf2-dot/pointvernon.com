@@ -2,6 +2,7 @@
 
 use strict;
 use warnings;
+use utf8;
 use File::Find;
 use File::Spec;
 
@@ -39,6 +40,42 @@ for my $file (@files) {
   if ($html !~ m{<a href="/editorial-policy/">Editorial standards</a>}) {
     $html =~ s{<a href="/about/">About this site</a>}{<a href="/about/">About this site</a>\n        <a href="/editorial-policy/">Editorial standards</a>} or die "Footer About link not found in $file\n";
   }
+
+  # Keep commercial and independence policy in the editorial-policy page
+  # instead of repeating it as boilerplate across every guide.
+  $html =~ s{<p>Point Vernon Guide is an independent community website\. It is not affiliated with Fraser Coast Regional Council, any tourism body or any business\. There are no paid placements or affiliate links\.</p>}{}g;
+  $html =~ s{<p>Point Vernon Guide is an independent community website\. It is not affiliated with parkrun, Fraser Coast Regional Council, any tourism body or any business\. There are no paid placements or affiliate links\.</p>}{}g;
+
+  $html =~ s{Choose by the time you have}{Browse outing lengths}g;
+  $html =~ s{<h2>Browse outing lengths</h2>}{<h2>Outing ideas by available time</h2>}g;
+  $html =~ s{<p class="eyebrow">Evidence boundary</p>}{<p class="eyebrow">What the records establish</p>}g;
+  $html =~ s{ESA Park has Council-listed toilets and picnic facilities}{Council lists toilets and picnic facilities at ESA Park}g;
+  $html =~ s{ESA Park and Webb Park have Council-listed playgrounds}{Council lists playgrounds at ESA Park and Webb Park}g;
+  $html =~ s{Council-listed features}{Features in Council’s record}g;
+  $html =~ s{with a Council-listed playground, seating, basketball facility and shelter}{where Council lists a playground, seating, basketball facility and shelter}g;
+  $html =~ s{Independent, free to use and supported by source links\. No paid placements or affiliate links\.}{Free to use and supported by source links.}g;
+  $html =~ s{<li><strong>Commercial model</strong><span>No paid placements or affiliate links</span></li>}{<li><strong>Editorial standards</strong><span>Selection and corrections are publicly explained</span></li>}g;
+  $html =~ s{<p>There are no paid rankings, affiliate links or sponsored placements\. A local business may be included when it helps answer a practical visitor question\. Inclusion is not a review, and omission is not a negative judgement\.</p>\s*<p>Business owners are welcome to correct basic factual details, but cannot buy preferred wording or placement\.</p>}{<p>A local business may be included when it helps answer a practical visitor question. Inclusion is not a review, and omission is not a negative judgement. The <a href="/editorial-policy/#selection">editorial policy explains selection and commercial standards</a>.</p>\n            <p>Business owners are welcome to correct basic factual details.</p>}g;
+  $html =~ s{These are local starting points; no business has paid to appear\.}{These are local starting points.}g;
+  $html =~ s{<p>Point Vernon Guide does not use affiliate links, sell rankings or accept paid placement\. Operator websites are used as current starting points, but the provider remains responsible for availability, rates, facilities and booking terms\.</p>}{<p>Operator websites are used as current starting points, but the provider remains responsible for availability, rates, facilities and booking terms. Read the <a href="/editorial-policy/#selection">editorial policy</a> for selection and commercial standards.</p>}g;
+  $html =~ s{<li><strong>How businesses are listed</strong><span>No paid placement or affiliate links</span></li>}{<li><strong>Listing basis</strong><span>Local relevance and current sources</span></li>}g;
+  $html =~ s{<a href="/parks-playgrounds/#esa">ESA Park</a> and <a href="/parks-playgrounds/#gables">The Gables</a> have Council-listed picnic facilities}{Council lists picnic facilities at <a href="/parks-playgrounds/#esa">ESA Park</a> and <a href="/parks-playgrounds/#gables">The Gables</a>}g;
+  $html =~ s{<p>Point Vernon Guide does not sell rankings, accept paid placement or use affiliate links\. A listing is included because it appears to be useful within Point Vernon, not because the business has paid or provided a benefit\. Corrections and additions are assessed using the same practical standard\.</p>}{<p>A listing is included when it is useful within Point Vernon and its details can be checked. Read the <a href="/editorial-policy/#selection">editorial policy</a> for selection and commercial standards.</p>}g;
+
+  if ($file =~ m{/updates/index\.html$}) {
+    $html =~ s{"dateModified":"2026-09-08"}{"dateModified":"2026-09-11"}g;
+    $html =~ s{Last updated: <time datetime="2026-09-08">8 September 2026</time>}{Last updated: <time datetime="2026-09-11">11 September 2026</time>}g;
+    $html =~ s{(<p class="in-page-heading">On this page</p>)}{$1<a href="#september-11-weekend">This weekend</a>} unless $html =~ m{id="september-11-weekend"};
+    my $weekend = q{<section id="september-11-weekend"><p class="eyebrow"><time datetime="2026-09-11">Checked 11 September 2026 at 2 pm AEST</time></p><h2>This weekend: 12–13 September</h2><ul><li><strong>Point Vernon parkrun:</strong> the organiser advertises a free 5 km event at Point Vernon Foreshore Reserve at 7 am Saturday. Point Vernon was not on the <a href="https://www.parkrun.com.au/cancellations/">official cancellation list</a> when checked, but late cancellations remain possible, so check again before travelling. <a href="https://www.parkrun.com.au/pointvernonforeshorereserve/">Read the event details and registration requirements</a>.</li><li><strong>Cards at Hervey Bay Library:</strong> Council’s program lists a free, no-booking card-playing session from 9 am to 3 pm Saturday; children under 12 need a guardian. <a href="https://www.frasercoast.qld.gov.au/Events/Cards-Hervey-Bay">Check the current venue listing</a>.</li><li><strong>Urangan tide highlights:</strong> the official table predicts a 3.53 m high at 9:15 am and a 0.59 m low at 3:27 pm Saturday; Sunday’s predicted high is 3.49 m at 9:51 am and low is 0.76 m at 4:04 pm. Times are AEST. These are Urangan predictions, not Point Vernon observations or an assurance of access or safety. <a href="https://www.msq.qld.gov.au/_/media/tmronline/msqinternet/msqfiles/home/tides/online-tide-tables/2026/2026_queenslandtidetables.pdf">Check the Maritime Safety Queensland table</a>.</li></ul><p class="small-note">Tide source: Maritime Safety Queensland’s 2026 Queensland Tide Tables; predictions © Commonwealth of Australia 2025, Bureau of Meteorology. Predictions only; actual water levels can vary with weather. Weekend details are retained here as a dated archive.</p></section>};
+    $html =~ s{(<article class="article-body update-log">)}{$1\n        $weekend} unless $html =~ m{id="september-11-weekend"};
+  }
+
+  $html =~ s{\n[ \t]+\n}{\n\n}g;
+  $html =~ s{â}{–}g;
+  $html =~ s{â}{’}g;
+  $html =~ s{Â©}{©}g;
+  $html =~ s{https://www\.frasercoast\.qld\.gov\.au/Events/Cards-Hervey-Bay}{https://www.frasercoast.qld.gov.au/Community/Events-Calendar}g;
+  $html =~ s{Check the current venue listing}{Check the current Council events calendar}g;
 
   next if $html eq $original;
 
