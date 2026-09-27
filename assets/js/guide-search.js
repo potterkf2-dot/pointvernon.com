@@ -38,7 +38,6 @@
       return aliases[term] || term;
     });
     let guideCount = 0;
-    let siteCount = 0;
 
     cards.forEach(function (card) {
       const matchesTopic = topic.value === "all" || topic.value === card.category;
@@ -46,8 +45,7 @@
       const visible = matchesTopic && matchesSearch;
       card.element.hidden = !visible;
       if (visible) {
-        if (card.category === "site") siteCount += 1;
-        else guideCount += 1;
+        guideCount += 1;
       }
     });
 
@@ -57,11 +55,11 @@
       });
     });
 
-    const count = guideCount + siteCount;
+    const count = guideCount;
     const filtered = terms.length > 0 || topic.value !== "all";
     status.textContent = filtered
-      ? count + (count === 1 ? " page found" : " pages found")
-      : guideCount + " guides and " + siteCount + " site information pages";
+      ? count + (count === 1 ? " guide found" : " guides found")
+      : guideCount + " local guides";
     emptyState.hidden = count !== 0;
     clearButtons.forEach(function (button) {
       button.disabled = search.value.length === 0 && topic.value === "all";

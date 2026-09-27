@@ -18,7 +18,7 @@ find(
 );
 
 for my $file (@files) {
-  next if $file =~ m{/updates/index\.html$};
+  next if $file =~ m{/(?:updates|editorial-policy)/index\.html$};
   open my $in, '<:encoding(UTF-8)', $file or die "Cannot read $file: $!\n";
   local $/;
   my $html = <$in>;
@@ -34,11 +34,10 @@ for my $file (@files) {
   $html =~ s{\s*<link rel="alternate" type="application/atom\+xml"[^>]*>}{}g;
   $html =~ s{<a href="/updates/">Latest updates</a>}{}g;
 
-  if ($html !~ m{<a href="/editorial-policy/">Editorial standards</a>}) {
-    $html =~ s{<a href="/about/">About this site</a>}{<a href="/about/">About this site</a>\n        <a href="/editorial-policy/">Editorial standards</a>} or die "Footer About link not found in $file\n";
-  }
+  # Standards live in About; do not restore a separate footer item.
+  $html =~ s{<a href="/editorial-policy/">Editorial standards</a>}{}g;
 
-  # Keep commercial and independence policy in the editorial-policy page
+  # Keep commercial and independence policy in the About page
   # instead of repeating it as boilerplate across every guide.
   $html =~ s{<p>Point Vernon Guide is an independent community website\. It is not affiliated with Fraser Coast Regional Council, any tourism body or any business\. There are no paid placements or affiliate links\.</p>}{}g;
   $html =~ s{<p>Point Vernon Guide is an independent community website\. It is not affiliated with parkrun, Fraser Coast Regional Council, any tourism body or any business\. There are no paid placements or affiliate links\.</p>}{}g;
@@ -52,12 +51,12 @@ for my $file (@files) {
   $html =~ s{with a Council-listed playground, seating, basketball facility and shelter}{where Council lists a playground, seating, basketball facility and shelter}g;
   $html =~ s{Independent, free to use and supported by source links\. No paid placements or affiliate links\.}{Free to use and supported by source links.}g;
   $html =~ s{<li><strong>Commercial model</strong><span>No paid placements or affiliate links</span></li>}{<li><strong>Editorial standards</strong><span>Selection and corrections are publicly explained</span></li>}g;
-  $html =~ s{<p>There are no paid rankings, affiliate links or sponsored placements\. A local business may be included when it helps answer a practical visitor question\. Inclusion is not a review, and omission is not a negative judgement\.</p>\s*<p>Business owners are welcome to correct basic factual details, but cannot buy preferred wording or placement\.</p>}{<p>A local business may be included when it helps answer a practical visitor question. Inclusion is not a review, and omission is not a negative judgement. The <a href="/editorial-policy/#selection">editorial policy explains selection and commercial standards</a>.</p>\n            <p>Business owners are welcome to correct basic factual details.</p>}g;
+  $html =~ s{<p>There are no paid rankings, affiliate links or sponsored placements\. A local business may be included when it helps answer a practical visitor question\. Inclusion is not a review, and omission is not a negative judgement\.</p>\s*<p>Business owners are welcome to correct basic factual details, but cannot buy preferred wording or placement\.</p>}{<p>A local business may be included when it helps answer a practical visitor question. Inclusion is not a review, and omission is not a negative judgement. The <a href="/about/#selection">editorial policy explains selection and commercial standards</a>.</p>\n            <p>Business owners are welcome to correct basic factual details.</p>}g;
   $html =~ s{These are local starting points; no business has paid to appear\.}{These are local starting points.}g;
-  $html =~ s{<p>Point Vernon Guide does not use affiliate links, sell rankings or accept paid placement\. Operator websites are used as current starting points, but the provider remains responsible for availability, rates, facilities and booking terms\.</p>}{<p>Operator websites are used as current starting points, but the provider remains responsible for availability, rates, facilities and booking terms. Read the <a href="/editorial-policy/#selection">editorial policy</a> for selection and commercial standards.</p>}g;
+  $html =~ s{<p>Point Vernon Guide does not use affiliate links, sell rankings or accept paid placement\. Operator websites are used as current starting points, but the provider remains responsible for availability, rates, facilities and booking terms\.</p>}{<p>Operator websites are used as current starting points, but the provider remains responsible for availability, rates, facilities and booking terms. Read the <a href="/about/#selection">editorial policy</a> for selection and commercial standards.</p>}g;
   $html =~ s{<li><strong>How businesses are listed</strong><span>No paid placement or affiliate links</span></li>}{<li><strong>Listing basis</strong><span>Local relevance and current sources</span></li>}g;
   $html =~ s{<a href="/parks-playgrounds/#esa">ESA Park</a> and <a href="/parks-playgrounds/#gables">The Gables</a> have Council-listed picnic facilities}{Council lists picnic facilities at <a href="/parks-playgrounds/#esa">ESA Park</a> and <a href="/parks-playgrounds/#gables">The Gables</a>}g;
-  $html =~ s{<p>Point Vernon Guide does not sell rankings, accept paid placement or use affiliate links\. A listing is included because it appears to be useful within Point Vernon, not because the business has paid or provided a benefit\. Corrections and additions are assessed using the same practical standard\.</p>}{<p>A listing is included when it is useful within Point Vernon and its details can be checked. Read the <a href="/editorial-policy/#selection">editorial policy</a> for selection and commercial standards.</p>}g;
+  $html =~ s{<p>Point Vernon Guide does not sell rankings, accept paid placement or use affiliate links\. A listing is included because it appears to be useful within Point Vernon, not because the business has paid or provided a benefit\. Corrections and additions are assessed using the same practical standard\.</p>}{<p>A listing is included when it is useful within Point Vernon and its details can be checked. Read the <a href="/about/#selection">editorial policy</a> for selection and commercial standards.</p>}g;
 
   $html =~ s{\n[ \t]+\n}{\n\n}g;
   $html =~ s{â}{–}g;

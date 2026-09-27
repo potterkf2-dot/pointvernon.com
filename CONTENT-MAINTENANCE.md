@@ -36,3 +36,7 @@ The owner retired the public updates diary and Atom feed on 27 September 2026. M
 ## Sitemap dates
 
 After a substantive page edit, update its visible `<time datetime="YYYY-MM-DD">` value and its structured-data `dateModified` value where present. Then run `perl scripts/sync-sitemap-lastmod.pl` and `perl scripts/sync-sitemap-lastmod.pl --check`. Do not give every sitemap URL the deployment date.
+
+## Visitor-focused navigation — 27 September 2026
+
+Keep the directory focused on the 31 local guides. About, photo credits and privacy remain in the footer. Editorial standards are consolidated in `/about/`; `/editorial-policy/` is a noindex legacy redirect only and must stay out of navigation and the sitemap. Do not reintroduce a technical public photo file register or a separate editorial-policy page. Preserve significant image-editing disclosures and existing commercial/privacy commitments.

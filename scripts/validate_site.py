@@ -368,6 +368,7 @@ def validate_privacy_version_references(errors):
 def main():
     errors = []
     page_files = sorted(path for path in ROOT.rglob("index.html") if ".git" not in path.parts)
+    redirects = {"/updates/": "/whats-on/", "/editorial-policy/": "/about/#standards"}
     parsed_pages = {}
     titles = {}
     descriptions = {}
@@ -375,11 +376,13 @@ def main():
     for file_path in page_files:
         route = route_for(file_path)
         parser, text = parse_page(file_path)
-        if route == "/updates/":
-            if "noindex" not in parser.robots or parser.canonical != [SITE_ORIGIN + "/whats-on/"]:
-                errors.append("/updates/: retired route must be a noindex redirect to /whats-on/")
-            if '<meta http-equiv="refresh" content="0; url=/whats-on/">' not in text or parser.hrefs != ["/whats-on/"]:
-                errors.append("/updates/: expected immediate redirect and a single fallback link")
+        if route in redirects:
+            target = redirects[route]
+            canonical = SITE_ORIGIN + target.split("#")[0]
+            if "noindex" not in parser.robots or parser.canonical != [canonical]:
+                errors.append(f"{route}: retired route must be a noindex redirect to {target}")
+            if f'<meta http-equiv="refresh" content="0; url={target}">' not in text or parser.hrefs != [target]:
+                errors.append(f"{route}: expected immediate redirect and a single fallback link")
             continue
         parsed_pages[route] = (parser, text)
         titles[route] = parser.title
@@ -404,10 +407,10 @@ def main():
             errors.append(f"{route}: canonical does not match route ({parser.canonical})")
         if parser.feed_links:
             errors.append(f"{route}: retired feed discovery link must not return")
-        if any(urlsplit(href).path in {"/updates/", "/updates.xml"} for href in parser.hrefs):
-            errors.append(f"{route}: link to retired updates content")
-        if SITE_ORIGIN + "/updates/" in text:
-            errors.append(f"{route}: stale updates URL in content or structured data")
+        if any(urlsplit(href).path in {"/updates/", "/updates.xml", "/editorial-policy/"} for href in parser.hrefs):
+            errors.append(f"{route}: link to retired content")
+        if any(SITE_ORIGIN + old_route in text for old_route in redirects):
+            errors.append(f"{route}: stale retired URL in content or structured data")
         duplicate_ids = [item for item, count in Counter(parser.ids).items() if count > 1]
         if duplicate_ids:
             errors.append(f"{route}: duplicate IDs {duplicate_ids}")
@@ -505,8 +508,9 @@ def main():
 
     if (ROOT / "updates.xml").exists():
         errors.append("updates.xml: retired feed must not be republished")
-    if not (ROOT / "updates/index.html").is_file():
-        errors.append("/updates/: legacy redirect is missing")
+    for route in redirects:
+        if not (ROOT / route.strip("/") / "index.html").is_file():
+            errors.append(f"{route}: legacy redirect is missing")
 
     security = (ROOT / ".well-known" / "security.txt").read_text(encoding="utf-8")
     for required in ["Contact:", "Expires:", "Canonical:"]:
