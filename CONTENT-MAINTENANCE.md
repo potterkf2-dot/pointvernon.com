@@ -40,3 +40,7 @@ After a substantive page edit, update its visible `<time datetime="YYYY-MM-DD">`
 ## Visitor-focused navigation — 27 September 2026
 
 Keep the directory focused on the 31 local guides. About, photo credits and privacy remain in the footer. Editorial standards are consolidated in `/about/`; `/editorial-policy/` is a noindex legacy redirect only and must stay out of navigation and the sitemap. Do not reintroduce a technical public photo file register or a separate editorial-policy page. Preserve significant image-editing disclosures and existing commercial/privacy commitments.
+
+## AdSense application — 28 September 2026
+
+The owner authorised an AdSense application. Public pages contain the account verification meta tag for `ca-pub-1569993121551986`; `/ads.txt` contains Google’s supplied seller record. These do not load ad scripts or display advertisements. Preserve verification while the application is pending. Approval, account setup, consent handling, advertising disclosures and banner placement must be completed before serving ads. Do not add Auto ads or behavioural advertising through routine maintenance.
