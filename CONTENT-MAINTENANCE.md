@@ -29,9 +29,9 @@ For every volatile-content edit, record:
 
 Do not publish a changed event date, facility, access claim, business detail, safety rule or transport statement without a current source.
 
-## Public update record
+## Update the relevant guide
 
-Add a short item to `/updates/` and `updates.xml` when a verified change could affect a practical decision or materially correct the public record. Link to the complete guide rather than duplicating all context in the update item. Do not record routine punctuation, layout or cache-version changes.
+The owner retired the public updates diary and Atom feed on 27 September 2026. Make useful changes directly on the relevant guide: event and nearby attraction notices belong on `/whats-on/`, transport changes on `/getting-around/`, and service changes on `/local-help/`. Keep maintenance logs outside the public site. Do not recreate `/updates/`, its feed, navigation links or dated maintenance posts. `/updates/` is only a noindex legacy redirect to `/whats-on/`. Remove expired specifics rather than building an event archive.
 
 ## Sitemap dates
 

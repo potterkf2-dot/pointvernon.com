@@ -375,6 +375,12 @@ def main():
     for file_path in page_files:
         route = route_for(file_path)
         parser, text = parse_page(file_path)
+        if route == "/updates/":
+            if "noindex" not in parser.robots or parser.canonical != [SITE_ORIGIN + "/whats-on/"]:
+                errors.append("/updates/: retired route must be a noindex redirect to /whats-on/")
+            if '<meta http-equiv="refresh" content="0; url=/whats-on/">' not in text or parser.hrefs != ["/whats-on/"]:
+                errors.append("/updates/: expected immediate redirect and a single fallback link")
+            continue
         parsed_pages[route] = (parser, text)
         titles[route] = parser.title
         descriptions[route] = parser.descriptions[0] if parser.descriptions else ""
@@ -396,8 +402,12 @@ def main():
             errors.append(f"{route}: public sitemap page must not declare noindex")
         if len(parser.canonical) != 1 or parser.canonical[0] != SITE_ORIGIN + route:
             errors.append(f"{route}: canonical does not match route ({parser.canonical})")
-        if len(parser.feed_links) != 1 or urlsplit(parser.feed_links[0]).path != "/updates.xml":
-            errors.append(f"{route}: missing or incorrect Atom discovery link")
+        if parser.feed_links:
+            errors.append(f"{route}: retired feed discovery link must not return")
+        if any(urlsplit(href).path in {"/updates/", "/updates.xml"} for href in parser.hrefs):
+            errors.append(f"{route}: link to retired updates content")
+        if SITE_ORIGIN + "/updates/" in text:
+            errors.append(f"{route}: stale updates URL in content or structured data")
         duplicate_ids = [item for item, count in Counter(parser.ids).items() if count > 1]
         if duplicate_ids:
             errors.append(f"{route}: duplicate IDs {duplicate_ids}")
@@ -493,10 +503,10 @@ def main():
         if sitemap_dates.get(route) != page_date:
             errors.append(f"{route}: sitemap {sitemap_dates.get(route)} != page {page_date}")
 
-    try:
-        ET.parse(ROOT / "updates.xml")
-    except ET.ParseError as error:
-        errors.append(f"updates.xml: invalid Atom XML ({error})")
+    if (ROOT / "updates.xml").exists():
+        errors.append("updates.xml: retired feed must not be republished")
+    if not (ROOT / "updates/index.html").is_file():
+        errors.append("/updates/: legacy redirect is missing")
 
     security = (ROOT / ".well-known" / "security.txt").read_text(encoding="utf-8")
     for required in ["Contact:", "Expires:", "Canonical:"]:
@@ -512,7 +522,7 @@ def main():
     print(
         f"Validated {len(parsed_pages)} pages: unique metadata, self-canonicals, one H1, "
         "valid JSON-LD and breadcrumbs, internal links/resources, image dimensions and alt attributes, "
-        "heading order, indexability, matching sitemap dates, Atom XML and security.txt."
+        "heading order, indexability, matching sitemap dates, retired-route handling and security.txt."
     )
     return 0
 
