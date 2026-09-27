@@ -40,6 +40,7 @@ for my $file (@page_files) {
   $relative =~ s{\\}{/}g;
   my $route = $relative eq 'index.html' ? '/' : '/' . $relative;
   $route =~ s{index\.html$}{};
+  next if $route eq "/updates/"; # Retired, noindex redirect only.
   $page_routes{$route} = $file;
 }
 
