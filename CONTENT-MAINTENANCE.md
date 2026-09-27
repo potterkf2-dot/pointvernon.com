@@ -44,3 +44,7 @@ Keep the directory focused on the 31 local guides. About, photo credits and priv
 ## AdSense application — 28 September 2026
 
 The owner authorised an AdSense application. Public pages contain the account verification meta tag for `ca-pub-1569993121551986`; `/ads.txt` contains Google’s supplied seller record. These do not load ad scripts or display advertisements. Preserve verification while the application is pending. Approval, account setup, consent handling, advertising disclosures and banner placement must be completed before serving ads. Do not add Auto ads or behavioural advertising through routine maintenance.
+
+## Coastal design system — 28 September 2026
+
+Preserve the shared coastal identity: the decorative wave/sun mark, panoramic homepage, cream guide headers, forest-green navigation, responsive contents and restrained photo layouts. The final coastal block in `assets/css/style.css` defines the current design. Shared stylesheet version is `20260928-coastal-v3`; keep the synchroniser and validator aligned when changing it. Existing system fonts and approved local photographs avoid extra third-party requests. Design-only changes do not imply a new factual review date.

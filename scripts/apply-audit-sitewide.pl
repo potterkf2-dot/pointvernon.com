@@ -26,7 +26,7 @@ for my $file (@files) {
 
   my $original = $html;
 
-  $html =~ s{(/assets/css/style\.css)(?:\?v=[^"\s>]*)?}{$1?v=20260908-design-v2}g;
+  $html =~ s{(/assets/css/style\.css)(?:\?v=[^"\s>]*)?}{$1?v=20260928-coastal-v3}g;
   $html =~ s{(/assets/js/navigation\.js)(?:\?v=[^"\s>]*)?}{$1?v=20260908-navigation-v2}g;
   $html =~ s{(/assets/js/privacy\.js)(?:\?v=[^"\s>]*)?}{$1?v=20260908-ga4-repair-v1}g;
 
