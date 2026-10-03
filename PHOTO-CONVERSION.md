@@ -1,6 +1,6 @@
 # Photograph conversion recipe
 
-The website has no build step. This script is a separate Mac utility for turning the approved full-size photographs into files ready for the site’s `/images/` folder.
+The website has no build step. This script is a separate Mac utility for turning the approved full-size photographs into files ready for `docs/images/`.
 
 ## Install once
 
@@ -17,14 +17,14 @@ The script uses Google’s `cwebp` and libavif’s `avifenc`. Their maintained r
 1. Put the approved full-resolution originals in one folder.
 2. Rename each original to the filename in `PHOTO-SHOT-LIST.md`. The script accepts JPEG, HEIC, PNG and TIFF extensions; the stem before the extension must match `photo-manifest.tsv` exactly.
 3. Keep this folder as the untouched master archive. The script only reads it.
-4. Make sure the website `/images/` folder is empty. The script deliberately refuses to mix a new set with old files.
+4. Use a new empty output folder, then copy reviewed derivatives into `docs/images/`. The script deliberately refuses to mix a new set with old files.
 
 ## Run once
 
 From the repository root:
 
 ```sh
-./scripts/build-images.sh "/path/to/full-size-originals" "./images"
+./scripts/build-images.sh "/path/to/full-size-originals" "./new-photo-set"
 ```
 
 The script checks that all 74 originals are present and that no filename is ambiguous. It then centre-crops and produces:
