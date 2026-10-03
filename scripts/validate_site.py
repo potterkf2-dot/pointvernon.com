@@ -10,17 +10,14 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent / "docs"
 SITE_ORIGIN = "https://pointvernon.com"
-EXPECTED_STYLE_VERSION = "20260928-coastal-v3"
-EXPECTED_PRIVACY_VERSION = "20260908-ga4-repair-v1"
+EXPECTED_STYLE_VERSION = "20261004-repairs-v1"
+EXPECTED_PRIVACY_VERSION = "20261004-consent-v1"
 EXPECTED_CONSENT_STORAGE_KEY = "point-vernon-analytics-choice-v2"
 LEGACY_CONSENT_STORAGE_KEY = "point-vernon-analytics-choice"
 EXPECTED_MEASUREMENT_ID = "G-003LRJYP3K"
-EXPECTED_BANNER_COPY = (
-    "Google Analytics is off unless you allow it. If allowed, it may set first-party "
-    "Analytics cookies to measure visits and selected actions. Advertising features remain disabled."
-)
+EXPECTED_BANNER_COPY = "Allow cookies to measure visits and useful clicks? Advertising is disabled."
 EXPECTED_ENHANCED_MEASUREMENT_COPY = (
     "Enhanced Measurement may also record scrolls, outbound-link clicks, file downloads, "
     "on-site search results, embedded-video interactions, and form starts or submissions"
@@ -45,12 +42,15 @@ class PageAudit(HTMLParser):
         self.title_parts = []
         self._in_json_ld = False
         self._in_title = False
+        self._in_head = False
 
     def handle_starttag(self, tag, attrs):
         values = dict(attrs)
+        if tag == "head":
+            self._in_head = True
         if tag == "html":
             self.lang = values.get("lang")
-        if tag == "title":
+        if tag == "title" and self._in_head:
             self._in_title = True
         if tag == "h1":
             self.h1_count += 1
@@ -87,6 +87,8 @@ class PageAudit(HTMLParser):
             self.images.append(values)
 
     def handle_endtag(self, tag):
+        if tag == "head":
+            self._in_head = False
         if tag == "title":
             self._in_title = False
         if tag == "script":
@@ -208,7 +210,7 @@ def validate_asset_versions(parser, label, errors):
 def validate_privacy_surface(text, label, errors):
     if text.count(EXPECTED_BANNER_COPY) != 1:
         errors.append(f"{label}: expected the current Analytics cookie disclosure once")
-    if text.count(">Allow Analytics</button>") != 1:
+    if text.count(">Allow analytics</button>") != 1:
         errors.append(f"{label}: expected one current Analytics allow control")
     if "Allow anonymous Analytics" in text or "Analytics storage remain disabled" in text:
         errors.append(f"{label}: stale cookieless Analytics wording remains")
@@ -367,6 +369,14 @@ def validate_privacy_version_references(errors):
 
 def main():
     errors = []
+    public_suffixes = {".html", ".css", ".js", ".png", ".jpg", ".jpeg", ".avif", ".webp", ".svg", ".ico", ".txt", ".xml"}
+    for public_file in ROOT.rglob("*"):
+        if public_file.is_file() and public_file.name not in {"CNAME", ".nojekyll"} and public_file.suffix.lower() not in public_suffixes:
+            errors.append(f"Unexpected public file: {public_file.relative_to(ROOT)}")
+    if (ROOT / "assets/css/style.css").stat().st_size >= 25000:
+        errors.append("Stylesheet must remain under 25,000 bytes")
+    if list((ROOT / "assets/css").glob("*.css")) != [ROOT / "assets/css/style.css"]:
+        errors.append("Expected one shared stylesheet")
     page_files = sorted(path for path in ROOT.rglob("index.html") if ".git" not in path.parts)
     redirects = {"/updates/": "/whats-on/", "/editorial-policy/": "/about/#standards"}
     parsed_pages = {}
@@ -381,7 +391,7 @@ def main():
             canonical = SITE_ORIGIN + target.split("#")[0]
             if "noindex" not in parser.robots or parser.canonical != [canonical]:
                 errors.append(f"{route}: retired route must be a noindex redirect to {target}")
-            if f'<meta http-equiv="refresh" content="0; url={target}">' not in text or parser.hrefs != [target]:
+            if not re.search(r'<meta[^>]+content="0; url=' + re.escape(target) + r'"[^>]+http-equiv="refresh"', text) or parser.hrefs != [target]:
                 errors.append(f"{route}: expected immediate redirect and a single fallback link")
             continue
         parsed_pages[route] = (parser, text)
@@ -390,11 +400,11 @@ def main():
 
         if parser.lang != "en-AU":
             errors.append(f"{route}: expected lang=en-AU")
-        if not parser.title:
-            errors.append(f"{route}: missing title")
+        if not parser.title or len(parser.title) >= 60:
+            errors.append(f"{route}: title must be non-empty and under 60 characters")
         if len(parser.descriptions) != 1 or not parser.descriptions[0]:
             errors.append(f"{route}: expected one non-empty meta description")
-        elif len(parser.descriptions[0]) > 160:
+        elif not 120 <= len(parser.descriptions[0]) <= 155:
             errors.append(f"{route}: meta description is {len(parser.descriptions[0])} characters")
         if parser.h1_count != 1:
             errors.append(f"{route}: expected one H1, found {parser.h1_count}")
@@ -448,6 +458,8 @@ def main():
     validate_privacy_surface(not_found_text, "/404.html", errors)
     if not {"noindex", "none"}.intersection(not_found_parser.robots):
         errors.append("/404.html: error page must declare noindex")
+    if not_found_parser.canonical:
+        errors.append("/404.html: remove the canonical from the error page")
     validate_analytics_script(errors)
     validate_privacy_version_references(errors)
 

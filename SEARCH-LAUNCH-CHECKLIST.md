@@ -1,12 +1,7 @@
-# Search launch checklist
+# Search release checklist
 
-These actions require owner access to search-engine accounts and must be completed after deployment.
+After deployment, inspect the homepage, Gatakers Bay, beaches, walks, parks, things to do and visiting in Search Console. Request indexing and review the discovered-page issue. Submit the sitemap in Bing Webmaster Tools.
 
-- Verify the canonical HTTPS domain in Google Search Console and Bing Webmaster Tools.
-- Submit `https://pointvernon.com/sitemap.xml` in both services.
-- Inspect the homepage, each new hub and one example from every page type.
-- Request indexing only after the deployed canonical, status, robots directive and rendered content are confirmed.
-- Monitor indexing exclusions, duplicate-canonical reports, mobile usability and Core Web Vitals.
-- Record the baseline non-branded queries for Point Vernon, Hervey Bay and the relevant page intent; do not use ranking as the only success measure.
-- Recheck the sitemap and internal links after any URL addition, removal or redirect.
-- Keep the existing Google verification file only while it is attached to an active property owned by the site operator.
+Run `python3 scripts/submit_indexnow.py` only after the new key file and pages are live. The public key is in INDEXNOW-KEY and its matching text file in docs/. Submission requests a crawl; it does not guarantee indexing.
+
+Seek useful contextual links from related guides, holiday parks, the parkrun community and local history/community pages. The publisher should arrange outreach and photo permissions.

@@ -1,45 +1,27 @@
 # Hosting, security and caching
 
-The site is served by GitHub Pages behind Cloudflare. Cloudflare supplies the response headers and the cache rule that GitHub Pages cannot configure.
+GitHub Pages publishes `main:/docs`; Cloudflare supplies edge caching, redirects and response headers. The changes below require dashboard configuration. Repository files alone do not apply them.
 
-## Live configuration
+## Redirects
 
-The following configuration was promoted from report-only to enforced and verified on 22 August 2026:
+Add permanent 301 redirects: `/updates/` and `/updates.xml` to `/whats-on/`; `/editorial-policy/` to `/about/`. Remove the two HTML fallback stubs after the rules work. Keep canonical HTTPS and trailing-slash redirects.
 
-- `Strict-Transport-Security: max-age=31536000`
-- `X-Content-Type-Options: nosniff`
-- `X-Frame-Options: DENY`
-- `Referrer-Policy: strict-origin-when-cross-origin`
-- `Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()`
-- the Content Security Policy below.
+## Caching
 
-The Cloudflare response-header rule applies to all responses. The site HTML also declares the same referrer policy as a safe fallback.
+Cache public HTML at the edge with a short lifetime, for example one hour, and purge changed pages on release. Match asset paths `/assets/*` and `/images/*`, independent of the query version. Use one year for immutable, versioned asset URLs; change the filename/version or purge when replacing an image at the same URL. Keep error responses and operational endpoints out of the HTML rule. Confirm MISS then HIT on repeated requests, and the intended browser lifetime.
 
-Do not add HSTS `includeSubDomains` or `preload` until every subdomain is confirmed HTTPS-only.
+## Security headers
 
-## Enforced Content Security Policy
+Keep HSTS, nosniff, X-Frame-Options DENY, strict-origin-when-cross-origin and the existing Permissions-Policy. Test this candidate Content Security Policy in report-only mode before enforcement:
 
-```text
-default-src 'self'; base-uri 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; script-src-attr 'none'; style-src 'self'; upgrade-insecure-requests
+```
+default-src 'self'; base-uri 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com; object-src 'none'; script-src 'self' https://www.googletagmanager.com; script-src-attr 'none'; style-src 'self'; upgrade-insecure-requests
 ```
 
-`'unsafe-inline'` is presently required for the page-specific JSON-LD blocks. It does not permit inline event-handler attributes because `script-src-attr 'none'` is set. A later build can generate and deploy per-page JSON-LD hashes; only then remove `'unsafe-inline'`.
+JSON-LD is data, not executable JavaScript; it is not a reason to permit arbitrary inline scripts. Validate menus, guide search, images and both GA4 consent choices before enforcing. No advertising script or frame domains are allowed.
 
-If an external newsletter form is added, extend `form-action` only for the selected provider's exact HTTPS endpoint. Do not use a wildcard.
+Turn off email address obfuscation to keep mailto links usable without scripts and allow their consent-gated click measurement. Review DMARC with the actual mail provider; begin with monitoring and assess legitimate senders before enforcement.
 
-## Cache rule
+## Release checks
 
-The current source references these explicitly versioned assets:
-
-- `/assets/css/style.css?v=20260908-design-v2`
-- `/assets/js/privacy.js?v=20260908-ga4-repair-v1`
-
-The existing edge rule matches the exact path and version query. Each JavaScript repair receives a new URL on every HTML page, so older cached scripts cannot mask the repair. The 8 September 2026 Analytics repair uses the version above; until that URL is added to any long-cache rule, it uses the normal origin cache lifetime. Recheck live response headers after changing cache rules. Every future CSS or JavaScript change must update the relevant version on every page; the source validator checks that references remain consistent.
-
-Images retain the shorter origin cache lifetime because their public URLs are not currently versioned.
-
-## Verification
-
-After the live rules were deployed, repeated public checks returned the enforced `Content-Security-Policy` header, `CF-Cache-Status: HIT`, and `Cache-Control: max-age=31536000` for both versioned assets. The opt-in Analytics script, structured data, images and custom 404 continued to load without browser errors.
-
-The repository also publishes `/.well-known/security.txt`. Revisit its `Expires` value before 22 August 2027 and keep the contact address monitored.
+Old working-file URLs must return real 404 responses. The 404 page must return status 404. The three redirect URLs must return 301. Recheck headers, HTML cache hits, consent behaviour and public images. Keep security.txt contact, policy and expiry current.
