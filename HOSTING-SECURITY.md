@@ -1,14 +1,16 @@
 # Hosting, security and caching
 
-GitHub Pages publishes `main:/docs`; Cloudflare supplies edge caching, redirects and response headers. The changes below require dashboard configuration. Repository files alone do not apply them.
+GitHub Pages publishes `main:/docs`; Cloudflare supplies edge caching, redirects and response headers. The redirect and caching settings below were applied in Cloudflare on 4 October 2026. Repository files alone do not apply dashboard settings.
 
 ## Redirects
 
-Add permanent 301 redirects: `/updates/` and `/updates.xml` to `/whats-on/`; `/editorial-policy/` to `/about/`. Remove the two HTML fallback stubs after the rules work. Keep canonical HTTPS and trailing-slash redirects.
+Permanent 301 redirects send `/updates`, `/updates/` and `/updates.xml` to `/whats-on/`, and `/editorial-policy` and `/editorial-policy/` to `/about/`. Both apex and www hosts match. The two HTML stubs remain as fallbacks if Cloudflare is bypassed. Keep canonical HTTPS and trailing-slash redirects.
 
 ## Caching
 
-Cache public HTML at the edge with a short lifetime, for example one hour, and purge changed pages on release. Match asset paths `/assets/*` and `/images/*`, independent of the query version. Use one year for immutable, versioned asset URLs; change the filename/version or purge when replacing an image at the same URL. Keep error responses and operational endpoints out of the HTML rule. Confirm MISS then HIT on repeated requests, and the intended browser lifetime.
+The public HTML rule matches the 36 sitemap paths with no query string. Edge and browser caches respect the origin cache-control lifetime (currently 600 seconds); a missing cache-control header bypasses caching. Status codes 400 and higher are not stored. Other paths and query requests do not match this rule. Purge changed page URLs when an immediate release refresh is needed.
+
+The versioned asset rule matches `/assets/` URLs whose query begins `v=`. Edge and browser lifetimes are one year; query strings remain part of the cache key. Status codes 400 and higher are not stored at the edge. Every asset change must change its version. Unversioned images retain their existing cache behaviour; do not assign them an immutable one-year lifetime.
 
 ## Security headers
 
@@ -20,8 +22,8 @@ default-src 'self'; base-uri 'self'; connect-src 'self' https://www.google-analy
 
 JSON-LD is data, not executable JavaScript; it is not a reason to permit arbitrary inline scripts. Validate menus, guide search, images and both GA4 consent choices before enforcing. No advertising script or frame domains are allowed.
 
-Turn off email address obfuscation to keep mailto links usable without scripts and allow their consent-gated click measurement. Review DMARC with the actual mail provider; begin with monitoring and assess legitimate senders before enforcement.
+Public mailto anchors use Cloudflare’s `email_off` comments to preserve usable links without scripts and allow their consent-gated click measurement. Global email obfuscation does not need to be disabled. Review DMARC with the actual mail provider; begin with monitoring and assess legitimate senders before enforcement.
 
 ## Release checks
 
-Old working-file URLs must return real 404 responses. The 404 page must return status 404. The three redirect URLs must return 301. Recheck headers, HTML cache hits, consent behaviour and public images. Keep security.txt contact, policy and expiry current.
+Old working-file URLs must return real 404 responses. The 404 page must return status 404. All five retired route variants must return 301. Recheck headers, HTML cache hits, consent behaviour and public images. Keep security.txt contact, policy and expiry current.

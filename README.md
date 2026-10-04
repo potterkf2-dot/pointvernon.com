@@ -16,3 +16,7 @@ GA4 is opt-in. A compact prompt offers Allow analytics and Decline; Privacy sett
 ## Maintenance
 
 Use Australian English, supported facts and photographs with permission. Give each changed page one update date, update its structured data and sitemap date, and change the asset version when its contents change. Avoid notices with expiry dates unless removal is arranged. See HOSTING-SECURITY.md, VERIFICATION-LIST.md and PHOTO-SHOT-LIST.md for follow-up work.
+
+## Search submission after deployment
+
+The Submit published pages to IndexNow workflow runs after successful main-branch GitHub Pages deployments. It verifies the live public key before submitting the sitemap URLs. A manual Run workflow option is available for retries. Submission is not a promise of indexing.
