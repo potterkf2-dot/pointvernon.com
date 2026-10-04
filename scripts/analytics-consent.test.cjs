@@ -101,7 +101,7 @@ function createPage({savedChoice = null, legacyChoice = null, storageBlocked = f
   });
   vm.runInNewContext(source, {window, document, URL, Date}, {filename: scriptPath});
 
-  function clickLink(href, dataset = {}, textContent = "Example link") {
+  function clickLink(href, dataset = {}, textContent = "Example link", ancestors = []) {
     const destination = new URL(href, location.href);
     const link = {
       nodeType: 1,
@@ -109,7 +109,7 @@ function createPage({savedChoice = null, legacyChoice = null, storageBlocked = f
       dataset,
       textContent,
       getAttribute(name) { return name === "href" ? href : null; },
-      closest(selector) { return selector === "a[href]" ? link : null; }
+      closest(selector) { return selector === "a[href]" ? link : ancestors.includes(selector) ? {} : null; }
     };
     for (const key of ["href", "pathname", "hostname", "protocol", "origin", "hash", "search"]) link[key] = destination[key];
     document.dispatchEvent({type: "click", target: link, button: 0, defaultPrevented: false});
@@ -301,4 +301,53 @@ test("lookalike Beachsafe domains are not classified as official sources", () =>
     page.clickLink("https://" + hostname + "/");
     assert.equal(page.events().length, 0, hostname + " must not match the official-source domain");
   }
+});
+
+test("untagged navigation and section selections require consent and stop after refusal", () => {
+  const page = createPage();
+  const click = () => {
+    page.clickLink("/gatakers-bay/", {}, "Gatakers Bay", [".primary-nav"]);
+    page.clickLink("#five-km", {}, "5 km walk", [".in-page-nav"]);
+  };
+  click();
+  assert.equal(page.events().length, 0);
+  page.controls.allow.click();
+  click();
+  assert.equal(page.events().length, 2);
+  page.controls.decline.click();
+  click();
+  assert.equal(page.events().length, 2);
+  assertAdvertisingDenied(page);
+});
+
+test("untagged guide links classify their position without collecting query values", () => {
+  const page = createPage({savedChoice: "allow"});
+  for (const [selector, position] of [[".primary-nav", "navigation"], [".related-section", "related"], ["article", "inline"]]) {
+    page.clickLink("/gatakers-bay/?q=private-value#private-value", {}, "Gatakers Bay", [selector]);
+    const event = page.events().at(-1);
+    assert.equal(event[1], "select_guide");
+    assert.equal(event[2].guide_slug, "gatakers-bay");
+    assert.equal(event[2].selected_content_group, "coast");
+    assert.equal(event[2].position, position);
+  }
+  assert.ok(!JSON.stringify(page.events()).includes("private-value"));
+});
+
+test("existing explicit guide events emit once", () => {
+  const page = createPage({savedChoice: "allow"});
+  clickGuide(page);
+  assert.equal(page.events().length, 1);
+  assert.equal(page.events()[0][2].position, "hero");
+});
+
+test("only contents links within the current page produce section events", () => {
+  const page = createPage({savedChoice: "allow"});
+  page.clickLink("#five-km", {}, "5 km walk", [".in-page-nav"]);
+  assert.equal(page.events()[0][1], "select_section");
+  assert.equal(page.events()[0][2].section_name, "five-km");
+  page.clickLink("#main-content");
+  page.clickLink("/walks/");
+  page.clickLink("/README.md");
+  page.clickLink("https://example.com/gatakers-bay/");
+  assert.equal(page.events().length, 1);
 });

@@ -12,6 +12,7 @@
   const declineButton = banner.querySelector("[data-analytics-decline]");
   const settingsButtons = document.querySelectorAll("[data-privacy-settings]");
   let consentChoice = readChoice();
+  const guidePaths = new Set(["/accessibility/", "/accommodation/", "/artificial-reef/", "/beaches/", "/boat-ramps/", "/charles-polson-history/", "/coastal-wildlife/", "/dog-friendly-foreshore/", "/eli-creek-beach/", "/fishing/", "/food-coffee/", "/gables-point-beach/", "/gatakers-bay/", "/getting-around/", "/history/", "/local-help/", "/local-life/", "/map-access/", "/moving-buying/", "/parkrun/", "/parks-playgrounds/", "/parraweena-park/", "/point-vernon-beach/", "/property-checks/", "/the-gables-history/", "/things-to-do/", "/tides/", "/visiting/", "/walks/", "/whales/", "/whats-on/"]);
 
   function readChoice() {
     try {
@@ -226,6 +227,21 @@
     try {
       destination = new URL(link.href, window.location.href);
     } catch (error) {
+      return;
+    }
+
+    if (destination.origin === window.location.origin) {
+      if (destination.pathname === pagePath() && destination.hash && link.closest(".in-page-nav")) {
+        sendAnalyticsEvent("select_section", {
+          section_name: cleanValue(destination.hash.slice(1), "unknown")
+        });
+      } else if (guidePaths.has(destination.pathname) && destination.pathname !== pagePath()) {
+        sendAnalyticsEvent("select_guide", {
+          guide_slug: destination.pathname.split("/")[1],
+          selected_content_group: contentGroupForPath(destination.pathname),
+          position: link.closest(".primary-nav") ? "navigation" : link.closest(".related-section") ? "related" : "inline"
+        });
+      }
       return;
     }
 
