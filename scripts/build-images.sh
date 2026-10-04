@@ -7,7 +7,7 @@ script_dir=${0:A:h}
 repo_dir=${script_dir:h}
 manifest=${POINTVERNON_MANIFEST:-"$repo_dir/photo-manifest.tsv"}
 source_dir=${1:-}
-output_dir=${2:-"$repo_dir/images"}
+output_dir=${2:-"$repo_dir/docs/images"}
 
 if [[ -z "$source_dir" ]]; then
   print -u2 "Usage: ./scripts/build-images.sh /path/to/full-size-originals [output-directory]"

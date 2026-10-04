@@ -9,7 +9,7 @@ const path = require("node:path");
 const vm = require("node:vm");
 const test = require("node:test");
 
-const scriptPath = path.resolve(process.argv[2] || path.join(__dirname, "../assets/js/privacy.js"));
+const scriptPath = path.resolve(process.argv[2] || path.join(__dirname, "../docs/assets/js/privacy.js"));
 const source = fs.readFileSync(scriptPath, "utf8");
 const consentKey = "point-vernon-analytics-choice-v2";
 const legacyKey = "point-vernon-analytics-choice";
