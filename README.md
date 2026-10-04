@@ -19,4 +19,4 @@ Use Australian English, supported facts and photographs with permission. Give ea
 
 ## Search submission after deployment
 
-The Submit published pages to IndexNow workflow runs after successful main-branch GitHub Pages deployments. It verifies the live public key before submitting the sitemap URLs. A manual Run workflow option is available for retries. Submission is not a promise of indexing.
+The Submit published pages to IndexNow workflow starts on main-branch publication changes and waits for the Pages deployment for the exact commit to succeed. It verifies the live public key before submitting the sitemap URLs. A manual Run workflow option is available for retries. Submission is not a promise of indexing.
