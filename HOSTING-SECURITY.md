@@ -14,13 +14,13 @@ The versioned asset rule matches `/assets/` URLs whose query begins `v=`. Edge a
 
 ## Security headers
 
-Keep HSTS, nosniff, X-Frame-Options DENY, strict-origin-when-cross-origin and the existing Permissions-Policy. Test this candidate Content Security Policy in report-only mode before enforcement:
+Keep HSTS, nosniff, X-Frame-Options DENY, strict-origin-when-cross-origin and the existing Permissions-Policy. The following Content Security Policy was checked in report-only mode against navigation, guide search and both analytics choices, then enforced on 4 October 2026:
 
 ```
 default-src 'self'; base-uri 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com; object-src 'none'; script-src 'self' https://www.googletagmanager.com; script-src-attr 'none'; style-src 'self'; upgrade-insecure-requests
 ```
 
-JSON-LD is data, not executable JavaScript; it is not a reason to permit arbitrary inline scripts. Validate menus, guide search, images and both GA4 consent choices before enforcing. No advertising script or frame domains are allowed.
+JSON-LD is data, not executable JavaScript; it is not a reason to permit arbitrary inline scripts. Recheck menus, guide search, images and both GA4 consent choices when changing scripts. No advertising script or frame domains are allowed.
 
 Public mailto anchors use Cloudflare’s `email_off` comments to preserve usable links without scripts and allow their consent-gated click measurement. Global email obfuscation does not need to be disabled. Review DMARC with the actual mail provider; begin with monitoring and assess legitimate senders before enforcement.
 
