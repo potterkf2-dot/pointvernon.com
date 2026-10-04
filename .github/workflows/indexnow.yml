@@ -1,25 +1,37 @@
 name: Submit published pages to IndexNow
+
 on:
-  workflow_run:
-    workflows: [pages build and deployment]
-    types: [completed]
+  push:
     branches: [main]
+    paths:
+      - 'docs/**'
+      - '.github/workflows/indexnow.yml'
+      - 'scripts/submit_indexnow.py'
+      - 'scripts/wait_for_pages.py'
   workflow_dispatch:
+
 permissions:
   contents: read
+  actions: read
+
 concurrency:
   group: indexnow
   cancel-in-progress: true
+
 jobs:
   submit:
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
           persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python3 scripts/submit_indexnow.py
+      - name: Wait for this release to deploy
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/wait_for_pages.py
+      - name: Notify IndexNow
+        run: python3 scripts/submit_indexnow.py
