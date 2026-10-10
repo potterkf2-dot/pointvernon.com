@@ -16,3 +16,7 @@ Run the source validator and consent checks before release. Review every changed
 ## Map and guide finder
 
 The map guide embeds the SVG inline so numbered pins can link to the place list without JavaScript. Keep its geography and marker positions aligned with `docs/assets/point-vernon-map.svg` when updating the map. Preserve accessible link names, visible keyboard focus, and matching place-list IDs. The finder handles common question words and aliases locally; searches must remain private and work alongside the topic filter. Keep the descriptions in `docs/llms.txt` aligned with each guide's current description.
+
+## AdSense application
+
+On 11 October 2026 the publisher requested Google banner ads. The existing AdSense account is associated with potter.kf2@gmail.com, publisher pub-1569993121551986. The dashboard showed a Point Vernon review requested on 28 September 2026 and status Getting ready. Static verification metadata and ads.txt support that review without loading ad scripts. Payment information is incomplete and must be completed by the publisher. Do not create a duplicate AdSense account or a duplicate review request. Approval remains Google's decision. Before enabling ads, update privacy disclosures and use an appropriate advertising consent solution (Google Privacy & messaging is available), test modest responsive banner placement and adjust hosting CSP only for required domains. Keep GA4 opt-in. No monitoring schedule is authorised.
