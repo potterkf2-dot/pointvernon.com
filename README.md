@@ -11,7 +11,7 @@ Validation: `python3 scripts/validate_site.py` and `node scripts/analytics-conse
 
 ## Analytics and advertising
 
-GA4 is opt-in. A compact prompt offers Allow analytics and Decline; Privacy settings in the footer reopens it. GA4 remains unloaded before consent. Advertising, Google Signals and ad personalisation are disabled. No ads, paid placements, sponsors or affiliate links are published. No AdSense tag or ads.txt is included.
+GA4 is opt-in. A compact prompt offers Allow analytics and Decline; Privacy settings in the footer reopens it. GA4 remains unloaded before consent. Advertising, Google Signals and ad personalisation are disabled. No ads, paid placements, sponsors or affiliate links are published. The publisher requested AdSense on 11 October 2026. Static account-verification metadata and ads.txt are included for the existing application; no AdSense JavaScript or ad units are loaded. Complete the account setup and obtain site approval, then update privacy/consent and the hosting policy before serving ads.
 
 ## Maintenance
 
