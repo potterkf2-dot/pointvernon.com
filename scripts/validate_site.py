@@ -12,6 +12,7 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent / "docs"
 SITE_ORIGIN = "https://pointvernon.com"
+EXPECTED_ADSENSE_ACCOUNT = "ca-pub-1569993121551986"
 EXPECTED_STYLE_VERSION = "20261011-map-v2"
 EXPECTED_PRIVACY_VERSION = "20261004-engagement-v1"
 EXPECTED_CONSENT_STORAGE_KEY = "point-vernon-analytics-choice-v2"
@@ -37,6 +38,7 @@ class PageAudit(HTMLParser):
         self.aria_references = []
         self.json_ld = []
         self.images = []
+        self.adsense_accounts = []
         self.robots = []
         self.lang = None
         self.resources = []
@@ -66,6 +68,8 @@ class PageAudit(HTMLParser):
             self.hrefs.append(values["href"])
         if tag == "meta" and values.get("name") == "description":
             self.descriptions.append(values.get("content", ""))
+        if tag == "meta" and values.get("name") == "google-adsense-account":
+            self.adsense_accounts.append(values.get("content", ""))
         if tag == "meta" and values.get("name", "").lower() in {"robots", "googlebot", "bingbot"}:
             self.robots.extend(re.split(r"[,\s]+", values.get("content", "").lower()))
         if tag == "link" and values.get("rel") == "canonical":
@@ -373,6 +377,9 @@ def validate_privacy_version_references(errors):
 
 def main():
     errors = []
+    ads_txt = ROOT / "ads.txt"
+    if not ads_txt.is_file() or ads_txt.read_text(encoding="utf-8").strip() != "google.com, pub-1569993121551986, DIRECT, f08c47fec0942fa0":
+        errors.append("ads.txt: expected the publisher's verified Google AdSense entry")
     public_suffixes = {".html", ".css", ".js", ".png", ".jpg", ".jpeg", ".avif", ".webp", ".svg", ".ico", ".txt", ".xml"}
     for public_file in ROOT.rglob("*"):
         if public_file.is_file() and public_file.name not in {"CNAME", ".nojekyll"} and public_file.suffix.lower() not in public_suffixes:
@@ -432,6 +439,8 @@ def main():
             if target not in parser.ids:
                 errors.append(f"{route}: {attribute} points to missing ID {target}")
         validate_asset_versions(parser, route, errors)
+        if parser.adsense_accounts != [EXPECTED_ADSENSE_ACCOUNT]:
+            errors.append(f"{route}: expected one verified AdSense account meta tag")
         validate_privacy_surface(text, route, errors)
         public_copy = re.sub(r"<[^>]+>", " ", text)
         if re.search(r"\b(TODO|TBC|owner confirmation required|placeholder)\b", public_copy, re.IGNORECASE):
