@@ -49,7 +49,7 @@ small{font-size:.8125rem}
 .page-hero,.explore-hero{background:#efeee6;border-bottom:1px solid var(--sand2);padding-block:2rem 3.5rem}
 .page-hero-grid{display:grid;gap:2.3rem;align-items:center}
 .page-hero-copy{min-width:0}
-.page-hero h1{max-width:22ch}
+.page-hero h1{max-width:22ch;overflow-wrap:break-word}
 .hero-lede{color:#41534b;font-size:1.15rem;line-height:1.55;max-width:47rem}
 .page-updated{color:var(--dim);font-size:.875rem;margin-bottom:1rem}
 .breadcrumbs{margin-bottom:2.1rem;font-size:.875rem}
@@ -293,6 +293,7 @@ code{font-size:.9375em;overflow-wrap:anywhere}
 .brand-note{font-size:.75rem}
 .menu-toggle{padding-inline:.65rem;font-size:.8125rem}
 .home-hero h1{font-size:2.6rem}
+.page-hero h1{font-size:2.3rem}
 .home-quick a strong{font-size:.8125rem}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{.site-header,.site-footer,.privacy-banner,.in-page-nav,.related-section,.network-strip,.hero-actions,.guide-filters,.guide-quick-searches{display:none!important}

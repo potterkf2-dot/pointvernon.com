@@ -12,7 +12,7 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent / "docs"
 SITE_ORIGIN = "https://pointvernon.com"
-EXPECTED_STYLE_VERSION = "20261004-repairs-v1"
+EXPECTED_STYLE_VERSION = "20261011-mobile-v1"
 EXPECTED_PRIVACY_VERSION = "20261004-engagement-v1"
 EXPECTED_CONSENT_STORAGE_KEY = "point-vernon-analytics-choice-v2"
 LEGACY_CONSENT_STORAGE_KEY = "point-vernon-analytics-choice"
@@ -34,6 +34,7 @@ class PageAudit(HTMLParser):
         self.headings = []
         self.hrefs = []
         self.ids = []
+        self.aria_references = []
         self.json_ld = []
         self.images = []
         self.robots = []
@@ -58,6 +59,9 @@ class PageAudit(HTMLParser):
             self.headings.append(int(tag[1]))
         if values.get("id"):
             self.ids.append(values["id"])
+        for attribute in ("aria-labelledby", "aria-describedby", "aria-controls"):
+            for target in values.get(attribute, "").split():
+                self.aria_references.append((attribute, target))
         if tag == "a" and values.get("href"):
             self.hrefs.append(values["href"])
         if tag == "meta" and values.get("name") == "description":
@@ -424,6 +428,9 @@ def main():
         duplicate_ids = [item for item, count in Counter(parser.ids).items() if count > 1]
         if duplicate_ids:
             errors.append(f"{route}: duplicate IDs {duplicate_ids}")
+        for attribute, target in parser.aria_references:
+            if target not in parser.ids:
+                errors.append(f"{route}: {attribute} points to missing ID {target}")
         validate_asset_versions(parser, route, errors)
         validate_privacy_surface(text, route, errors)
         public_copy = re.sub(r"<[^>]+>", " ", text)
