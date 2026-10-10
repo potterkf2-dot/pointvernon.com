@@ -8,7 +8,11 @@ Run the source validator and consent checks before release. Review every changed
 
 ## Checkpoints from the 11 October 2026 review
 
-- Recheck the WetSide notice in `/whats-on/#wetside-access` by 13 November 2026, ahead of Council's expected mid-November reopening. Remove or revise the temporary notice from Council's current page; if no dated reopening is confirmed, restore an evergreen link rather than leaving an expired closure claim. The existing weekly maintenance review uses the shared review queue; no new schedule is needed.
+- Recheck the WetSide notice in `/whats-on/#wetside-access` by 13 November 2026, ahead of Council's expected mid-November reopening. Remove or revise the temporary notice from Council's current page; if no dated reopening is confirmed, restore an evergreen link rather than leaving an expired closure claim. The weekly local updater was removed at the publisher's request on 11 October 2026. Maintenance is manual or on request; do not recreate that schedule without permission.
 - Brew & View Cafe, Point Vernon Takeaway and Vernon 5 Ways Takeaway now have business-owned source links, locations and the two phone numbers confirmed on those public pages. Their current trading status and opening hours still require direct confirmation. Do not populate hours or the 5 Ways phone number from directories.
 - Both individual Council ramp records returned 404 during this review. The working boat-ramps index supplies current cleaning information. The unverified 5-tonne load limits were removed; use current ramp signs. Recheck the remaining lane, low-tide and facility details when Council restores its records or dated visit evidence becomes available.
 - The library-hours, RSPCA call-centre-hours and wheelchair-hire additions should be rechecked against their linked providers when those pages next receive a factual review. Preserve the distinction between usual hours and temporary changes.
+
+## Map and guide finder
+
+The map guide embeds the SVG inline so numbered pins can link to the place list without JavaScript. Keep its geography and marker positions aligned with `docs/assets/point-vernon-map.svg` when updating the map. Preserve accessible link names, visible keyboard focus, and matching place-list IDs. The finder handles common question words and aliases locally; searches must remain private and work alongside the topic filter. Keep the descriptions in `docs/llms.txt` aligned with each guide's current description.
