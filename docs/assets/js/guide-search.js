@@ -11,7 +11,8 @@
 
   if (!filters || !search || !topic || !status || !emptyState) return;
 
-  const aliases = { dogs: "dog", beaches: "beach", walks: "walk", walking: "walk", parks: "park", buses: "bus", cafes: "coffee", cafe: "coffee", bbqs: "barbecue", bbq: "barbecue", barbeque: "barbecue", toilets: "toilet", wheelchairs: "wheelchair", caravans: "caravan", bikes: "bike", cycling: "bike", bicycle: "bike", kids: "children" };
+  const aliases = { dogs: "dog", beaches: "beach", walks: "walk", walking: "walk", parks: "park", buses: "bus", cafes: "coffee", cafe: "coffee", bbqs: "barbecue", bbq: "barbecue", barbeque: "barbecue", toilets: "toilet", bathrooms: "toilet", bathroom: "toilet", wheelchairs: "wheelchair", caravans: "caravan", bikes: "bike", cycling: "bike", bicycle: "bike", kids: "family", children: "family", families: "family", playgrounds: "playground", prams: "pram", stroller: "pram", strollers: "pram", accessible: "access", accessibility: "access", disability: "access" };
+  const questionWords = new Set(["a", "an", "the", "and", "or", "in", "at", "for", "to", "of", "with", "where", "what", "which", "can", "could", "do", "does", "is", "are", "i", "we", "you", "get", "find", "near", "me", "please"]);
 
   function normalise(value) {
     return String(value)
@@ -33,10 +34,16 @@
 
   let pending;
 
+  function searchTerms(value) {
+    return normalise(value)
+      .replace(/\bpoint vernon\b/g, " ")
+      .split(" ")
+      .filter(function (term) { return term && !questionWords.has(term); })
+      .map(function (term) { return aliases[term] || term; });
+  }
+
   function filterGuides() {
-    const terms = normalise(search.value).split(" ").filter(Boolean).map(function (term) {
-      return aliases[term] || term;
-    });
+    const terms = searchTerms(search.value);
     let guideCount = 0;
 
     cards.forEach(function (card) {

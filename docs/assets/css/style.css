@@ -341,3 +341,5 @@ figure,tr{break-inside:avoid}}
 @media (max-width:63.99rem){.in-page-nav.is-enhanced .in-page-heading{display:none}
 .in-page-nav.is-enhanced .in-page-toggle{display:block}}
 @media (max-width:54rem){.nav-enhanced .primary-nav.is-open{display:flex}}
+
+.interactive-map{display:block}.map-marker{cursor:pointer}.map-marker:hover .map-dot,.map-marker:focus-visible .map-dot{fill:var(--accent);stroke:#fff;stroke-width:6}.map-marker:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.map-legend li{scroll-margin-top:2rem}.map-legend li:target{background:var(--soft);outline:2px solid var(--ocean);outline-offset:4px}.map-legend .small-note{margin:.5rem 0 0}
