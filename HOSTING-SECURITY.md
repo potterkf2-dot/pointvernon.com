@@ -26,4 +26,4 @@ Public mailto anchors use Cloudflare’s `email_off` comments to preserve usable
 
 ## Release checks
 
-Old working-file URLs must return real 404 responses. The 404 page must return status 404. All five retired route variants must return 301. Recheck headers, HTML cache hits, consent behaviour and public images. Keep security.txt contact, policy and expiry current.
+Old working-file URLs must return real 404 responses. A missing URL must return status 404. The directly requested `/404.html` template may return 200; keep it noindex and outside the sitemap. All five retired route variants must return 301. Recheck headers, HTML cache hits, consent behaviour and public images. Keep security.txt contact, policy and expiry current.
