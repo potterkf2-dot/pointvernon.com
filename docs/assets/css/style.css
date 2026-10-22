@@ -141,7 +141,7 @@ code{font-size:.9375em;overflow-wrap:anywhere}
 .home-hero .hero-actions{gap:1.8rem;margin-top:2rem}
 .home-hero .button-primary{background:#f3e9d1;color:var(--deep)}
 .home-hero .button-primary:hover{background:#fff}
-.home-secondary{display:inline-flex;align-items:center;min-height:2.75rem;color:white;font-size:.9375rem;font-weight:600;text-decoration:none}
+.home-secondary{display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;color:white;font-size:.9375rem;font-weight:600;text-decoration:none}
 .home-secondary:hover{color:#fff;text-decoration:underline}
 .home-hero-photo{position:absolute;inset:0;z-index:-1;margin:0}
 .home-hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#082321eb 0%,#082321ba 35%,#0823212e 75%),linear-gradient(0deg,#08232173,transparent 40%)}
@@ -246,9 +246,9 @@ code{font-size:.9375em;overflow-wrap:anywhere}
 .footer-guide-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:39.99rem){.container{width:calc(100% - 2.5rem)}
 .site-brand{gap:.6rem}
-.home-hero-grid{min-height:37rem;padding-block:3.2rem 6rem}
+.home-hero-grid{min-height:0;padding-block:2.5rem 4.5rem}
 .home-hero h1{font-size:clamp(3.25rem,11.8vw,4.4rem);line-height:1.06}
-.home-hero .eyebrow{margin-bottom:1.7rem}
+.home-hero .eyebrow{margin-bottom:1.25rem}
 .home-hero-photo::after{background:linear-gradient(90deg,#082321de,#08232199),linear-gradient(0deg,#08232173,transparent)}
 .home-hero-photo img{object-position:62% 55%}
 .home-intro{font-size:1rem;max-width:32ch}
@@ -343,3 +343,8 @@ figure,tr{break-inside:avoid}}
 @media (max-width:54rem){.nav-enhanced .primary-nav.is-open{display:flex}}
 
 .interactive-map{display:block}.map-marker{cursor:pointer}.map-marker:hover .map-dot,.map-marker:focus-visible .map-dot{fill:var(--accent);stroke:#fff;stroke-width:6}.map-marker:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.map-legend li{scroll-margin-top:2rem}.map-legend li:target{background:var(--soft);outline:2px solid var(--ocean);outline-offset:4px}.map-legend .small-note{margin:.5rem 0 0}
+.home-search{border-bottom:1px solid var(--line)}
+.home-search h2{font-size:2.35rem}
+.home-search .guide-filters{grid-template-columns:1fr auto}
+@media(max-width:39.99rem){.home-search .guide-filters{grid-template-columns:1fr}}
+@media print{.home-search{display:none!important}}

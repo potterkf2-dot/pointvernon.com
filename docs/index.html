@@ -28,9 +28,11 @@
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
 <link as="image" href="/images/point-vernon-shoreline-aerial-1600.avif" imagesizes="100vw" imagesrcset="/images/point-vernon-shoreline-aerial-1600.avif 1600w, /images/point-vernon-shoreline-aerial-1000.avif 1000w, /images/point-vernon-shoreline-aerial-640.avif 640w" rel="preload" type="image/avif"/>
-<link href="/assets/css/style.css?v=20261011-map-v2" rel="stylesheet"/>
+<link as="script" href="/assets/js/menu.js?v=20261023-menu-v1" rel="preload"/>
+<link href="/assets/css/style.css?v=20261023-usability-v1" rel="stylesheet"/>
+<script defer="" src="/assets/js/guide-search.js?v=20261023-home-v1"></script>
 <script defer="" src="/assets/js/privacy.js?v=20261004-engagement-v1"></script>
-<script defer="" src="/assets/js/navigation.js?v=20260908-navigation-v2"></script>
+<script defer="" src="/assets/js/navigation.js?v=20261023-contents-v1"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://pointvernon.com/#website","name":"Point Vernon Guide","url":"https://pointvernon.com/","description":"An independent local guide to Point Vernon in Hervey Bay, Queensland.","inLanguage":"en-AU","publisher":{"@id":"https://pointvernon.com/#organization"}},{"@type":"Organization","@id":"https://pointvernon.com/#organization","name":"Point Vernon Guide","url":"https://pointvernon.com/","email":"hello@pointvernon.com","logo":{"@type":"ImageObject","url":"https://pointvernon.com/assets/logo-512.png","width":512,"height":512}}]}</script></head>
 <body class="home-page">
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -38,13 +40,14 @@
 <a class="site-brand" href="/"><svg aria-hidden="true" class="brand-mark" focusable="false" viewBox="0 0 48 48"><circle cx="24" cy="24" fill="none" r="22" stroke="currentColor" stroke-width="1.3"></circle><path d="M11 26c5-9 9 9 14 0s9 9 13 0M11 33c5-9 9 9 14 0s9 9 13 0" fill="none" stroke="currentColor" stroke-width="1.5"></path><path d="M17 18a7 7 0 0 1 14 0" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg><span class="brand-wordmark"><span class="brand-name">Point Vernon</span><span class="brand-note">Independent local guide</span></span></a>
 <button aria-controls="primary-navigation" aria-expanded="false" class="menu-toggle" data-menu-toggle="" hidden="" type="button"><span data-menu-label="">Menu</span><span aria-hidden="true">☰</span></button>
 <nav aria-label="Main navigation" class="primary-nav" id="primary-navigation"><a href="/things-to-do/">Explore</a><a href="/visiting/">Plan a visit</a><a href="/whats-on/">What’s on</a><a href="/local-life/">Local life</a><a href="/moving-buying/">Moving &amp; buying</a><a class="nav-find" href="/guides/">Find a guide</a></nav></div></header>
+<script src="/assets/js/menu.js?v=20261023-menu-v1"></script>
 <main id="main-content">
 <section aria-labelledby="home-title" class="home-hero">
 <div class="container home-hero-grid">
 <div class="home-hero-copy">
 <p class="eyebrow">Hervey Bay · Queensland · Butchulla Country</p>
 <h1 id="home-title">Point Vernon.<br/><em>Life by the bay.</em></h1>
-<p class="home-intro">Point Vernon is a coastal suburb on the north-western edge of Hervey Bay, Queensland. Rocky shores, foreshore walks and picnic parks sit beside the bay, with Pialba nearby and Urangan’s harbour farther along the coast.</p>
+<p class="home-intro">Rocky shores, foreshore walks and picnic parks on Hervey Bay’s north-western edge. Choose a beach, find a local stop or plan your first visit to Point Vernon.</p>
 <div class="hero-actions">
 <a class="button button-primary" data-analytics-event="select_guide" data-guide-slug="things-to-do" data-position="hero" href="/things-to-do/">Find your next stop <span aria-hidden="true">↗</span></a>
 <a class="home-secondary" data-analytics-event="select_home_path" data-path-name="visit" data-position="hero" href="/visiting/">Plan your first visit <span aria-hidden="true">→</span></a>
@@ -61,6 +64,14 @@
 <a data-analytics-event="select_guide" data-guide-slug="food-coffee" data-position="home_content" href="/food-coffee/"><span><strong>Food &amp; coffee</strong><small>A stop along the way</small></span><span aria-hidden="true">↗</span></a>
 <a data-analytics-event="select_guide" data-guide-slug="map-access" data-position="home_content" href="/map-access/"><span><strong>Maps &amp; access</strong><small>Know where you’re going</small></span><span aria-hidden="true">↗</span></a>
 </div></nav>
+<section aria-labelledby="home-search-heading" class="home-search home-section"><div class="container">
+<div><p class="eyebrow">A little local knowledge</p><h2 id="home-search-heading">What are you looking for?</h2><p>Find a place, an activity or the practical details for your day.</p></div>
+<form action="/guides/" class="guide-filters" data-home-search="" data-guide-filters="" hidden="" role="search">
+<div class="guide-search-field"><label for="guide-search">Search the Point Vernon guides</label><input aria-controls="home-search-results" autocomplete="off" id="guide-search" maxlength="160" placeholder="Try ESA Park, coffee or dog walks" spellcheck="false" type="search"/></div><button class="button button-primary" type="submit">Search guides</button><select hidden="" id="guide-topic" aria-label="Topic"><option value="all">All topics</option></select>
+</form>
+<p class="small-note"><a href="/guides/">Browse all local guides →</a></p>
+<div hidden="" id="home-search-results"><p aria-atomic="true" aria-live="polite" class="guide-results-count" id="guide-results-count" role="status"></p><div id="guide-results"></div><p data-guide-no-results="" hidden="">No matching guides. Try a shorter search, such as “parks”, “coffee” or “transport”.</p><p><a class="text-link" href="/guides/">Browse every guide by topic →</a></p></div>
+</div></section>
 <section aria-labelledby="home-explore" class="home-section"><div class="container">
 <div class="home-heading"><div><p class="eyebrow">Good days start here</p><h2 id="home-explore">Make a day of it.</h2></div><a class="text-link" data-analytics-event="select_guide" data-guide-slug="guides" data-position="home_content" href="/guides/">Browse all guides <span aria-hidden="true">→</span></a></div>
 <div class="home-editorial-grid">
@@ -101,7 +112,7 @@
 <article><h3>Is Point Vernon a place to swim?</h3><p>Its beaches are unpatrolled, with rocky tidal areas and boating activity at the ramps. Compare the shoreline sections and review conditions before deciding whether to enter the water.</p><a data-analytics-event="select_guide" data-guide-slug="beaches" data-position="home_content" href="/beaches/#swimming">Read the beach and swimming guide →</a></article>
 </div>
 <a class="home-directory-link" data-analytics-event="select_guide" data-guide-slug="guides" data-position="home_finder" href="/guides/"><span><strong>Looking for something specific?</strong><small>Find a place, a walk, transport information or help with a local question.</small></span><span aria-hidden="true">→</span></a></div></section>
-<section class="home-section"><div class="container"><p class="eyebrow">Find your first stop</p><h2>Point Vernon on the map.</h2><div class="home-shore-grid"><div><img alt="Point Vernon map with seven numbered parks, boat ramps and cemetery locations; north is up. The map guide provides the numbered place key and directions." class="local-map" decoding="async" height="880" loading="lazy" src="/assets/point-vernon-map.svg" width="920"/></div><div><p>Find Gatakers Bay, ESA Park, The Gables and the quieter reserves around the suburb.</p><a class="button button-primary" href="/map-access/">Open the map and directions</a></div></div><p class="small-note">Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, available under the Open Database Licence. <a href="https://www.openstreetmap.org/#map=14/-25.257/152.817">Open the street map</a>.</p></div></section><section class="home-trust"><div class="container"><p><strong>A local guide, with local photographs.</strong> <a data-analytics-event="select_guide" data-guide-slug="about" data-position="home_content" href="/about/">About Point Vernon Guide</a>.</p><p class="page-updated">Homepage updated <time datetime="2026-10-18">18 October 2026</time> · <!--email_off--><a href="mailto:hello@pointvernon.com">Send a correction</a><!--/email_off--></p></div></section>
+<section class="home-section"><div class="container"><p class="eyebrow">Find your first stop</p><h2>Point Vernon on the map.</h2><div class="home-shore-grid"><div><img alt="Point Vernon map with seven numbered parks, boat ramps and cemetery locations; north is up. The map guide provides the numbered place key and directions." class="local-map" decoding="async" height="880" loading="lazy" src="/assets/point-vernon-map.svg" width="920"/></div><div><p>Find Gatakers Bay, ESA Park, The Gables and the quieter reserves around the suburb.</p><a class="button button-primary" href="/map-access/">Open the map and directions</a></div></div><p class="small-note">Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, available under the Open Database Licence. <a href="https://www.openstreetmap.org/#map=14/-25.257/152.817">Open the street map</a>.</p></div></section><section class="home-trust"><div class="container"><p><strong>A local guide, with local photographs.</strong> <a data-analytics-event="select_guide" data-guide-slug="about" data-position="home_content" href="/about/">About Point Vernon Guide</a>.</p><p class="page-updated">Homepage updated <time datetime="2026-10-23">23 October 2026</time> · <!--email_off--><a href="mailto:hello@pointvernon.com">Send a correction</a><!--/email_off--></p></div></section>
 <aside aria-label="Wider Hervey Bay information" class="network-strip"><div class="container network-inner"><p>Exploring further? <a href="https://visithb.com.au/">Visit Hervey Bay</a> covers regional stays, whale tours and K’gari. <a href="https://herveybaykids.com.au/">Hervey Bay Kids</a> helps with family activities, schools and care.</p></div></aside>
 </main>
 <footer class="site-footer">

@@ -20,3 +20,9 @@ Use Australian English, supported facts and photographs with permission. Give ea
 ## Search submission after deployment
 
 The Submit published pages to IndexNow workflow starts on main-branch publication changes and waits for the Pages deployment for the exact commit to succeed. It verifies the live public key before submitting the sitemap URLs. A manual Run workflow option is available for retries. Submission is not a promise of indexing.
+
+## Navigation and search
+
+The small menu initializer is preloaded and runs immediately after the header, before the main content is parsed. Keep it there to avoid shifting the page when the compact menu is enhanced. The deferred navigation script handles article contents and table hints. Navigation links stay visible if JavaScript is unavailable.
+
+Homepage search fetches the public guide directory once, on the first search, and reuses its cards and search logic. It shows up to six matches and links to the full directory. Queries stay in the browser: they are not sent in the fetch, added to the URL or saved in browser storage. Keep guide search keywords in `docs/guides/index.html` so both entry points use the same information.
