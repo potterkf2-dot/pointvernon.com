@@ -13,7 +13,7 @@ from urllib.parse import unquote, urlsplit
 ROOT = Path(__file__).resolve().parent.parent / "docs"
 SITE_ORIGIN = "https://pointvernon.com"
 EXPECTED_ADSENSE_ACCOUNT = "ca-pub-1569993121551986"
-EXPECTED_STYLE_VERSION = "20261011-map-v2"
+EXPECTED_STYLE_VERSION = "20261023-usability-v1"
 EXPECTED_PRIVACY_VERSION = "20261004-engagement-v1"
 EXPECTED_CONSENT_STORAGE_KEY = "point-vernon-analytics-choice-v2"
 LEGACY_CONSENT_STORAGE_KEY = "point-vernon-analytics-choice"
