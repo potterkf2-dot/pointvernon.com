@@ -247,7 +247,7 @@ code{font-size:.9375em;overflow-wrap:anywhere}
 @media (max-width:39.99rem){.container{width:calc(100% - 2.5rem)}
 .site-brand{gap:.6rem}
 .home-hero-grid{min-height:0;padding-block:2.5rem 4.5rem}
-.home-hero h1{font-size:clamp(3.25rem,11.8vw,4.4rem);line-height:1.06}
+.home-hero h1{font-size:clamp(2.6rem,9vw,2.75rem);line-height:1.06}
 .home-hero .eyebrow{margin-bottom:1.25rem}
 .home-hero-photo::after{background:linear-gradient(90deg,#082321de,#08232199),linear-gradient(0deg,#08232173,transparent)}
 .home-hero-photo img{object-position:62% 55%}
@@ -261,6 +261,7 @@ code{font-size:.9375em;overflow-wrap:anywhere}
 .home-quick a strong{font-size:.875rem}
 .home-heading{display:block;margin-bottom:1.8rem}
 .home-heading .text-link,.home-heading>p{margin-top:1rem}
+.home-section .text-link{display:inline-flex;align-items:center;min-height:44px}
 .home-section{padding-block:2.8rem}
 .home-editorial-grid{grid-template-columns:1fr;gap:2.75rem}
 .home-story-photo img,.home-story:first-child .home-story-photo img{aspect-ratio:3/2}
@@ -274,7 +275,7 @@ code{font-size:.9375em;overflow-wrap:anywhere}
 .home-trust .container{display:grid;gap:1rem}
 .home-trust .page-updated{max-width:none}
 .page-hero{padding-block:1.5rem 2.5rem}
-.page-hero h1{font-size:clamp(2.6rem,10vw,3.5rem)}
+.page-hero h1{font-size:clamp(2.3rem,9vw,2.75rem)}
 .page-hero .hero-lede{font-size:1.05rem}
 .page-hero .breadcrumbs{margin-bottom:1.7rem}
 .page-facts li{grid-template-columns:1fr;gap:.15rem}
