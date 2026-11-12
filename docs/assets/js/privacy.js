@@ -12,6 +12,7 @@
   const declineButton = banner.querySelector("[data-analytics-decline]");
   const settingsButtons = document.querySelectorAll("[data-privacy-settings]");
   let consentChoice = readChoice();
+  let bannerInvoker = null;
   const guidePaths = new Set(["/accessibility/", "/accommodation/", "/artificial-reef/", "/beaches/", "/boat-ramps/", "/charles-polson-history/", "/coastal-wildlife/", "/dog-friendly-foreshore/", "/eli-creek-beach/", "/fishing/", "/food-coffee/", "/gables-point-beach/", "/gatakers-bay/", "/getting-around/", "/history/", "/local-help/", "/local-life/", "/map-access/", "/moving-buying/", "/parkrun/", "/parks-playgrounds/", "/parraweena-park/", "/point-vernon-beach/", "/property-checks/", "/the-gables-history/", "/things-to-do/", "/tides/", "/visiting/", "/walks/", "/whales/", "/whats-on/"]);
 
   function readChoice() {
@@ -99,13 +100,31 @@
     }
   }
 
+  function updateBannerHeight() {
+    const rootStyle = document.documentElement && document.documentElement.style;
+    if (!rootStyle || typeof rootStyle.setProperty !== "function") return;
+    if (typeof banner.getBoundingClientRect !== "function") return;
+    const height = banner.hidden ? 0 : Math.ceil(banner.getBoundingClientRect().height);
+    rootStyle.setProperty("--privacy-banner-height", height + "px");
+  }
+
   function showBanner(moveFocus) {
     banner.hidden = false;
+    updateBannerHeight();
     if (moveFocus && allowButton) allowButton.focus();
   }
 
   function hideBanner() {
+    const returnFocusTo = bannerInvoker && typeof banner.contains === "function" && banner.contains(document.activeElement)
+      ? bannerInvoker : null;
     banner.hidden = true;
+    bannerInvoker = null;
+    updateBannerHeight();
+    // Restore a deliberately reopened choice only while focus is inside it,
+    // including when another tab hides it. Never move an outside reader.
+    if (returnFocusTo && returnFocusTo.isConnected !== false && typeof returnFocusTo.focus === "function") {
+      returnFocusTo.focus();
+    }
   }
 
   function choose(choice) {
@@ -266,8 +285,20 @@
   if (declineButton) declineButton.addEventListener("click", function () { choose("decline"); });
 
   settingsButtons.forEach(function (button) {
-    button.addEventListener("click", function () { showBanner(true); });
+    button.addEventListener("click", function () {
+      bannerInvoker = button;
+      showBanner(true);
+    });
   });
+
+  // Reserve the actual visible banner height, including wrapped text after
+  // resizing or font changes. Keep this independent of consent and Analytics.
+  if (typeof window.ResizeObserver === "function") {
+    const bannerObserver = new window.ResizeObserver(updateBannerHeight);
+    bannerObserver.observe(banner);
+  }
+  window.addEventListener("resize", updateBannerHeight);
+  updateBannerHeight();
 
   // Apply a choice made in another tab to both automatic and custom events.
   // Removal of the preference fails closed and asks for a fresh decision.
