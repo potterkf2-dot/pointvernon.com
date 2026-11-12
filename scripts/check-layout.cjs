@@ -12,7 +12,7 @@ const { chromium } = require('playwright');
 const docs = path.resolve(__dirname, '../docs');
 const output = path.resolve(process.env.PV_ARTIFACT_DIR || 'artifacts/layout');
 const widths = [320, 390, 600, 1280];
-const captures = new Set(['/', '/esa-park/', '/five-ways/', '/map-access/', '/contact/']);
+const captures = new Set(['/', '/esa-park/', '/five-ways/', '/map-access/', '/contact/', '/charles-polson-history/']);
 const report = { started: new Date().toISOString(), widths, checks: [], errors: [], externalRequests: [] };
 const mime = { '.html': 'text/html', '.css': 'text/css', '.js': 'application/javascript', '.svg': 'image/svg+xml', '.jpg': 'image/jpeg', '.png': 'image/png', '.ico': 'image/x-icon', '.webp': 'image/webp', '.avif': 'image/avif', '.woff2': 'font/woff2', '.xml': 'application/xml', '.txt': 'text/plain' };
 let browser;
@@ -109,6 +109,12 @@ async function layout(page, base, route, width) {
   assert(data.overflow <= 1, `Horizontal overflow ${data.overflow}px: ${JSON.stringify(data.offenders)}`);
   assert.deepEqual(data.badImages, [], 'Broken images');
   if (width <= 600) assert(data.h1.size <= 44.1, `Phone H1 is ${data.h1.size}px; maximum is 44px`);
+  if (route === '/') {
+    const intro = page.locator('.home-intro');
+    const textColor = await intro.evaluate(p => getComputedStyle(p).color);
+    const link = intro.getByRole('link', { name: 'local map', exact: true });
+    assert.equal(await link.evaluate(a => getComputedStyle(a).color), textColor, 'Hero map link must remain as readable as its white surrounding text');
+  }
   if (route === '/' && width <= 600) {
     const links = page.locator('[aria-labelledby="home-questions"] article > a');
     assert.equal(await links.count(), 3, 'Expected the three visitor FAQ links');
