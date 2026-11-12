@@ -4,7 +4,7 @@ on:
   pull_request:
     paths: ['docs/**', 'scripts/check-layout.cjs', '.github/workflows/layout.yml']
   push:
-    branches: [main]
+    branches: [main, codex/point-vernon-audit-follow-up]
     paths: ['docs/**', 'scripts/check-layout.cjs', '.github/workflows/layout.yml']
   workflow_dispatch:
     inputs:
