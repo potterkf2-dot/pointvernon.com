@@ -65,17 +65,95 @@ async function visit(page, base, route) {
 async function privacy(page, base) {
   await visit(page, base, '/');
   const banner = page.locator('[data-privacy-banner]');
+  const allow = page.locator('[data-analytics-allow]');
+  const settings = page.getByRole('button', { name: 'Privacy settings', exact: true });
+  const backToTop = page.locator('.footer-bottom').getByRole('link', { name: 'Back to top', exact: true });
+
+  async function measuredBannerHeight() {
+    await page.waitForFunction(() => {
+      const banner = document.querySelector('[data-privacy-banner]');
+      const reserved = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--privacy-banner-height'));
+      const actual = banner.hidden ? 0 : Math.ceil(banner.getBoundingClientRect().height);
+      return Number.isFinite(reserved) && Math.abs(reserved - actual) <= 1;
+    });
+    return banner.evaluate(element => element.hidden ? 0 : element.getBoundingClientRect().height);
+  }
+
+  async function backwardFocusClearsBanner() {
+    await allow.focus();
+    await page.keyboard.press('Shift+Tab');
+    assert(await banner.getByRole('link', { name: 'Privacy', exact: true }).evaluate(link => link === document.activeElement), 'Backward Tab from Allow did not reach the privacy policy link');
+    await page.keyboard.press('Shift+Tab');
+    assert(await backToTop.evaluate(link => link === document.activeElement), 'Backward Tab from the privacy policy did not reach the footer Back to top link');
+    // Wait for any native focus scrolling to settle, then check the actual
+    // target position and hit-test rather than relying on CSS declarations.
+    await page.waitForFunction(() => {
+      const link = document.querySelector('.footer-bottom a[href="#main-content"]');
+      const box = link.getBoundingClientRect();
+      const bannerBox = document.querySelector('[data-privacy-banner]').getBoundingClientRect();
+      const hit = document.elementFromPoint(box.left + box.width / 2, box.top + box.height / 2);
+      return document.activeElement === link && box.top >= 0 && box.bottom <= bannerBox.top + 1
+        && box.left >= 0 && box.right <= innerWidth && hit && (hit === link || link.contains(hit));
+    }, null, { timeout: 5000 });
+    return backToTop.evaluate(link => {
+      const box = link.getBoundingClientRect();
+      return { top: box.top, bottom: box.bottom, bannerTop: document.querySelector('[data-privacy-banner]').getBoundingClientRect().top };
+    });
+  }
+
   await banner.waitFor({ state: 'visible' });
+  const initialBannerHeight = await measuredBannerHeight();
+  assert(initialBannerHeight > 0, 'The visible privacy choices have no measured height');
+  const freshFooter = await backwardFocusClearsBanner();
   await page.getByRole('button', { name: 'Decline', exact: true }).click();
   await banner.waitFor({ state: 'hidden' });
+  assert.equal(await measuredBannerHeight(), 0, 'Hidden privacy choices still reserve page space');
+  assert.equal(await settings.evaluate(button => button === document.activeElement), false, 'A fresh privacy choice unexpectedly moved focus to the footer');
   await page.reload({ waitUntil: 'load' });
   assert.equal(await banner.isVisible(), false, 'Decline was not remembered after reload');
-  await page.getByRole('button', { name: 'Privacy settings', exact: true }).click();
+  assert.equal(await measuredBannerHeight(), 0, 'A saved refusal left space for a hidden banner');
+  await settings.click();
   await banner.waitFor({ state: 'visible' });
-  assert.equal(await page.locator('[data-analytics-allow]').evaluate(button => button === document.activeElement), true, 'Privacy settings did not move focus into the choices');
+  assert(await allow.evaluate(button => button === document.activeElement), 'Privacy settings did not move focus into the choices');
+  const reopenedBannerHeight = await measuredBannerHeight();
+  const reopenedFooter = await backwardFocusClearsBanner();
   await page.getByRole('button', { name: 'Decline', exact: true }).click();
   await banner.waitFor({ state: 'hidden' });
+  assert.equal(await measuredBannerHeight(), 0, 'Closing reopened privacy choices left reserved space');
+  assert(await settings.evaluate(button => button === document.activeElement), 'Closing reopened privacy choices did not restore focus to Privacy settings');
   assert.equal(await page.locator('script[data-point-vernon-analytics]').count(), 0, 'Analytics loaded after declining');
+
+  // Use real same-origin storage events between two pages. Removing the saved
+  // refusal first makes the peer's next Decline a change, rather than a no-op
+  // write of the same value. Wait for each delivered event before asserting.
+  const peer = await page.context().newPage();
+  try {
+    await visit(peer, base, '/privacy/');
+    await page.evaluate(() => {
+      window.__pvPrivacyStorageEvents = [];
+      window.addEventListener('storage', event => {
+        if (event.key === 'point-vernon-analytics-choice-v2') window.__pvPrivacyStorageEvents.push(event.newValue);
+      });
+    });
+    await settings.click();
+    await banner.waitFor({ state: 'visible' });
+    assert(await allow.evaluate(button => button === document.activeElement), 'Reopened privacy choices did not retain their keyboard focus');
+    await peer.evaluate(() => localStorage.removeItem('point-vernon-analytics-choice-v2'));
+    await page.waitForFunction(() => window.__pvPrivacyStorageEvents.includes(null));
+    assert(await allow.evaluate(button => button === document.activeElement), 'Clearing the choice in another tab unexpectedly moved focus');
+    await peer.reload({ waitUntil: 'load' });
+    await peer.locator('[data-privacy-banner]').waitFor({ state: 'visible' });
+    await peer.getByRole('button', { name: 'Decline', exact: true }).click();
+    await page.waitForFunction(() => window.__pvPrivacyStorageEvents.includes('decline'));
+    await banner.waitFor({ state: 'hidden' });
+    assert.equal(await measuredBannerHeight(), 0, 'Cross-tab Decline left space for hidden privacy choices');
+    assert(await settings.evaluate(button => button === document.activeElement), 'Decline in another tab hid the reopened choices without restoring settings focus');
+    assert.equal(await peer.locator('script[data-point-vernon-analytics]').count(), 0, 'Analytics loaded in the peer after declining');
+    assert.equal(await page.locator('script[data-point-vernon-analytics]').count(), 0, 'Analytics loaded during the cross-tab choice');
+  } finally {
+    await peer.close();
+  }
+  return { initialBannerHeight, reopenedBannerHeight, freshFooter, reopenedFooter, settingsFocusRestored: true, crossTabFocusRestored: true };
 }
 
 async function layout(page, base, route, width) {

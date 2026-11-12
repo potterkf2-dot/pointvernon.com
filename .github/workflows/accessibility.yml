@@ -1,0 +1,46 @@
+name: Accessibility audit
+
+on:
+  push:
+    branches: [main, codex/point-vernon-final-audit]
+    paths: ['docs/**', 'scripts/check-accessibility.cjs', '.github/workflows/accessibility.yml']
+  pull_request:
+    paths: ['docs/**', 'scripts/check-accessibility.cjs', '.github/workflows/accessibility.yml']
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: 'Optional live origin, such as https://pointvernon.com/; empty tests docs/'
+        type: string
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  axe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      # Verified against npm metadata and Deque's official Playwright API.
+      - name: Install pinned audit dependencies outside the repository
+        run: npm install --prefix "$RUNNER_TEMP/pv-a11y" --no-audit --no-fund --ignore-scripts playwright@1.62.1 @axe-core/playwright@4.14.0 axe-core@4.14.0
+      - name: Install Chromium and Linux dependencies
+        run: '"$RUNNER_TEMP/pv-a11y/node_modules/.bin/playwright" install --with-deps chromium'
+      - name: Audit phone and desktop accessibility
+        env:
+          NODE_PATH: ${{ runner.temp }}/pv-a11y/node_modules
+          PV_BASE_URL: ${{ inputs.base_url || '' }}
+        run: node scripts/check-accessibility.cjs
+      - name: Preserve findings and representative screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: point-vernon-accessibility-${{ github.run_id }}
+          path: artifacts/accessibility/
+          retention-days: 7
+          if-no-files-found: warn
