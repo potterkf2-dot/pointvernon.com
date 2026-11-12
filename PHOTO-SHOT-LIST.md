@@ -1,6 +1,50 @@
 # Point Vernon photograph shot list
 
-This is the field plan for replacing the current artwork with real photographs of Point Vernon. It contains 74 unique subjects grouped into practical outings. Each source photograph has one filename and one page position; hero rows also produce a social crop from the same original.
+This field plan fills gaps in the real Point Vernon photograph collection. The detailed outings below retain 74 proposed subjects; the current-page checklist takes precedence over their older route names. Hero rows also produce a social crop from the same original.
+
+## Current page checklist — 12 November 2026
+
+The initial audit branch had 25 sitemap pages without a photograph in the main content, plus the new Five Ways guide. Relevant approved shore and path photographs have since been reused for broad guides and trust pages; the exact-place gaps below still require new photographs. An `og:image` alone is not a page photograph. A generic shoreline scene can introduce a broad guide, but it does not demonstrate a particular facility, business, reef, historic site or accessible route. Use exact-place photographs for those subjects.
+
+The existing approved derivatives must retain their current privacy edits and anonymous agreed credits. In particular, the file beginning `gatakers-bay-reef-shelves-sunrise` actually shows the **eastern Point Vernon foreshore in April 2020**; do not label it Gatakers Bay. The `point-vernon-esplanade-walk-human-scale` photograph must keep its rear-facing framing, registration blur and editing disclosure. Do not extract a new crop from a private source original.
+
+| Current page | Photograph or shot needed | Existing collection that can be used accurately now |
+|---|---|---|
+| `/fishing/` | Safe public shore-fishing position with casting room; permission for an identifiable angler | `point-vernon-rock-platform-low-tide`: shoreline context only, without a claim that it is a recommended fishing position |
+| `/boat-ramps/` | Each ramp and its public approach, ideally paired at high and low tide; keep traffic clear | None shows an actual ramp clearly enough; use the Gatakers Bay and Aplin Street shots below |
+| `/food-coffee/` | Current Brew & View, Preston Street shops and Vernon 5 Ways exteriors from public land | None; do not use the playground or a generic waterfront image as a café photograph |
+| `/five-ways/` | The Corser Street intersection and current shopfront signage from a safe public footpath | None; use `vernon-five-ways-intersection` and `vernon-5-ways-52-corser-street` below |
+| `/parraweena-park/` | Entrance plus bushland trail and stone footbridge | None; the foreshore tree photograph is not Parraweena Park |
+| `/eli-creek-beach/` | Creek mouth, mangroves and public approach, without entering soft mud | None with confirmed Eli Creek location |
+| `/artificial-reef/` | Lawfully obtained photograph of the actual artificial reef or a clearly identified boat departure point | None; natural intertidal rock shelves are not the artificial reef |
+| `/coastal-wildlife/` | Rock-pool or shorebird habitat with undisturbed wildlife if present | `point-vernon-rock-platform-low-tide` and `point-vernon-rocky-shoreline` show real habitat; caption as habitat rather than a species sighting |
+| `/whales/` | Public shoreline outlook showing the viewing position; a whale need not be present | `point-vernon-rocky-shoreline` can illustrate a general coastal outlook; do not promise sightings or identify a specific lookout |
+| `/history/` | Parraweena sanctuary remains, a documented heritage feature or a public historic-site sign | None; modern generic coastline does not illustrate a historical building |
+| `/charles-polson-history/` | Polson Cemetery entrance and South Sea Islander memorial respectfully photographed | None; use the Polson Cemetery shots below |
+| `/the-gables-history/` | The present public site and an identifying heritage sign, if present; licensed archive image if available | None showing the former boarding house or its precise present site |
+| `/accessibility/` | Full route from an identified parking point to toilets/path, including surfaces and kerbs | `point-vernon-esplanade-walk-human-scale` can show shared-path context only; do not use it as proof of compliance, gradients or an accessible toilet |
+| `/getting-around/` | A signed bus stop and connecting public path; avoid faces and vehicle plates | `point-vernon-esplanade-walk-human-scale` illustrates walking beside the road, with current privacy edits retained |
+| `/map-access/` | Public arrival point with road, path and bay relationship | Existing aerial or `point-vernon-rocky-shoreline` can supply honest suburb context; retain the map as the location key |
+| `/moving-buying/` | A general public streetscape and foreshore connection, avoiding private house detail | `point-vernon-rocky-shoreline` can introduce the suburb; it does not evidence a particular property's outlook or risk |
+| `/property-checks/` | Public streetscape demonstrating drainage or access context without identifying a private address | None evidences a property inspection; a broad shoreline photograph may be introductory only |
+| `/accommodation/` | Public visitor-arrival/foreshore scene; any named property's exterior needs current location confirmation | `point-vernon-rocky-shoreline` can illustrate the coastal setting; do not imply beachfront access or a view from any named accommodation |
+| `/local-help/` | Public council or service wayfinding, with no patient, incident or personal information | None specific; do not photograph someone seeking assistance |
+| `/whats-on/` | A real recurring local activity with permission and no identifying close-ups | Existing approved parkrun photograph may accompany its parkrun section; keep its anonymous agreed credit and do not imply a new event date |
+| `/about/` | Representative real Point Vernon shore or path | `point-vernon-rocky-shoreline`, with `Photo: Point Vernon Guide` |
+| `/guides/` | Representative shore or park as a directory introduction | `point-vernon-rocky-shoreline` or the already approved ESA Park playground image, accurately captioned |
+| `/photo-credits/` | A photograph already described in the credits | `point-vernon-rocky-shoreline`, with the same credit and editing explanation as its existing use |
+| `/contact/` | Representative real foreshore, if an image is wanted in the trust-page template | `point-vernon-rocky-shoreline`; no personal photograph or home-location details |
+| `/privacy/` | Representative real foreshore, if an image is wanted in the trust-page template | `point-vernon-rocky-shoreline`; keep the policy easy to read |
+| `/terms/` | Representative real foreshore, if an image is wanted in the trust-page template | `point-vernon-rocky-shoreline`; keep the terms easy to read |
+
+### Efficient outings for the remaining exact-place photographs
+
+1. **Corser Street and Parraweena:** Five Ways intersection and shopfronts, Parraweena entrance/trail/bridge, then the Polson Cemetery entrance and memorial.
+2. **ESA Park and Aplin Street:** public path and toilet approach, playground/picnic context, Aplin Street ramp and the present Gables heritage location. Repeat ramp views at another tide only if safely accessible.
+3. **Gatakers Bay:** ramp approach, ramp facilities, safe shore-fishing context and a public coastal outlook. Keep the existing eastern-foreshore photograph's true caption.
+4. **Eli Creek and local services:** creek-mouth approach and mangroves from public land, signed bus stop, then current café/shop exteriors. Obtain a separate licensed artificial-reef photograph rather than substituting natural shore rock.
+
+For every new contribution retain the original privately, the date and exact public place, written website-publication permission, agreed brand/anonymous credit and any restrictions. Do not publish faces, private-address detail or location metadata. The current facts panels already exist on the guide templates; photographs should complement them rather than imply unconfirmed facilities.
 
 ## Capture standard
 

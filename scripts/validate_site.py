@@ -13,12 +13,12 @@ from urllib.parse import unquote, urlsplit
 ROOT = Path(__file__).resolve().parent.parent / "docs"
 SITE_ORIGIN = "https://pointvernon.com"
 EXPECTED_ADSENSE_ACCOUNT = "ca-pub-1569993121551986"
-EXPECTED_STYLE_VERSION = "20261023-usability-v1"
+EXPECTED_STYLE_VERSION = "20261112-audit-v1"
 EXPECTED_PRIVACY_VERSION = "20261004-engagement-v1"
 EXPECTED_CONSENT_STORAGE_KEY = "point-vernon-analytics-choice-v2"
 LEGACY_CONSENT_STORAGE_KEY = "point-vernon-analytics-choice"
 EXPECTED_MEASUREMENT_ID = "G-003LRJYP3K"
-EXPECTED_BANNER_COPY = "Allow cookies to measure visits and useful clicks? Advertising is disabled."
+EXPECTED_BANNER_COPY = "Allow analytics cookies to measure visits and useful clicks?"
 EXPECTED_ENHANCED_MEASUREMENT_COPY = (
     "Enhanced Measurement may also record scrolls, outbound-link clicks, file downloads, "
     "on-site search results, embedded-video interactions, and form starts or submissions"
@@ -380,7 +380,7 @@ def main():
     ads_txt = ROOT / "ads.txt"
     if not ads_txt.is_file() or ads_txt.read_text(encoding="utf-8").strip() != "google.com, pub-1569993121551986, DIRECT, f08c47fec0942fa0":
         errors.append("ads.txt: expected the publisher's verified Google AdSense entry")
-    public_suffixes = {".html", ".css", ".js", ".png", ".jpg", ".jpeg", ".avif", ".webp", ".svg", ".ico", ".txt", ".xml"}
+    public_suffixes = {".html", ".css", ".js", ".png", ".jpg", ".jpeg", ".avif", ".webp", ".svg", ".ico", ".txt", ".xml", ".woff2"}
     for public_file in ROOT.rglob("*"):
         if public_file.is_file() and public_file.name not in {"CNAME", ".nojekyll"} and public_file.suffix.lower() not in public_suffixes:
             errors.append(f"Unexpected public file: {public_file.relative_to(ROOT)}")
