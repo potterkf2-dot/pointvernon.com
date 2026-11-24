@@ -13,3 +13,7 @@
 - Original high-resolution photographs for the homepage hero, place pages and social crops.
 
 Keep observations dated and distinguish personal impressions from measurements. The printable field checklist covers the priority locations.
+
+## Scheduled content reviews
+
+- Before 31 May 2027, check Queensland Parks alert 27180 for any extension or replacement. Update the dated notice in the Beaches swimming section and review the linked wording on Home, Gatakers Bay and Tides.

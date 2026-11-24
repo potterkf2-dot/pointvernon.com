@@ -188,10 +188,18 @@ async function layout(page, base, route, width) {
   assert.deepEqual(data.badImages, [], 'Broken images');
   if (width <= 600) assert(data.h1.size <= 44.1, `Phone H1 is ${data.h1.size}px; maximum is 44px`);
   if (route === '/') {
-    const intro = page.locator('.home-intro');
-    const textColor = await intro.evaluate(p => getComputedStyle(p).color);
-    const link = intro.getByRole('link', { name: 'local map', exact: true });
-    assert.equal(await link.evaluate(a => getComputedStyle(a).color), textColor, 'Hero map link must remain as readable as its white surrounding text');
+    const hero = page.locator('.home-hero');
+    const mapLink = hero.getByRole('link', { name: 'Open local map', exact: true });
+    assert(await mapLink.isVisible(), 'The local map must be visible in the homepage hero');
+    assert.equal(await mapLink.getAttribute('href'), '/map-access/');
+    assert.equal(await hero.getByRole('link').first().getAttribute('href'), '/map-access/', 'The map must be the first hero action');
+    const shortcuts = hero.getByRole('navigation', { name: 'Popular places' }).getByRole('link');
+    const targets = await shortcuts.evaluateAll(links => links.map(link => ({
+      href: link.getAttribute('href'),
+      height: link.getBoundingClientRect().height
+    })));
+    assert.deepEqual(targets.map(target => target.href), ['/gatakers-bay/', '/esa-park/', '/walks/']);
+    for (const target of targets) assert(target.height >= 43.9, `Homepage shortcut is only ${target.height}px: ${target.href}`);
   }
   if (route === '/' && width <= 600) {
     const links = page.locator('[aria-labelledby="home-questions"] article > a');
